@@ -1,0 +1,114 @@
+:root {
+  /* Color Palette - Japanese Digicam + Y2K Handmade Collage */
+  --bg-page: #FAF7F2;
+  --bg-surface: #FFFDF9;
+  --bg-subtle: #F4EFE6;
+  --bg-elevated: #FCF8F0;
+  --border-subtle: #E8DDD0;
+  --border-strong: #D6C6B6;
+  --border-dashed: #D9C8B8;
+
+  /* Text Ink Hierarchy - Warm Cocoa Brown */
+  --text-primary: #3E3636;
+  --text-secondary: #6C5E5E;
+  --text-muted: #9A8B8B;
+
+  /* Signature Low-Saturation Y2K Pastels + Readable Cocoa-Tinted Inks */
+  --pastel-pink: #F4D9DF;
+  --pastel-pink-soft: #FBF0F3;
+  --pastel-pink-border: #E5BCC6;
+  --pastel-pink-ink: #844153;
+
+  --pastel-blue: #D6E4F0;
+  --pastel-blue-soft: #EEF4FA;
+  --pastel-blue-border: #B3CBE0;
+  --pastel-blue-ink: #385877;
+
+  --pastel-green: #DCE6D5;
+  --pastel-green-soft: #F0F5EC;
+  --pastel-green-border: #B9CCA9;
+  --pastel-green-ink: #435E3D;
+
+  --pastel-butter: #F6EBCC;
+  --pastel-butter-soft: #FBF6E8;
+  --pastel-butter-border: #E3D19E;
+  --pastel-butter-ink: #7A5F24;
+
+  --pastel-lilac: #E8DEF2;
+  --pastel-lilac-soft: #F5F0FA;
+  --pastel-lilac-border: #CEBBE2;
+  --pastel-lilac-ink: #63467D;
+
+  /* Semantic Hangul Category Colors (Mapped to Y2K Pastels) */
+  --cat-bc: var(--pastel-green-ink);
+  --cat-bc-fill: var(--pastel-green);
+  --cat-bc-soft: var(--pastel-green-soft);
+  --cat-bc-border: var(--pastel-green-border);
+
+  --cat-dc: var(--pastel-blue-ink);
+  --cat-dc-fill: var(--pastel-blue);
+  --cat-dc-soft: var(--pastel-blue-soft);
+  --cat-dc-border: var(--pastel-blue-border);
+
+  --cat-bv: var(--pastel-pink-ink);
+  --cat-bv-fill: var(--pastel-pink);
+  --cat-bv-soft: var(--pastel-pink-soft);
+  --cat-bv-border: var(--pastel-pink-border);
+
+  --cat-cv: var(--pastel-lilac-ink);
+  --cat-cv-fill: var(--pastel-lilac);
+  --cat-cv-soft: var(--pastel-lilac-soft);
+  --cat-cv-border: var(--pastel-lilac-border);
+
+  /* Action & Status Accents */
+  --accent-primary: var(--pastel-pink-ink);
+  --accent-primary-fill: var(--pastel-pink);
+  --accent-primary-hover: #6E3343;
+  --accent-primary-soft: var(--pastel-pink-soft);
+
+  --danger: #B84A52;
+  --danger-hover: #9B3940;
+  --danger-fill: #F7D8DC;
+  --danger-soft: #FDF2F4;
+  --danger-border: #E9B3BB;
+
+  --success: var(--pastel-green-ink);
+  --success-fill: var(--pastel-green);
+  --success-soft: var(--pastel-green-soft);
+  --success-border: var(--pastel-green-border);
+
+  --warning: var(--pastel-butter-ink);
+  --warning-fill: var(--pastel-butter);
+  --warning-soft: var(--pastel-butter-soft);
+  --warning-border: var(--pastel-butter-border);
+
+  /* Typography */
+  --font-kr-cute: 'Jua', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  --font-kr-hand: 'Gaegu', 'Jua', 'Noto Sans KR', sans-serif;
+  --font-kr: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-tc: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  --font-sans: var(--font-tc), var(--font-kr), system-ui, -apple-system, sans-serif;
+
+  /* Radii */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* Soft 3D Polaroid / Paper Shadows */
+  --shadow-xs: 0 2px 0 rgba(217, 200, 184, 0.45), 0 3px 8px rgba(62, 54, 54, 0.04);
+  --shadow-sm: 0 3px 0 rgba(217, 200, 184, 0.6), 0 6px 14px rgba(62, 54, 54, 0.055);
+  --shadow-md: 0 5px 0 rgba(217, 200, 184, 0.72), 0 12px 24px rgba(62, 54, 54, 0.07);
+  --shadow-polaroid: 0 5px 0 rgba(226, 214, 200, 0.78), 0 12px 26px rgba(62, 54, 54, 0.07);
+  --shadow-btn: 0 3px 0 rgba(62, 54, 54, 0.11), 0 4px 10px rgba(62, 54, 54, 0.05);
+  --shadow-focus: 0 0 0 3px rgba(244, 217, 223, 0.85);
+
+  /* Layout & Transitions */
+  --container-max: 1120px;
+  --header-height: 70px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 220ms;
+}
