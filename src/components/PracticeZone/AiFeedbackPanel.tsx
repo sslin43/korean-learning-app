@@ -85,7 +85,7 @@ export function AiFeedbackPanel({
                 {getLevelLabel(feedback.level)}
               </span>
               <span className="ai-model-chip">
-                Gemini AI · {feedback.modelUsed ?? 'gemini-3.8-flash'}
+                Gemini AI · {feedback.modelUsed ?? 'gemini-3.5-flash-lite'}
               </span>
             </div>
 

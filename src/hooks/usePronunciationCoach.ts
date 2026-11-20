@@ -70,7 +70,7 @@ export function usePronunciationCoach({
 }: UsePronunciationCoachOptions): PronunciationCoachController {
   const [aiStatus, setAiStatus] = useState<AiStatus>({
     configured: false,
-    model: 'gemini-3.8-flash',
+    model: 'gemini-3.5-flash-lite',
   });
   const [autoAnalyze, setAutoAnalyze] = useState<boolean>(true);
   const [analyses, setAnalyses] = useState<Record<string, AnalysisState>>({});

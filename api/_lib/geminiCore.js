@@ -1,17 +1,23 @@
 import { isTimeoutError } from './httpUtils.js';
 
-export const DEFAULT_GEMINI_MODEL = 'gemini-3.8-flash';
+export const DEFAULT_GEMINI_MODEL = 'gemini-3.5-flash-lite';
 
-const UPSTREAM_TIMEOUT_MS = 35_000;
+const TOTAL_BUDGET_MS = 45_000;
+const FAST_FAILOVER_TIMEOUT_MS = 10_000;
+const FINAL_ATTEMPT_TIMEOUT_MS = 20_000;
+const MODEL_COOLDOWN_MS = 5 * 60 * 1000;
 const FALLBACK_MODELS = [
-  'gemini-3.6-flash',
-  'gemini-3.5-flash',
   'gemini-3.5-flash-lite',
+  'gemini-3.1-flash-lite',
+  'gemini-3.8-flash',
 ];
 const ALLOWED_LEVELS = ['excellent', 'good', 'needs-practice', 'unclear'];
 
 /** @type {{ keyPrefix: string; kind: 'vertexExpress' | 'aiStudio' } | null} */
 let cachedEndpoint = null;
+
+/** @type {Map<string, number>} */
+const degradedModels = new Map();
 
 /**
  * Error with an HTTP status code for Gemini pronunciation evaluation routes.
@@ -40,10 +46,46 @@ export function normalizeAudioMimeType(rawMime) {
   if (base === 'audio/x-wav') {
     return 'audio/wav';
   }
-  if (base === 'audio/m4a' || base === 'audio/x-m4a') {
+  if (base === 'audio/m4a' || base === 'audio/x-m4a' || base === 'video/mp4') {
     return 'audio/mp4';
   }
   return base;
+}
+
+/**
+ * Build an ordered, deduplicated list of candidate models, deferring models
+ * currently in cooldown behind healthy ones.
+ * @param {string} preferredModel
+ * @returns {string[]}
+ */
+function buildOrderedModels(preferredModel) {
+  const now = Date.now();
+  for (const [name, expiresAt] of degradedModels.entries()) {
+    if (expiresAt <= now) {
+      degradedModels.delete(name);
+    }
+  }
+
+  const unique = [];
+  for (const candidate of [preferredModel, ...FALLBACK_MODELS]) {
+    const trimmed = (candidate || '').trim();
+    if (trimmed && !unique.includes(trimmed)) {
+      unique.push(trimmed);
+    }
+  }
+
+  const healthy = [];
+  const cooledDown = [];
+  for (const name of unique) {
+    const expiresAt = degradedModels.get(name);
+    if (expiresAt && expiresAt > now) {
+      cooledDown.push(name);
+    } else {
+      healthy.push(name);
+    }
+  }
+
+  return [...healthy, ...cooledDown];
 }
 
 /**
@@ -215,7 +257,7 @@ function mapUpstreamError(status, upstreamMessage) {
   if (status === 404) {
     return new GeminiHttpError(
       404,
-      '找不到指定的 Gemini 模型，請確認 GEMINI_MODEL 環境變數設定（例如 gemini-3.8-flash）。'
+      '找不到指定的 Gemini 模型，請確認 GEMINI_MODEL 環境變數設定（例如 gemini-3.5-flash-lite）。'
     );
   }
   if (status === 429) {
@@ -241,16 +283,6 @@ function mapUpstreamError(status, upstreamMessage) {
     502,
     `Gemini AI 服務暫時無法回應（HTTP ${status}），請稍後再試。`
   );
-}
-
-/**
- * @param {number} ms
- * @returns {Promise<void>}
- */
-function waitMs(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
 }
 
 /**
@@ -331,26 +363,27 @@ export async function analyzeWithGemini(input, config) {
 
   const serializedBody = JSON.stringify(requestBody);
   const candidates = getCandidateEndpoints(apiKey);
-  const modelAttempts = [
-    { modelName: model, delayBeforeMs: 0 },
-    { modelName: model, delayBeforeMs: 1000 },
-    ...FALLBACK_MODELS.filter((m) => m !== model).map((m) => ({
-      modelName: m,
-      delayBeforeMs: 0,
-    })),
-  ];
+  const orderedModels = buildOrderedModels(model);
+  const deadline = Date.now() + TOTAL_BUDGET_MS;
 
   let lastStatus = 502;
   let lastMessage = '';
   let lastTimedOut = false;
 
-  for (let attemptIdx = 0; attemptIdx < modelAttempts.length; attemptIdx += 1) {
-    const { modelName: activeModel, delayBeforeMs } = modelAttempts[attemptIdx];
-    const hasMoreAttempts = attemptIdx < modelAttempts.length - 1;
-
-    if (delayBeforeMs > 0) {
-      await waitMs(delayBeforeMs);
+  for (let attemptIdx = 0; attemptIdx < orderedModels.length; attemptIdx += 1) {
+    const remainingMs = deadline - Date.now();
+    if (remainingMs < 2_000) {
+      lastTimedOut = true;
+      lastStatus = 504;
+      break;
     }
+
+    const activeModel = orderedModels[attemptIdx];
+    const hasMoreAttempts = attemptIdx < orderedModels.length - 1;
+    const attemptTimeoutMs = Math.min(
+      hasMoreAttempts ? FAST_FAILOVER_TIMEOUT_MS : FINAL_ATTEMPT_TIMEOUT_MS,
+      remainingMs
+    );
 
     for (let i = 0; i < candidates.length; i += 1) {
       const kind = candidates[i];
@@ -365,10 +398,11 @@ export async function analyzeWithGemini(input, config) {
             'x-goog-api-key': apiKey,
           },
           body: serializedBody,
-          signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
+          signal: AbortSignal.timeout(attemptTimeoutMs),
         });
       } catch (err) {
         if (isTimeoutError(err)) {
+          degradedModels.set(activeModel, Date.now() + MODEL_COOLDOWN_MS);
           lastTimedOut = true;
           lastStatus = 504;
           if (hasMoreAttempts) {
@@ -403,13 +437,20 @@ export async function analyzeWithGemini(input, config) {
           continue;
         }
 
-        if (response.status === 503 && hasMoreAttempts) {
+        const isFailoverStatus =
+          response.status === 503 ||
+          response.status === 429 ||
+          response.status === 404;
+
+        if (isFailoverStatus && hasMoreAttempts) {
+          degradedModels.set(activeModel, Date.now() + MODEL_COOLDOWN_MS);
           break;
         }
 
         throw mapUpstreamError(response.status, lastMessage);
       }
 
+      degradedModels.delete(activeModel);
       cachedEndpoint = { keyPrefix: apiKey.slice(0, 6), kind };
 
       const data = await response.json();

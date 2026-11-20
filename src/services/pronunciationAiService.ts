@@ -7,7 +7,7 @@ import type {
 
 const DEFAULT_AI_STATUS: AiStatus = {
   configured: false,
-  model: 'gemini-3.8-flash',
+  model: 'gemini-3.5-flash-lite',
 };
 
 export async function fetchAiStatus(signal?: AbortSignal): Promise<AiStatus> {
