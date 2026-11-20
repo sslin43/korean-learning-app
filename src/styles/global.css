@@ -295,6 +295,12 @@ section[id] {
   color: var(--pastel-pink-ink);
 }
 
+.hero-stat-pill[data-tint='lilac'] {
+  background: var(--pastel-lilac-soft);
+  border-color: var(--pastel-lilac-border);
+  color: var(--pastel-lilac-ink);
+}
+
 .hero-stat-pill:hover {
   transform: translateY(-2px);
 }

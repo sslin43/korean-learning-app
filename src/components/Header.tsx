@@ -51,6 +51,9 @@ export function Header({
           <a href="#situational-conversations" className="site-nav__link">
             實用情境會話
           </a>
+          <a href="#daily-reading" className="site-nav__link">
+            每日短篇閱讀
+          </a>
         </nav>
 
         <div className="site-header__controls">

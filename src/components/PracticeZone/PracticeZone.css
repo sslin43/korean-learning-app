@@ -609,9 +609,8 @@
 
 .ai-score-badge {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
-  gap: 2px;
   min-width: 74px;
   height: 58px;
   padding: 0 12px;
@@ -620,7 +619,16 @@
   border: 1.5px dashed var(--border-strong);
   background: var(--bg-subtle);
   color: var(--text-primary);
+  white-space: nowrap;
   flex-shrink: 0;
+}
+
+.ai-score-badge__inner {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  line-height: 1;
 }
 
 .ai-score-badge__value {
@@ -631,6 +639,7 @@
 
 .ai-score-badge__unit {
   font-size: 0.75rem;
+  line-height: 1;
 }
 
 .ai-score-badge[data-level='excellent'] {
@@ -661,6 +670,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
 }
 
 .ai-feedback__badges {

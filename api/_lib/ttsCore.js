@@ -2,7 +2,7 @@ import { isTimeoutError } from './httpUtils.js';
 
 export const DEFAULT_TTS_VOICE = 'ko-KR-Neural2-A';
 
-const MAX_TEXT_LENGTH = 500;
+const MAX_TEXT_LENGTH = 800;
 const MAX_CACHE_ENTRIES = 250;
 const UPSTREAM_TIMEOUT_MS = 15_000;
 

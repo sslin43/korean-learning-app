@@ -4,6 +4,8 @@ import { HangulSection } from './components/HangulChart/HangulSection';
 import { Header } from './components/Header';
 import { PracticeSection } from './components/PracticeZone/PracticeSection';
 import { SituationalSection } from './components/SituationalConversations/SituationalSection';
+import { DailyReadingSection } from './components/DailyReading/DailyReadingSection';
+import { useDailyReading } from './hooks/useDailyReading';
 import { useFavorites } from './hooks/useFavorites';
 import { useKoreanSpeech } from './hooks/useKoreanSpeech';
 import { usePronunciationCoach } from './hooks/usePronunciationCoach';
@@ -31,6 +33,7 @@ export function App() {
   } = useKoreanSpeech();
 
   const favorites = useFavorites();
+  const dailyReading = useDailyReading();
   const [activeTopicId, setActiveTopicId] = useState<string>(
     conversationsData.topics[0]?.id ?? 'airport'
   );
@@ -61,6 +64,15 @@ export function App() {
     [coach, speak]
   );
 
+  const handleReadingSpeak = useCallback(
+    (speechId: string, text: string, overrideRate?: number) => {
+      stopLoopRef.current();
+      coach.stopAll();
+      return speak(speechId, text, overrideRate);
+    },
+    [coach, speak]
+  );
+
   return (
     <div id="top" className="app-shell">
       <Header
@@ -84,9 +96,9 @@ export function App() {
               <span className="hero-strip__rec-dot" aria-hidden="true" />
               <span>REC ● DIGICAM KOREAN DIARY ✨</span>
             </span>
-            <h1 className="hero-strip__title">從韓文 40 音到旅遊情境會話，聽說同步練習</h1>
+            <h1 className="hero-strip__title">從韓文 40 音、情境會話到每日短篇閱讀，聽說讀同步練習</h1>
             <p className="hero-strip__desc">
-              先點選字母表熟悉 40 音嘴型技巧，再透過日常短句與旅遊情境會話錄音對比，讓 Gemini AI 即時給予繁體中文發音矯正建議。
+              先點選字母表熟悉 40 音嘴型技巧，透過日常短句與情境會話由 Gemini AI 矯正發音，再到每日 TOPIK 1→2 短篇閱讀小課累積詞彙與語法！
             </p>
           </div>
 
@@ -108,6 +120,14 @@ export function App() {
               <strong>
                 {topicCount} 主題 {phraseCount} 句
               </strong>
+            </a>
+            <a
+              href="#daily-reading"
+              className="hero-stat-pill"
+              data-tint="lilac"
+            >
+              <span>📖 每日閱讀小課</span>
+              <strong>已推 {dailyReading.lessons.length} 篇</strong>
             </a>
             <a
               href="#situational-conversations"
@@ -150,6 +170,14 @@ export function App() {
           onSpeakLoopItem={speak}
           onStopSpeech={stopSpeech}
           registerStopLoop={registerStopLoop}
+        />
+
+        <DailyReadingSection
+          reading={dailyReading}
+          speakingId={speakingId}
+          aiConfigured={coach.aiStatus.configured}
+          onSpeakText={handleReadingSpeak}
+          onStopSpeech={stopSpeech}
         />
       </main>
 

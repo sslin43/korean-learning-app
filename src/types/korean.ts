@@ -107,3 +107,56 @@ export interface AiStatus {
   configured: boolean;
   model: string;
 }
+
+export type DailyReadingLevelStage =
+  | 'topik1-starter'
+  | 'topik1-solid'
+  | 'topik1-to-2'
+  | 'topik2-early';
+
+export interface DailyReadingSentence {
+  ko: string;
+  tc: string;
+}
+
+export interface DailyReadingVocab {
+  word: string;
+  romanization: string;
+  pos: string;
+  meaningTc: string;
+  usageNote: string;
+}
+
+export interface DailyReadingGrammar {
+  pattern: string;
+  connection: string;
+  meaningTc: string;
+  exampleKo: string;
+  exampleTc: string;
+  differenceNote: string;
+}
+
+export interface DailyReadingLesson {
+  id: string;
+  dayNumber: number;
+  date: string;
+  levelStage: DailyReadingLevelStage;
+  levelTag: string;
+  titleKo: string;
+  titleTc: string;
+  topicTag: string;
+  charCount: number;
+  passage: string;
+  sentences: DailyReadingSentence[];
+  translationTc: string;
+  vocabulary: DailyReadingVocab[];
+  grammar: DailyReadingGrammar[];
+  source: 'curated' | 'ai';
+  modelUsed?: string;
+}
+
+export interface DailyReadingProgress {
+  masteredWords: string[];
+  completed: boolean;
+  completedAt?: number;
+}

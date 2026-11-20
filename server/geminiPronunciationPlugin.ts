@@ -7,6 +7,10 @@ import {
   parseAnalyzeRequestBody,
 } from '../api/_lib/geminiCore.js';
 import {
+  generateDailyReadingWithGemini,
+  parseDailyReadingRequestBody,
+} from '../api/_lib/dailyReadingCore.js';
+import {
   readJsonBody,
   sendJson,
   type MiddlewareServer,
@@ -93,6 +97,40 @@ function attachPronunciationRoutes(
           }
           sendJson(res, 500, {
             error: '分析韓語發音時發生未預期錯誤，請稍後再試。',
+          });
+        }
+      })();
+      return;
+    }
+
+    if (req.method === 'POST' && pathname === '/api/daily-reading') {
+      void (async () => {
+        try {
+          const { apiKey, model } = getConfig();
+          if (!apiKey) {
+            sendJson(res, 503, {
+              error: '尚未設定 GEMINI_API_KEY，請先在專案根目錄建立 .env 並重新啟動伺服器。',
+            });
+            return;
+          }
+
+          const body = await readJsonBody(req, {
+            maxBytes: 32 * 1024,
+            createError: (statusCode, message) => new GeminiHttpError(statusCode, message),
+            tooLargeMessage: '請求內容過大，無法產生每日閱讀小課。',
+          });
+
+          const input = parseDailyReadingRequestBody(body);
+          const lesson = await generateDailyReadingWithGemini(input, { apiKey, model });
+
+          sendJson(res, 200, lesson);
+        } catch (err) {
+          if (err instanceof GeminiHttpError) {
+            sendJson(res, err.statusCode, { error: err.message });
+            return;
+          }
+          sendJson(res, 500, {
+            error: '產生每日韓語閱讀小課時發生未預期錯誤，請稍後再試。',
           });
         }
       })();

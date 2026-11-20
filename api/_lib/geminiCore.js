@@ -286,78 +286,35 @@ function mapUpstreamError(status, upstreamMessage) {
 }
 
 /**
- * Evaluate recorded Korean pronunciation audio via Google Gemini REST API.
+ * Execute a structured JSON generation request against Google Gemini REST API
+ * with bounded latency budget, fast model failover, and endpoint fallback.
  * @param {{
- *   audioBase64: string;
- *   mimeType: string;
- *   targetKorean: string;
- *   pronunciationGuide?: string;
- *   romanization?: string;
- *   translation?: string;
- * }} input
+ *   parts: Array<Record<string, unknown>>;
+ *   responseSchema: Record<string, unknown>;
+ *   temperature?: number;
+ * }} spec
  * @param {{ apiKey: string; model: string }} config
+ * @returns {Promise<{
+ *   parsed: unknown;
+ *   modelUsed: string;
+ *   endpointKind: 'vertexExpress' | 'aiStudio';
+ * }>}
  */
-export async function analyzeWithGemini(input, config) {
+export async function callGeminiJson(spec, config) {
   const { apiKey, model } = config;
-  const normalizedMime = normalizeAudioMimeType(input.mimeType);
-  const prompt = buildPronunciationPrompt(input);
+  const { parts, responseSchema, temperature = 0.2 } = spec;
 
   const requestBody = {
     contents: [
       {
         role: 'user',
-        parts: [
-          { text: prompt },
-          {
-            inlineData: {
-              mimeType: normalizedMime,
-              data: input.audioBase64,
-            },
-          },
-        ],
+        parts,
       },
     ],
     generationConfig: {
-      temperature: 0.2,
+      temperature,
       responseMimeType: 'application/json',
-      responseSchema: {
-        type: 'OBJECT',
-        properties: {
-          score: { type: 'INTEGER' },
-          level: {
-            type: 'STRING',
-            enum: ['excellent', 'good', 'needs-practice', 'unclear'],
-          },
-          heardKorean: { type: 'STRING' },
-          summary: { type: 'STRING' },
-          strengths: {
-            type: 'ARRAY',
-            items: { type: 'STRING' },
-          },
-          improvements: {
-            type: 'ARRAY',
-            items: {
-              type: 'OBJECT',
-              properties: {
-                segment: { type: 'STRING' },
-                issue: { type: 'STRING' },
-                suggestion: { type: 'STRING' },
-              },
-              required: ['segment', 'issue', 'suggestion'],
-            },
-          },
-          nextStepTip: { type: 'STRING' },
-        },
-        required: [
-          'score',
-          'level',
-          'heardKorean',
-          'summary',
-          'strengths',
-          'improvements',
-          'nextStepTip',
-        ],
-      },
+      responseSchema,
     },
   };
 
@@ -410,7 +367,7 @@ export async function analyzeWithGemini(input, config) {
           }
           throw new GeminiHttpError(
             504,
-            'Gemini AI 回應逾時，請稍後再點擊「重新分析」試試看。'
+            'Gemini AI 回應逾時，請稍後再點擊「重新分析」或重試一次。'
           );
         }
         throw new GeminiHttpError(
@@ -454,8 +411,8 @@ export async function analyzeWithGemini(input, config) {
       cachedEndpoint = { keyPrefix: apiKey.slice(0, 6), kind };
 
       const data = await response.json();
-      const parts = data?.candidates?.[0]?.content?.parts ?? [];
-      const rawText = parts
+      const responseParts = data?.candidates?.[0]?.content?.parts ?? [];
+      const rawText = responseParts
         .filter((part) => !part.thought && typeof part.text === 'string')
         .map((part) => part.text)
         .join('')
@@ -464,7 +421,7 @@ export async function analyzeWithGemini(input, config) {
       if (!rawText) {
         throw new GeminiHttpError(
           502,
-          'Gemini AI 未回傳有效評估內容，請重新分析一次。'
+          'Gemini AI 未回傳有效內容，請重新嘗試一次。'
         );
       }
 
@@ -474,12 +431,13 @@ export async function analyzeWithGemini(input, config) {
       } catch {
         throw new GeminiHttpError(
           502,
-          'Gemini AI 回傳格式無法解析，請再點擊「重新分析」。'
+          'Gemini AI 回傳格式無法解析，請再試一次。'
         );
       }
 
       return {
-        feedback: sanitizeFeedback(parsed, activeModel),
+        parsed,
+        modelUsed: activeModel,
         endpointKind: kind,
       };
     }
@@ -488,10 +446,88 @@ export async function analyzeWithGemini(input, config) {
   if (lastTimedOut) {
     throw new GeminiHttpError(
       504,
-      'Gemini AI 回應逾時，請稍後再點擊「重新分析」試試看。'
+      'Gemini AI 回應逾時，請稍後再試試看。'
     );
   }
   throw mapUpstreamError(lastStatus, lastMessage);
+}
+
+/**
+ * Evaluate recorded Korean pronunciation audio via Google Gemini REST API.
+ * @param {{
+ *   audioBase64: string;
+ *   mimeType: string;
+ *   targetKorean: string;
+ *   pronunciationGuide?: string;
+ *   romanization?: string;
+ *   translation?: string;
+ * }} input
+ * @param {{ apiKey: string; model: string }} config
+ */
+export async function analyzeWithGemini(input, config) {
+  const normalizedMime = normalizeAudioMimeType(input.mimeType);
+  const prompt = buildPronunciationPrompt(input);
+
+  const responseSchema = {
+    type: 'OBJECT',
+    properties: {
+      score: { type: 'INTEGER' },
+      level: {
+        type: 'STRING',
+        enum: ['excellent', 'good', 'needs-practice', 'unclear'],
+      },
+      heardKorean: { type: 'STRING' },
+      summary: { type: 'STRING' },
+      strengths: {
+        type: 'ARRAY',
+        items: { type: 'STRING' },
+      },
+      improvements: {
+        type: 'ARRAY',
+        items: {
+          type: 'OBJECT',
+          properties: {
+            segment: { type: 'STRING' },
+            issue: { type: 'STRING' },
+            suggestion: { type: 'STRING' },
+          },
+          required: ['segment', 'issue', 'suggestion'],
+        },
+      },
+      nextStepTip: { type: 'STRING' },
+    },
+    required: [
+      'score',
+      'level',
+      'heardKorean',
+      'summary',
+      'strengths',
+      'improvements',
+      'nextStepTip',
+    ],
+  };
+
+  const { parsed, modelUsed, endpointKind } = await callGeminiJson(
+    {
+      parts: [
+        { text: prompt },
+        {
+          inlineData: {
+            mimeType: normalizedMime,
+            data: input.audioBase64,
+          },
+        },
+      ],
+      responseSchema,
+      temperature: 0.2,
+    },
+    config
+  );
+
+  return {
+    feedback: sanitizeFeedback(parsed, modelUsed),
+    endpointKind,
+  };
 }
 
 /**

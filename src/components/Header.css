@@ -191,7 +191,9 @@
 
 @media (max-width: 480px) {
   .site-nav {
-    gap: 4px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
   }
 
   .site-nav__link {

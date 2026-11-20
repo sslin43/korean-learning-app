@@ -75,8 +75,10 @@ export function AiFeedbackPanel({
       <div className="ai-feedback__header">
         <div className="ai-feedback__score-wrap">
           <div className="ai-score-badge" data-level={feedback.level}>
-            <span className="ai-score-badge__value">{feedback.score}</span>
-            <span className="ai-score-badge__unit">分</span>
+            <span className="ai-score-badge__inner">
+              <span className="ai-score-badge__value">{feedback.score}</span>
+              <span className="ai-score-badge__unit">分</span>
+            </span>
           </div>
 
           <div className="ai-feedback__title-group">
