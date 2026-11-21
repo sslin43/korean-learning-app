@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 import type { DailyReadingController } from '../../hooks/useDailyReading';
-import type { DailyReadingLevelStage } from '../../types/korean';
+import type {
+  DailyReadingLevelStage,
+  StudyDisplayPrefs,
+} from '../../types/korean';
 import './DailyReading.css';
 
 interface DailyReadingSectionProps {
   reading: DailyReadingController;
   speakingId: string | null;
   aiConfigured: boolean;
+  studyPrefs: StudyDisplayPrefs;
   onSpeakText: (
     speechId: string,
     text: string,
@@ -34,12 +38,19 @@ export function DailyReadingSection({
   reading,
   speakingId,
   aiConfigured,
+  studyPrefs,
   onSpeakText,
   onStopSpeech,
 }: DailyReadingSectionProps) {
   const [maskMeaning, setMaskMeaning] = useState<boolean>(false);
   const [peekedWords, setPeekedWords] = useState<Record<string, boolean>>({});
+  const [peekedGrammarExamples, setPeekedGrammarExamples] = useState<
+    Record<number, boolean>
+  >({});
   const [showTranslation, setShowTranslation] = useState<boolean>(false);
+  const [translationBoxLang, setTranslationBoxLang] = useState<'tc' | 'en'>(
+    () => (studyPrefs.translationMode === 'en' ? 'en' : 'tc')
+  );
   const [showCustomForm, setShowCustomForm] = useState<boolean>(false);
   const [customTopic, setCustomTopic] = useState<string>('');
 
@@ -48,8 +59,20 @@ export function DailyReadingSection({
   // Reset per-lesson temporary study view toggles when switching lessons
   useEffect(() => {
     setPeekedWords({});
+    setPeekedGrammarExamples({});
     setShowTranslation(false);
   }, [lesson?.id]);
+
+  // Keep translation views aligned when global translation preference changes
+  useEffect(() => {
+    setPeekedWords({});
+    setPeekedGrammarExamples({});
+    if (studyPrefs.translationMode === 'en') {
+      setTranslationBoxLang('en');
+    } else if (studyPrefs.translationMode === 'tc') {
+      setTranslationBoxLang('tc');
+    }
+  }, [studyPrefs.translationMode]);
 
   if (!lesson) {
     return null;
@@ -66,12 +89,21 @@ export function DailyReadingSection({
   const fullSlowId = `reading-full-slow-${lesson.id}`;
   const isPlayingFullNormal = speakingId === fullNormalId;
   const isPlayingFullSlow = speakingId === fullSlowId;
+  const isEffectivelyMasked =
+    maskMeaning || studyPrefs.translationMode === 'hidden';
 
   const handleTogglePeek = (word: string) => {
-    if (!maskMeaning) return;
+    if (!isEffectivelyMasked) return;
     setPeekedWords((prev) => ({
       ...prev,
       [word]: !prev[word],
+    }));
+  };
+
+  const handleToggleGrammarPeek = (idx: number) => {
+    setPeekedGrammarExamples((prev) => ({
+      ...prev,
+      [idx]: !prev[idx],
     }));
   };
 
@@ -284,7 +316,13 @@ export function DailyReadingSection({
 
           <div className="reading-notebook__titles">
             <h3 className="reading-notebook__title-kr kr-cute">{lesson.titleKo}</h3>
-            <p className="reading-notebook__title-tc">{lesson.titleTc}</p>
+            {studyPrefs.translationMode !== 'hidden' && (
+              <p className="reading-notebook__title-tc">
+                {studyPrefs.translationMode === 'en'
+                  ? lesson.titleEn ?? lesson.titleTc
+                  : lesson.titleTc}
+              </p>
+            )}
           </div>
         </div>
 
@@ -339,7 +377,7 @@ export function DailyReadingSection({
                   setPeekedWords({});
                 }}
               >
-                {maskMeaning ? '👀 取消遮罩' : '🙈 遮罩中文背誦'}
+                {maskMeaning ? '👀 取消單字遮罩' : '🙈 遮罩單字背誦'}
               </button>
             </div>
           </div>
@@ -349,7 +387,13 @@ export function DailyReadingSection({
               const vocabSpeechId = `reading-vocab-${lesson.id}-${vocab.word}`;
               const isPlaying = speakingId === vocabSpeechId;
               const isMastered = masteredSet.has(vocab.word);
-              const isHidden = maskMeaning && !peekedWords[vocab.word];
+              const isHidden = isEffectivelyMasked && !peekedWords[vocab.word];
+              const displayMeaning =
+                studyPrefs.translationMode === 'en'
+                  ? vocab.meaningEn ?? vocab.meaningTc
+                  : studyPrefs.translationMode === 'hidden'
+                  ? `${vocab.meaningTc}${vocab.meaningEn ? ` · ${vocab.meaningEn}` : ''}`
+                  : vocab.meaningTc;
 
               return (
                 <div
@@ -383,27 +427,29 @@ export function DailyReadingSection({
                     </div>
                   </div>
 
-                  {vocab.romanization && (
+                  {!studyPrefs.hideRomanization && vocab.romanization && (
                     <span className="vocab-card__roman">{vocab.romanization}</span>
                   )}
 
                   <div
                     className={`vocab-card__meaning-wrap ${isHidden ? 'is-masked' : ''}`}
                     onClick={() => handleTogglePeek(vocab.word)}
-                    role={maskMeaning ? 'button' : undefined}
-                    tabIndex={maskMeaning ? 0 : undefined}
+                    role={isEffectivelyMasked ? 'button' : undefined}
+                    tabIndex={isEffectivelyMasked ? 0 : undefined}
                     onKeyDown={(e) => {
-                      if (maskMeaning && (e.key === 'Enter' || e.key === ' ')) {
+                      if (isEffectivelyMasked && (e.key === 'Enter' || e.key === ' ')) {
                         e.preventDefault();
                         handleTogglePeek(vocab.word);
                       }
                     }}
                   >
                     {isHidden ? (
-                      <span className="vocab-card__mask-hint">點擊查看中文釋義與用法</span>
+                      <span className="vocab-card__mask-hint">
+                        🙈 點擊查看釋義與用法
+                      </span>
                     ) : (
                       <>
-                        <p className="vocab-card__meaning">{vocab.meaningTc}</p>
+                        <p className="vocab-card__meaning">{displayMeaning}</p>
                         {vocab.usageNote && (
                           <p className="vocab-card__usage">{vocab.usageNote}</p>
                         )}
@@ -431,6 +477,7 @@ export function DailyReadingSection({
             {lesson.grammar.map((gram, index) => {
               const exSpeechId = `reading-gram-${lesson.id}-${index}`;
               const isPlayingExample = speakingId === exSpeechId;
+              const isExamplePeeked = Boolean(peekedGrammarExamples[index]);
 
               return (
                 <div key={`${gram.pattern}-${index}`} className="grammar-card">
@@ -462,7 +509,35 @@ export function DailyReadingSection({
                             🔊
                           </button>
                         </div>
-                        <p className="grammar-example-box__tc">{gram.exampleTc}</p>
+                        {studyPrefs.translationMode === 'hidden' ? (
+                          <div>
+                            {isExamplePeeked ? (
+                              <button
+                                type="button"
+                                className="peek-translation-btn is-revealed"
+                                onClick={() => handleToggleGrammarPeek(index)}
+                              >
+                                {gram.exampleTc}
+                                {gram.exampleEn ? ` / ${gram.exampleEn}` : ''}
+                                （點擊收合）
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                className="peek-translation-btn"
+                                onClick={() => handleToggleGrammarPeek(index)}
+                              >
+                                🙈 點擊偷看例句翻譯
+                              </button>
+                            )}
+                          </div>
+                        ) : (
+                          <p className="grammar-example-box__tc">
+                            {studyPrefs.translationMode === 'en'
+                              ? gram.exampleEn ?? gram.exampleTc
+                              : gram.exampleTc}
+                          </p>
+                        )}
                       </div>
                     </div>
                     <div className="grammar-detail-row grammar-detail-row--diff">
@@ -518,7 +593,7 @@ export function DailyReadingSection({
 
           <div className="reading-passage-paper">
             <p className="reading-passage-hint">
-              試著不看中文翻譯自己讀一遍；點擊任一句右側的 🔊 也可單句重聽！
+              試著不看翻譯自己讀一遍；點擊任一句右側的 🔊 也可單句重聽！
             </p>
 
             <div className="reading-sentences-list">
@@ -561,19 +636,53 @@ export function DailyReadingSection({
                 onClick={() => setShowTranslation((prev) => !prev)}
               >
                 {showTranslation
-                  ? '🙈 收合中文翻譯'
-                  : '👀 展開中文翻譯（建議先自行閱讀完畢再核對）'}
+                  ? '🙈 收合雙語翻譯'
+                  : '👀 展開中／英翻譯（建議先自行閱讀完畢再核對）'}
               </button>
 
               {showTranslation && (
                 <div className="reading-translation-box">
+                  <div className="reading-translation-box__head">
+                    <span className="reading-translation-box__label">對照語言：</span>
+                    <div
+                      className="reading-lang-switch"
+                      role="group"
+                      aria-label="全文翻譯語言切換"
+                    >
+                      <button
+                        type="button"
+                        className={`reading-lang-switch__btn ${
+                          translationBoxLang === 'tc' ? 'is-active' : ''
+                        }`}
+                        aria-pressed={translationBoxLang === 'tc'}
+                        onClick={() => setTranslationBoxLang('tc')}
+                      >
+                        繁體中文
+                      </button>
+                      <button
+                        type="button"
+                        className={`reading-lang-switch__btn ${
+                          translationBoxLang === 'en' ? 'is-active' : ''
+                        }`}
+                        aria-pressed={translationBoxLang === 'en'}
+                        onClick={() => setTranslationBoxLang('en')}
+                      >
+                        English
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="reading-translation-pairs">
                     {lesson.sentences.map((sent, idx) => (
                       <div key={`tr-${idx}`} className="reading-translation-pair">
                         <span className="reading-tr-num">{idx + 1}.</span>
                         <div>
                           <p className="reading-tr-ko kr-text">{sent.ko}</p>
-                          <p className="reading-tr-tc">{sent.tc}</p>
+                          <p className="reading-tr-tc">
+                            {translationBoxLang === 'en'
+                              ? sent.en ?? sent.tc
+                              : sent.tc}
+                          </p>
                         </div>
                       </div>
                     ))}

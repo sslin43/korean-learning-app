@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { FavoritesController } from '../../hooks/useFavorites';
 import type { PronunciationCoachController } from '../../hooks/usePronunciationCoach';
-import type { ConversationPhrase } from '../../types/korean';
+import type { ConversationPhrase, StudyDisplayPrefs } from '../../types/korean';
 import { FavoriteHeartButton } from '../FavoriteHeartButton';
 import { AiFeedbackPanel } from '../PracticeZone/AiFeedbackPanel';
 import { AudioVisualizer } from '../PracticeZone/AudioVisualizer';
@@ -11,6 +11,7 @@ interface ConversationCardProps {
   accentKey: string;
   coach: PronunciationCoachController;
   favorites: FavoritesController;
+  studyPrefs: StudyDisplayPrefs;
   isLoopActive?: boolean;
 }
 
@@ -34,9 +35,20 @@ export function ConversationCard({
   accentKey,
   coach,
   favorites,
+  studyPrefs,
   isLoopActive = false,
 }: ConversationCardProps) {
   const [playbackRate, setPlaybackRate] = useState<1.0 | 0.75>(1.0);
+  const [peekMeaning, setPeekMeaning] = useState<boolean>(false);
+
+  useEffect(() => {
+    setPeekMeaning(false);
+  }, [studyPrefs.translationMode, phrase.id]);
+
+  const activeTranslation =
+    studyPrefs.translationMode === 'en'
+      ? phrase.translationEn ?? phrase.translation
+      : phrase.translation;
 
   const recording = coach.recordings[phrase.id];
   const analysis = coach.analyses[phrase.id];
@@ -114,8 +126,34 @@ export function ConversationCard({
             實際讀音 {phrase.pronunciationGuide}
           </span>
         </div>
-        <div className="conversation-card__roman">{phrase.romanization}</div>
-        <div className="conversation-card__translation">{phrase.translation}</div>
+        {!studyPrefs.hideRomanization && (
+          <div className="conversation-card__roman">{phrase.romanization}</div>
+        )}
+        {studyPrefs.translationMode === 'hidden' ? (
+          <div>
+            {peekMeaning ? (
+              <button
+                type="button"
+                className="peek-translation-btn is-revealed"
+                onClick={() => setPeekMeaning(false)}
+              >
+                {phrase.translation}
+                {phrase.translationEn ? ` / ${phrase.translationEn}` : ''}
+                （點擊收合）
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="peek-translation-btn"
+                onClick={() => setPeekMeaning(true)}
+              >
+                🙈 點擊偷看譯文
+              </button>
+            )}
+          </div>
+        ) : (
+          <div className="conversation-card__translation">{activeTranslation}</div>
+        )}
       </div>
 
       <div className="conversation-card__analysis">

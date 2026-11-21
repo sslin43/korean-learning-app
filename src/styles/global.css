@@ -148,6 +148,31 @@ section[id] {
   animation: tab-panel-in 220ms var(--ease-out);
 }
 
+.peek-translation-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  border: 1.5px dashed var(--border-strong);
+  background: var(--bg-subtle);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.peek-translation-btn:hover {
+  border-color: var(--pastel-pink-border);
+  color: var(--text-primary);
+}
+
+.peek-translation-btn.is-revealed {
+  background: var(--pastel-butter-soft);
+  border-color: var(--pastel-butter-border);
+  color: var(--pastel-butter-ink);
+  text-align: left;
+}
+
 @keyframes tab-panel-in {
   from {
     opacity: 0;

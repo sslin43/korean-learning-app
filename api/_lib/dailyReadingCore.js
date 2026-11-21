@@ -107,16 +107,17 @@ function buildDailyReadingPrompt(input, stage) {
       : '',
     '',
     '課程結構與品質嚴格要求：',
-    '1. passage（以 sentences 陣列回傳，每句含韓文 ko 與自然台灣繁體中文翻譯 tc）：',
+    '1. titleKo（韓文標題）、titleTc（繁體中文標題）、titleEn（自然簡潔的英文標題）。',
+    '2. passage（以 sentences 陣列回傳，每句含韓文 ko、自然台灣繁體中文翻譯 tc、以及自然簡潔的英文翻譯 en）：',
     '   - 合併後的韓文短文（不含空白）必須落在大約 100 到 200 個韓文字之間（約 5～8 句自然口語／書面日記）。',
     '   - 句子自然道地，讓使用者先背詞彙與語法後就能順暢自行讀懂。',
-    '2. vocabulary（8 至 12 個核心詞彙）：',
+    '3. vocabulary（8 至 12 個核心詞彙）：',
     '   - 每個詞彙必須真實出現在上述韓文課文中（動詞／形容詞請寫原形 -다，名詞／副詞寫課文中基本詞形）。',
-    '   - 必須包含：word（韓文）、romanization（韓語羅馬拼音）、pos（繁體中文詞性標註，如「名詞」「動詞」「形容詞」「副詞」）、meaningTc（繁體中文釋義）、usageNote（實用的搭配或記憶小提醒）。',
-    '3. grammar（2 至 3 個課文相關語法）：',
+    '   - 必須包含：word（韓文）、romanization（韓語羅馬拼音）、pos（繁體中文詞性標註，如「名詞」「動詞」「形容詞」「副詞」）、meaningTc（繁體中文釋義）、meaningEn（簡潔英文釋義）、usageNote（實用的搭配或記憶小提醒）。',
+    '4. grammar（2 至 3 個課文相關語法）：',
     '   - 必須挑選課文中實際有使用到的關鍵語法。',
-    '   - 每個語法必須包含：pattern（語法型態，如「-(으)려고 하다」）、connection（詳細接續規則，註明有收尾音／無收尾音或母音陰陽變化）、meaningTc（意義與語氣）、exampleKo（與生活交流相關的韓文例句）、exampleTc（例句繁體中文翻譯）、differenceNote（與初學者最容易混淆之相似語法的清楚區別對比）。',
-    '4. 全程中文部分必須使用自然流暢的台灣繁體中文（繁體中文）。',
+    '   - 每個語法必須包含：pattern（語法型態，如「-(으)려고 하다」）、connection（詳細接續規則，註明有收尾音／無收尾音或母音陰陽變化）、meaningTc（意義與語氣）、exampleKo（與生活交流相關的韓文例句）、exampleTc（例句繁體中文翻譯）、exampleEn（例句英文翻譯）、differenceNote（與初學者最容易混淆之相似語法的清楚區別對比）。',
+    '5. 中文部分必須使用自然流暢的台灣繁體中文（繁體中文）；英文欄位請使用自然口語美式英文。',
   ]
     .filter(Boolean)
     .join('\n');
@@ -139,6 +140,10 @@ function sanitizeDailyReadingLesson(raw, input, stage, modelUsed) {
     typeof obj.titleTc === 'string' && obj.titleTc.trim()
       ? obj.titleTc.trim()
       : '今日韓語短篇閱讀';
+  const titleEn =
+    typeof obj.titleEn === 'string' && obj.titleEn.trim()
+      ? obj.titleEn.trim()
+      : undefined;
   const topicTag =
     typeof obj.topicTag === 'string' && obj.topicTag.trim()
       ? obj.topicTag.trim()
@@ -150,6 +155,10 @@ function sanitizeDailyReadingLesson(raw, input, stage, modelUsed) {
         .map((item) => ({
           ko: typeof item.ko === 'string' ? item.ko.trim() : '',
           tc: typeof item.tc === 'string' ? item.tc.trim() : '',
+          en:
+            typeof item.en === 'string' && item.en.trim()
+              ? item.en.trim()
+              : undefined,
         }))
         .filter((item) => item.ko.length > 0)
     : [];
@@ -166,6 +175,9 @@ function sanitizeDailyReadingLesson(raw, input, stage, modelUsed) {
     .map((s) => s.tc)
     .filter(Boolean)
     .join('');
+  const translationEnParts = sentences.map((s) => s.en).filter(Boolean);
+  const translationEn =
+    translationEnParts.length > 0 ? translationEnParts.join(' ') : undefined;
   const charCount = passage.replace(/\s+/g, '').length;
 
   const vocabulary = Array.isArray(obj.vocabulary)
@@ -177,6 +189,10 @@ function sanitizeDailyReadingLesson(raw, input, stage, modelUsed) {
             typeof item.romanization === 'string' ? item.romanization.trim() : '',
           pos: typeof item.pos === 'string' && item.pos.trim() ? item.pos.trim() : '詞彙',
           meaningTc: typeof item.meaningTc === 'string' ? item.meaningTc.trim() : '',
+          meaningEn:
+            typeof item.meaningEn === 'string' && item.meaningEn.trim()
+              ? item.meaningEn.trim()
+              : undefined,
           usageNote: typeof item.usageNote === 'string' ? item.usageNote.trim() : '',
         }))
         .filter((item) => item.word.length > 0 && item.meaningTc.length > 0)
@@ -199,6 +215,10 @@ function sanitizeDailyReadingLesson(raw, input, stage, modelUsed) {
           meaningTc: typeof item.meaningTc === 'string' ? item.meaningTc.trim() : '',
           exampleKo: typeof item.exampleKo === 'string' ? item.exampleKo.trim() : '',
           exampleTc: typeof item.exampleTc === 'string' ? item.exampleTc.trim() : '',
+          exampleEn:
+            typeof item.exampleEn === 'string' && item.exampleEn.trim()
+              ? item.exampleEn.trim()
+              : undefined,
           differenceNote:
             typeof item.differenceNote === 'string' ? item.differenceNote.trim() : '',
         }))
@@ -221,11 +241,13 @@ function sanitizeDailyReadingLesson(raw, input, stage, modelUsed) {
     levelTag: stage.levelTag,
     titleKo,
     titleTc,
+    titleEn,
     topicTag,
     charCount,
     passage,
     sentences,
     translationTc: translationTc || '暫無全文翻譯',
+    translationEn,
     vocabulary,
     grammar,
     source: 'ai',
@@ -252,6 +274,7 @@ export async function generateDailyReadingWithGemini(input, config) {
     properties: {
       titleKo: { type: 'STRING' },
       titleTc: { type: 'STRING' },
+      titleEn: { type: 'STRING' },
       topicTag: { type: 'STRING' },
       sentences: {
         type: 'ARRAY',
@@ -260,8 +283,9 @@ export async function generateDailyReadingWithGemini(input, config) {
           properties: {
             ko: { type: 'STRING' },
             tc: { type: 'STRING' },
+            en: { type: 'STRING' },
           },
-          required: ['ko', 'tc'],
+          required: ['ko', 'tc', 'en'],
         },
       },
       vocabulary: {
@@ -273,9 +297,10 @@ export async function generateDailyReadingWithGemini(input, config) {
             romanization: { type: 'STRING' },
             pos: { type: 'STRING' },
             meaningTc: { type: 'STRING' },
+            meaningEn: { type: 'STRING' },
             usageNote: { type: 'STRING' },
           },
-          required: ['word', 'romanization', 'pos', 'meaningTc', 'usageNote'],
+          required: ['word', 'romanization', 'pos', 'meaningTc', 'meaningEn', 'usageNote'],
         },
       },
       grammar: {
@@ -288,6 +313,7 @@ export async function generateDailyReadingWithGemini(input, config) {
             meaningTc: { type: 'STRING' },
             exampleKo: { type: 'STRING' },
             exampleTc: { type: 'STRING' },
+            exampleEn: { type: 'STRING' },
             differenceNote: { type: 'STRING' },
           },
           required: [
@@ -296,12 +322,13 @@ export async function generateDailyReadingWithGemini(input, config) {
             'meaningTc',
             'exampleKo',
             'exampleTc',
+            'exampleEn',
             'differenceNote',
           ],
         },
       },
     },
-    required: ['titleKo', 'titleTc', 'topicTag', 'sentences', 'vocabulary', 'grammar'],
+    required: ['titleKo', 'titleTc', 'titleEn', 'topicTag', 'sentences', 'vocabulary', 'grammar'],
   };
 
   const { parsed, modelUsed } = await callGeminiJson(

@@ -4,7 +4,7 @@ import { HANGUL_ITEMS } from '../../data/hangulChart';
 import { PRACTICE_SENTENCES } from '../../data/practiceSentences';
 import type { FavoritesController } from '../../hooks/useFavorites';
 import type { PronunciationCoachController } from '../../hooks/usePronunciationCoach';
-import type { ConversationsDataset } from '../../types/korean';
+import type { ConversationsDataset, StudyDisplayPrefs } from '../../types/korean';
 import { FavoriteHeartButton } from '../FavoriteHeartButton';
 import { SentenceCard } from '../PracticeZone/SentenceCard';
 import { ConversationCard } from './ConversationCard';
@@ -23,6 +23,7 @@ interface LoopQueueItem {
 interface SituationalSectionProps {
   coach: PronunciationCoachController;
   favorites: FavoritesController;
+  studyPrefs: StudyDisplayPrefs;
   activeTopicId: string;
   onSelectTopic: (topicId: string) => void;
   onSpeakLoopItem: (
@@ -38,6 +39,7 @@ interface SituationalSectionProps {
 export function SituationalSection({
   coach,
   favorites,
+  studyPrefs,
   activeTopicId,
   onSelectTopic,
   onSpeakLoopItem,
@@ -511,6 +513,7 @@ export function SituationalSection({
                         accentKey={accentKey}
                         coach={coach}
                         favorites={favorites}
+                        studyPrefs={studyPrefs}
                         isLoopActive={isLoopPlaying && currentLoopId === phrase.id}
                       />
                     ))}
@@ -530,6 +533,7 @@ export function SituationalSection({
                         sentence={sentence}
                         coach={coach}
                         favorites={favorites}
+                        studyPrefs={studyPrefs}
                         isLoopActive={
                           isLoopPlaying && currentLoopId === sentence.id
                         }
@@ -675,6 +679,7 @@ export function SituationalSection({
                 accentKey={activeTopic.accentKey}
                 coach={coach}
                 favorites={favorites}
+                studyPrefs={studyPrefs}
               />
             ))}
           </div>

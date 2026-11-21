@@ -952,10 +952,56 @@
 }
 
 .reading-translation-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   padding: 14px 16px;
   border-radius: 14px;
   background: var(--bg-surface);
   border: 1.5px dashed var(--border-strong);
+}
+
+.reading-translation-box__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.reading-translation-box__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.reading-lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border-strong);
+}
+
+.reading-lang-switch__btn {
+  border: 0;
+  background: transparent;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.reading-lang-switch__btn.is-active {
+  background: var(--pastel-butter);
+  color: var(--pastel-butter-ink);
+  font-weight: 700;
+  box-shadow: var(--shadow-xs);
 }
 
 .reading-translation-pairs {

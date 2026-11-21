@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import type { FavoritesController } from '../../hooks/useFavorites';
 import type { PronunciationCoachController } from '../../hooks/usePronunciationCoach';
-import type { PracticeSentence } from '../../types/korean';
+import type { PracticeSentence, StudyDisplayPrefs } from '../../types/korean';
 import { FavoriteHeartButton } from '../FavoriteHeartButton';
 import { AiFeedbackPanel } from './AiFeedbackPanel';
 import { AudioVisualizer } from './AudioVisualizer';
@@ -9,6 +10,7 @@ interface SentenceCardProps {
   sentence: PracticeSentence;
   coach: PronunciationCoachController;
   favorites: FavoritesController;
+  studyPrefs: StudyDisplayPrefs;
   isLoopActive?: boolean;
 }
 
@@ -31,8 +33,19 @@ export function SentenceCard({
   sentence,
   coach,
   favorites,
+  studyPrefs,
   isLoopActive = false,
 }: SentenceCardProps) {
+  const [peekMeaning, setPeekMeaning] = useState<boolean>(false);
+
+  useEffect(() => {
+    setPeekMeaning(false);
+  }, [studyPrefs.translationMode, sentence.id]);
+
+  const activeTranslation =
+    studyPrefs.translationMode === 'en'
+      ? sentence.translationEn ?? sentence.translation
+      : sentence.translation;
   const recording = coach.recordings[sentence.id];
   const analysis = coach.analyses[sentence.id];
   const isRecording = coach.recordingTargetId === sentence.id;
@@ -87,11 +100,37 @@ export function SentenceCard({
             </div>
 
             <div className="sentence-card__translation-row">
-              <span className="sentence-card__roman">{sentence.romanization}</span>
-              <span className="sentence-card__sep" aria-hidden="true">
-                ·
-              </span>
-              <span className="sentence-card__tc">{sentence.translation}</span>
+              {!studyPrefs.hideRomanization && (
+                <span className="sentence-card__roman">{sentence.romanization}</span>
+              )}
+              {!studyPrefs.hideRomanization && studyPrefs.translationMode !== 'hidden' && (
+                <span className="sentence-card__sep" aria-hidden="true">
+                  ·
+                </span>
+              )}
+              {studyPrefs.translationMode === 'hidden' ? (
+                peekMeaning ? (
+                  <button
+                    type="button"
+                    className="peek-translation-btn is-revealed"
+                    onClick={() => setPeekMeaning(false)}
+                  >
+                    {sentence.translation}
+                    {sentence.translationEn ? ` / ${sentence.translationEn}` : ''}
+                    （點擊收合）
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="peek-translation-btn"
+                    onClick={() => setPeekMeaning(true)}
+                  >
+                    🙈 點擊偷看譯文
+                  </button>
+                )
+              ) : (
+                <span className="sentence-card__tc">{activeTranslation}</span>
+              )}
             </div>
           </div>
         </div>

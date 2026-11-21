@@ -31,12 +31,20 @@ export interface HangulCategoryMeta {
   description: string;
 }
 
+export type TranslationMode = 'tc' | 'en' | 'hidden';
+
+export interface StudyDisplayPrefs {
+  translationMode: TranslationMode;
+  hideRomanization: boolean;
+}
+
 export interface PronunciationTarget {
   id: string;
   korean: string;
   pronunciationGuide: string;
   romanization: string;
   translation: string;
+  translationEn?: string;
   audioUrl?: string;
 }
 
@@ -117,6 +125,7 @@ export type DailyReadingLevelStage =
 export interface DailyReadingSentence {
   ko: string;
   tc: string;
+  en?: string;
 }
 
 export interface DailyReadingVocab {
@@ -124,6 +133,7 @@ export interface DailyReadingVocab {
   romanization: string;
   pos: string;
   meaningTc: string;
+  meaningEn?: string;
   usageNote: string;
 }
 
@@ -133,6 +143,7 @@ export interface DailyReadingGrammar {
   meaningTc: string;
   exampleKo: string;
   exampleTc: string;
+  exampleEn?: string;
   differenceNote: string;
 }
 
@@ -144,11 +155,13 @@ export interface DailyReadingLesson {
   levelTag: string;
   titleKo: string;
   titleTc: string;
+  titleEn?: string;
   topicTag: string;
   charCount: number;
   passage: string;
   sentences: DailyReadingSentence[];
   translationTc: string;
+  translationEn?: string;
   vocabulary: DailyReadingVocab[];
   grammar: DailyReadingGrammar[];
   source: 'curated' | 'ai';

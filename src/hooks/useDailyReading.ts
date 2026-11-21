@@ -66,11 +66,41 @@ function readStoredState(): PersistedDailyReadingStore {
       return { lessons: [], selectedLessonId: null, progressById: {} };
     }
     const parsed = JSON.parse(raw) as Partial<PersistedDailyReadingStore>;
+    const seedById = new Map(CURATED_SEEDS.map((seed) => [seed.id, seed]));
     const lessons = Array.isArray(parsed.lessons)
-      ? parsed.lessons.filter(
-          (item): item is DailyReadingLesson =>
-            Boolean(item && typeof item.id === 'string' && typeof item.passage === 'string')
-        )
+      ? parsed.lessons
+          .filter(
+            (item): item is DailyReadingLesson =>
+              Boolean(item && typeof item.id === 'string' && typeof item.passage === 'string')
+          )
+          .map((item) => {
+            const seed = seedById.get(item.id);
+            if (!seed) return item;
+            return {
+              ...seed,
+              ...item,
+              titleEn: item.titleEn ?? seed.titleEn,
+              translationEn: item.translationEn ?? seed.translationEn,
+              sentences: seed.sentences.length === item.sentences.length
+                ? item.sentences.map((s, idx) => ({
+                    ...s,
+                    en: s.en ?? seed.sentences[idx]?.en,
+                  }))
+                : item.sentences,
+              vocabulary: seed.vocabulary.length === item.vocabulary.length
+                ? item.vocabulary.map((v, idx) => ({
+                    ...v,
+                    meaningEn: v.meaningEn ?? seed.vocabulary[idx]?.meaningEn,
+                  }))
+                : item.vocabulary,
+              grammar: seed.grammar.length === item.grammar.length
+                ? item.grammar.map((g, idx) => ({
+                    ...g,
+                    exampleEn: g.exampleEn ?? seed.grammar[idx]?.exampleEn,
+                  }))
+                : item.grammar,
+            };
+          })
       : [];
     const selectedLessonId =
       typeof parsed.selectedLessonId === 'string' ? parsed.selectedLessonId : null;

@@ -1,15 +1,21 @@
 import { PRACTICE_SENTENCES } from '../../data/practiceSentences';
 import type { FavoritesController } from '../../hooks/useFavorites';
 import type { PronunciationCoachController } from '../../hooks/usePronunciationCoach';
+import type { StudyDisplayPrefs } from '../../types/korean';
 import { SentenceCard } from './SentenceCard';
 import './PracticeZone.css';
 
 interface PracticeSectionProps {
   coach: PronunciationCoachController;
   favorites: FavoritesController;
+  studyPrefs: StudyDisplayPrefs;
 }
 
-export function PracticeSection({ coach, favorites }: PracticeSectionProps) {
+export function PracticeSection({
+  coach,
+  favorites,
+  studyPrefs,
+}: PracticeSectionProps) {
   const completedCount = PRACTICE_SENTENCES.filter((s) =>
     Boolean(coach.recordings[s.id])
   ).length;
@@ -123,6 +129,7 @@ export function PracticeSection({ coach, favorites }: PracticeSectionProps) {
             sentence={sentence}
             coach={coach}
             favorites={favorites}
+            studyPrefs={studyPrefs}
           />
         ))}
       </div>

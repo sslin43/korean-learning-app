@@ -10,6 +10,7 @@ import { DailyReadingSection } from './components/DailyReading/DailyReadingSecti
 import { useDailyReading } from './hooks/useDailyReading';
 import { useActiveSection, type AppSectionId } from './hooks/useActiveSection';
 import { useFavorites } from './hooks/useFavorites';
+import { useStudyPrefs } from './hooks/useStudyPrefs';
 import { useKoreanSpeech } from './hooks/useKoreanSpeech';
 import { usePronunciationCoach } from './hooks/usePronunciationCoach';
 import type { ConversationsDataset } from './types/korean';
@@ -37,6 +38,7 @@ export function App() {
 
   const favorites = useFavorites();
   const dailyReading = useDailyReading();
+  const studyPrefs = useStudyPrefs();
   const { activeSection, selectSection } = useActiveSection();
   const [activeTopicId, setActiveTopicId] = useState<string>(
     conversationsData.topics[0]?.id ?? 'airport'
@@ -130,6 +132,10 @@ export function App() {
           totalPracticeTargets={totalPracticeTargets}
           favoritesCount={favorites.count}
           speakingId={speakingId}
+          translationMode={studyPrefs.translationMode}
+          hideRomanization={studyPrefs.hideRomanization}
+          onTranslationModeChange={studyPrefs.setTranslationMode}
+          onToggleHideRomanization={studyPrefs.toggleHideRomanization}
           onSpeakQuote={handleQuoteSpeak}
           onStopSpeech={stopSpeech}
           onOpenDailyReading={() => handleSelectTab('daily-reading')}
@@ -169,13 +175,18 @@ export function App() {
           )}
 
           {activeSection === 'practice-zone' && (
-            <PracticeSection coach={coach} favorites={favorites} />
+            <PracticeSection
+              coach={coach}
+              favorites={favorites}
+              studyPrefs={studyPrefs}
+            />
           )}
 
           {activeSection === 'situational-conversations' && (
             <SituationalSection
               coach={coach}
               favorites={favorites}
+              studyPrefs={studyPrefs}
               activeTopicId={activeTopicId}
               onSelectTopic={setActiveTopicId}
               onSpeakLoopItem={speak}
@@ -189,6 +200,7 @@ export function App() {
               reading={dailyReading}
               speakingId={speakingId}
               aiConfigured={coach.aiStatus.configured}
+              studyPrefs={studyPrefs}
               onSpeakText={handleReadingSpeak}
               onStopSpeech={stopSpeech}
             />
