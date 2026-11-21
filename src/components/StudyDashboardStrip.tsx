@@ -52,6 +52,7 @@ export function StudyDashboardStrip({
 }: StudyDashboardStripProps) {
   const [quoteOffset, setQuoteOffset] = useState<number>(0);
   const [peekQuoteMeaning, setPeekQuoteMeaning] = useState<boolean>(false);
+  const [isHopping, setIsHopping] = useState<boolean>(false);
 
   const baseIndex = getDailyQuoteIndex(todayDateKey);
   const quote = DAILY_QUOTES[(baseIndex + quoteOffset) % DAILY_QUOTES.length];
@@ -62,87 +63,114 @@ export function StudyDashboardStrip({
     setPeekQuoteMeaning(false);
   }, [translationMode, quote.id]);
 
+  useEffect(() => {
+    if (!isHopping) {
+      return undefined;
+    }
+    const timer = window.setTimeout(() => setIsHopping(false), 460);
+    return () => window.clearTimeout(timer);
+  }, [isHopping]);
+
   const formattedDate = todayDateKey.replace(/-/g, '.');
   const activeQuoteTranslation =
     translationMode === 'en' ? quote.translationEn : quote.translation;
 
   return (
     <section className="study-strip" aria-label="今日韓文筆記與學習偏好設定">
-      <div className="study-strip__stickers" aria-hidden="true">
-        <span className="deco-sticker">🎀</span>
-        <span className="deco-sticker">✨</span>
-        <span className="deco-sticker">🧸</span>
-      </div>
-
       <div className="study-strip__top-row">
-        <div className="study-strip__note">
-          <div className="study-strip__meta-row">
-            <span className="study-strip__eyebrow">
-              <span className="study-strip__rec-dot" aria-hidden="true" />
-              <span>REC ● TODAY&apos;S NOTE · {formattedDate}</span>
-            </span>
-          </div>
+        <div className="study-strip__note-wrap">
+          <div className="study-strip__note">
+            <div className="study-strip__meta-row">
+              <span className="study-strip__eyebrow">
+                <span className="study-strip__rec-dot" aria-hidden="true" />
+                <span>REC ● TODAY&apos;S NOTE · {formattedDate}</span>
+              </span>
+            </div>
 
-          <div className="study-strip__quote-row">
-            <span className="study-strip__quote-kr kr-cute">
-              {quote.emoji} {quote.korean}
-            </span>
+            <div className="study-strip__quote-row">
+              <span className="study-strip__quote-kr kr-cute">
+                {quote.emoji} {quote.korean}
+              </span>
 
-            <div className="study-strip__quote-btns">
-              <button
-                type="button"
-                className={`study-quote-btn is-speak ${isPlayingQuote ? 'is-playing' : ''}`}
-                aria-label={isPlayingQuote ? '停止朗讀今日小語' : `朗讀今日小語：${quote.korean}`}
-                title="聆聽今日韓文小語"
-                onClick={() => {
-                  if (isPlayingQuote) {
-                    onStopSpeech();
-                  } else {
-                    onSpeakQuote(quoteSpeechId, quote.korean);
-                  }
-                }}
-              >
-                {isPlayingQuote ? '⏹ 停止' : '🔊 朗讀'}
-              </button>
+              <div className="study-strip__quote-btns">
+                <button
+                  type="button"
+                  className={`study-quote-btn is-speak ${isPlayingQuote ? 'is-playing' : ''}`}
+                  aria-label={isPlayingQuote ? '停止朗讀今日小語' : `朗讀今日小語：${quote.korean}`}
+                  title="聆聽今日韓文小語"
+                  onClick={() => {
+                    if (isPlayingQuote) {
+                      onStopSpeech();
+                    } else {
+                      onSpeakQuote(quoteSpeechId, quote.korean);
+                    }
+                  }}
+                >
+                  {isPlayingQuote ? '⏹ 停止' : '🔊 朗讀'}
+                </button>
 
-              <button
-                type="button"
-                className="study-quote-btn is-shuffle"
-                aria-label="換一句今日韓文鼓勵小語"
-                onClick={() => setQuoteOffset((prev) => prev + 1)}
-              >
-                🎲 換一句
-              </button>
+                <button
+                  type="button"
+                  className="study-quote-btn is-shuffle"
+                  aria-label="換一句今日韓文鼓勵小語"
+                  onClick={() => {
+                    setQuoteOffset((prev) => prev + 1);
+                    setIsHopping(true);
+                  }}
+                >
+                  🎲 換一句
+                </button>
+              </div>
+            </div>
+
+            <div className="study-strip__quote-sub">
+              {!hideRomanization && (
+                <span className="study-strip__roman">{quote.romanization}</span>
+              )}
+              {!hideRomanization && translationMode !== 'hidden' && (
+                <span aria-hidden="true"> · </span>
+              )}
+              {translationMode === 'hidden' ? (
+                peekQuoteMeaning ? (
+                  <button
+                    type="button"
+                    className="quote-peek-btn is-revealed"
+                    onClick={() => setPeekQuoteMeaning(false)}
+                  >
+                    {quote.translation} · {quote.translationEn}（點擊收合）
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="quote-peek-btn"
+                    onClick={() => setPeekQuoteMeaning(true)}
+                  >
+                    🙈 點擊偷看譯文
+                  </button>
+                )
+              ) : (
+                <span>{activeQuoteTranslation}</span>
+              )}
             </div>
           </div>
 
-          <div className="study-strip__quote-sub">
-            {!hideRomanization && (
-              <span className="study-strip__roman">{quote.romanization}</span>
-            )}
-            {!hideRomanization && translationMode !== 'hidden' && (
-              <span aria-hidden="true"> · </span>
-            )}
-            {translationMode === 'hidden' ? (
-              peekQuoteMeaning ? (
-                <button
-                  type="button"
-                  className="quote-peek-btn is-revealed"
-                  onClick={() => setPeekQuoteMeaning(false)}
-                >
-                  {quote.translation} · {quote.translationEn}（點擊收合）
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="quote-peek-btn"
-                  onClick={() => setPeekQuoteMeaning(true)}
-                >
-                  🙈 點擊偷看譯文
-                </button>
-              )
-            ) : (
-              <span>{activeQuoteTranslation}</span>
+          <div
+            className={`study-strip__mascot${isPlayingQuote ? ' is-singing' : ''}${isTodayReadingDone ? ' is-celebrating' : ''}${isHopping ? ' is-hopping' : ''}`}
+          >
+            <span className="mascot-notes" aria-hidden="true">
+              <span>♪</span>
+              <span>♫</span>
+              <span>✦</span>
+            </span>
+            <img
+              src="/stickers/duo-sticker.png"
+              alt="Rei 倉鼠與 WOOKDONG 陪伴學習貼紙"
+              className="study-strip__duo-img"
+              width={112}
+              height={83}
+            />
+            {isTodayReadingDone && (
+              <span className="mascot-cheer-badge kr-cute">참 잘했어요! 🍑</span>
             )}
           </div>
         </div>

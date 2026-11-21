@@ -30,7 +30,15 @@ export function PracticeSection({
     >
       <div className="section-header">
         <div className="section-header__titles">
-          <span className="section-badge">🎀 PART 02 · 말하기 연습 ✨</span>
+          <span className="section-badge">
+            <img
+              src="/stickers/headphones.png"
+              alt=""
+              className="section-badge__sticker"
+              aria-hidden="true"
+            />
+            <span>PART 02 · 말하기 연습 ✨</span>
+          </span>
           <h2 id="practice-zone-heading" className="section-title">
             發音練習區（5 句日常韓文錄音對比與 AI 評分）
           </h2>

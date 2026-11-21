@@ -123,7 +123,15 @@ export function DailyReadingSection({
     >
       <div className="section-header">
         <div className="section-header__titles">
-          <span className="section-badge">📖 PART 04 · 매일 한국어 읽기 ✨</span>
+          <span className="section-badge">
+            <img
+              src="/stickers/duo-sticker.png"
+              alt=""
+              className="section-badge__sticker section-badge__sticker--wide"
+              aria-hidden="true"
+            />
+            <span>PART 04 · 매일 한국어 읽기 ✨</span>
+          </span>
           <h2 id="daily-reading-heading" className="section-title">
             每日韓語短篇閱讀小課（TOPIK 1 → TOPIK 2 漸進式）
           </h2>
@@ -692,7 +700,21 @@ export function DailyReadingSection({
             </div>
           </div>
 
-          <div className="reading-notebook__footer">
+          <div className={`reading-notebook__footer ${progress.completed ? 'is-completed' : ''}`}>
+            {progress.completed && (
+              <div className="reading-reward-stamp" role="status">
+                <img
+                  src="/stickers/duo-sticker.png"
+                  alt=""
+                  className="reading-reward-stamp__img"
+                  aria-hidden="true"
+                />
+                <div className="reading-reward-stamp__copy">
+                  <span className="reading-reward-stamp__kr kr-cute">참 잘했어요!</span>
+                  <span className="reading-reward-stamp__sub">今日短文打卡達成 🍑</span>
+                </div>
+              </div>
+            )}
             <button
               type="button"
               className={`reading-complete-btn ${progress.completed ? 'is-completed' : ''}`}

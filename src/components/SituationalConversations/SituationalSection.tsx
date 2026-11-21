@@ -267,7 +267,15 @@ export function SituationalSection({
     >
       <div className="section-header">
         <div className="section-header__titles">
-          <span className="section-badge">🧸 PART 03 · 실전 상황 회화 ✨</span>
+          <span className="section-badge">
+            <img
+              src="/stickers/wookdong.png"
+              alt=""
+              className="section-badge__sticker"
+              aria-hidden="true"
+            />
+            <span>PART 03 · 실전 상황 회화 ✨</span>
+          </span>
           <h2 id="situational-conversations-heading" className="section-title">
             實用情境會話與發音
           </h2>

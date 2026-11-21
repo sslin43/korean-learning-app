@@ -15,11 +15,22 @@ body {
   min-height: 100vh;
   background-color: var(--bg-page);
   background-image:
-    radial-gradient(circle at 10% 8%, rgba(244, 217, 223, 0.42) 0%, transparent 36%),
-    radial-gradient(circle at 90% 16%, rgba(214, 228, 240, 0.45) 0%, transparent 38%),
-    radial-gradient(circle at 18% 72%, rgba(220, 230, 213, 0.35) 0%, transparent 36%),
-    radial-gradient(rgba(62, 54, 54, 0.06) 1px, transparent 1px);
-  background-size: auto, auto, auto, 22px 22px;
+    radial-gradient(circle at 12% 8%, rgba(244, 217, 223, 0.34) 0%, transparent 38%),
+    radial-gradient(circle at 88% 18%, rgba(214, 228, 240, 0.34) 0%, transparent 40%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(244, 217, 223, 0.3) 0px,
+      rgba(244, 217, 223, 0.3) 26px,
+      rgba(255, 253, 249, 0.28) 26px,
+      rgba(255, 253, 249, 0.28) 52px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(244, 217, 223, 0.3) 0px,
+      rgba(244, 217, 223, 0.3) 26px,
+      rgba(255, 253, 249, 0.28) 26px,
+      rgba(255, 253, 249, 0.28) 52px
+    );
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: 16px;
@@ -131,12 +142,79 @@ section[id] {
 }
 
 .app-shell {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+.ambient-stickers {
+  display: none;
+}
+
+@media (min-width: 1260px) {
+  .ambient-stickers {
+    position: fixed;
+    inset: 0;
+    display: block;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .ambient-sticker {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+    opacity: 0.72;
+    filter: drop-shadow(0 4px 8px rgba(62, 54, 54, 0.1));
+    animation: ambient-float 6.5s ease-in-out infinite;
+  }
+
+  .ambient-sticker--tl {
+    top: 128px;
+    left: 18px;
+    transform: rotate(-12deg);
+    animation-delay: 0s;
+  }
+
+  .ambient-sticker--tr {
+    top: 210px;
+    right: 18px;
+    transform: rotate(14deg);
+    animation-delay: -2.1s;
+  }
+
+  .ambient-sticker--bl {
+    bottom: 180px;
+    left: 22px;
+    transform: rotate(10deg);
+    animation-delay: -4.2s;
+  }
+
+  .ambient-sticker--br {
+    bottom: 130px;
+    right: 20px;
+    transform: rotate(-14deg);
+    animation-delay: -1.3s;
+  }
+}
+
+@keyframes ambient-float {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: -7px;
+  }
+}
+
 .app-main {
+  position: relative;
+  z-index: 1;
   flex: 1;
   width: 100%;
   max-width: var(--container-max);
@@ -207,7 +285,7 @@ section[id] {
 .section-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   width: fit-content;
   padding: 4px 12px;
   border-radius: var(--radius-pill);
@@ -217,6 +295,19 @@ section[id] {
   font-weight: 700;
   color: var(--pastel-butter-ink);
   letter-spacing: 0.03em;
+}
+
+.section-badge__sticker {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(62, 54, 54, 0.14));
+}
+
+.section-badge__sticker--wide {
+  width: 28px;
+  height: 21px;
 }
 
 .section-title {
@@ -266,18 +357,51 @@ section[id] {
   opacity: 0.88;
 }
 
-/* Footer — Korean Study Receipt Aesthetic */
+/* Footer — Korean Study Receipt Aesthetic (Seoul Pop-Up Edition) */
 .app-footer {
-  border-top: 1.5px dashed var(--border-dashed);
-  background: var(--bg-page);
-  padding: 28px 16px calc(40px + env(safe-area-inset-bottom, 0px));
+  border-top: 1.5px dashed rgba(229, 188, 198, 0.72);
+  background: transparent;
+  padding: 36px 16px calc(40px + env(safe-area-inset-bottom, 0px));
 }
 
 .app-footer__receipt {
+  position: relative;
   max-width: 580px;
   margin: 0 auto;
   filter: drop-shadow(0 1px 0 rgba(217, 200, 184, 0.55))
-    drop-shadow(0 8px 18px rgba(62, 54, 54, 0.065));
+    drop-shadow(0 10px 22px rgba(62, 54, 54, 0.08));
+}
+
+/* Pastel Gingham Washi Tape holding the receipt */
+.app-footer__receipt::before {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 96px;
+  height: 20px;
+  transform: translateX(-50%) rotate(-1.5deg);
+  border-radius: 4px;
+  background-color: #fffdf9;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(244, 217, 223, 0.78) 0px,
+      rgba(244, 217, 223, 0.78) 8px,
+      transparent 8px,
+      transparent 16px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(244, 217, 223, 0.78) 0px,
+      rgba(244, 217, 223, 0.78) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+  border: 1px solid rgba(229, 188, 198, 0.85);
+  box-shadow: 0 2px 5px rgba(62, 54, 54, 0.09);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .app-footer__tear {
@@ -308,7 +432,7 @@ section[id] {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 14px 20px 16px;
+  padding: 18px 20px 16px;
   background: var(--bg-surface);
   border-left: 1px solid var(--border-subtle);
   border-right: 1px solid var(--border-subtle);
@@ -317,9 +441,50 @@ section[id] {
 }
 
 .app-footer__receipt-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
   border-bottom: 1.5px dashed var(--border-dashed);
+}
+
+.app-footer__stamp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--pastel-pink-soft);
+  border: 2px dashed var(--pastel-pink-border);
+  box-shadow: 0 0 0 3px #fffdf9, 0 0 0 4.5px var(--pastel-pink-border), var(--shadow-xs);
+  transform: rotate(-3deg);
+}
+
+.app-footer__stamp-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.app-footer__stamp-peach {
+  position: absolute;
+  bottom: -4px;
+  right: -7px;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  transform: rotate(12deg);
+  filter: drop-shadow(0 1px 2px rgba(62, 54, 54, 0.16));
+}
+
+.app-footer__receipt-edition {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.78rem;
   font-weight: 700;
@@ -455,9 +620,18 @@ section[id] {
   opacity: 0.85;
 }
 
-.app-footer__nav-icon {
+.app-footer__nav-sticker {
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
   flex-shrink: 0;
-  line-height: 1;
+  filter: drop-shadow(0 1px 2px rgba(62, 54, 54, 0.14));
+  transition: transform 200ms var(--ease-bounce);
+}
+
+.app-footer__nav-row:hover .app-footer__nav-sticker,
+.app-footer__nav-row.is-active .app-footer__nav-sticker {
+  transform: scale(1.12) rotate(-5deg);
 }
 
 .app-footer__nav-label {
@@ -554,6 +728,21 @@ section[id] {
   );
 }
 
+.app-footer__creator-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.app-footer__charm {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(62, 54, 54, 0.14));
+}
+
 .app-footer__creator {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.8125rem;
@@ -573,6 +762,20 @@ section[id] {
 }
 
 /* Animations */
+@keyframes stamp-pop {
+  0% {
+    opacity: 0;
+    transform: scale(1.24) rotate(-8deg);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(0.95) rotate(-1.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-2.5deg);
+  }
+}
 @keyframes heart-pop {
   0% {
     transform: scale(1) rotate(0deg);

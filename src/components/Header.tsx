@@ -14,40 +14,40 @@ interface HeaderProps {
 const NAV_ITEMS: Array<{
   id: AppSectionId;
   label: string;
-  icon: string;
-  cornerSticker: string;
+  stickerSrc: string;
+  cornerStickerSrc: string;
   trailGlyph: string;
   tint: 'pink' | 'blue' | 'green' | 'lilac';
 }> = [
   {
     id: 'hangul-chart',
     label: '40 音發音表',
-    icon: '🌸',
-    cornerSticker: '✨',
+    stickerSrc: '/stickers/rei-hamster.png',
+    cornerStickerSrc: '/stickers/headphones.png',
     trailGlyph: '✿',
     tint: 'pink',
   },
   {
     id: 'practice-zone',
     label: '日常發音練習',
-    icon: '🎀',
-    cornerSticker: '🎧',
+    stickerSrc: '/stickers/headphones.png',
+    cornerStickerSrc: '/stickers/bow.png',
     trailGlyph: '♡',
     tint: 'blue',
   },
   {
     id: 'situational-conversations',
     label: '實用情境會話',
-    icon: '🧸',
-    cornerSticker: '📸',
+    stickerSrc: '/stickers/wookdong.png',
+    cornerStickerSrc: '/stickers/peach.png',
     trailGlyph: '★',
     tint: 'green',
   },
   {
     id: 'daily-reading',
     label: '每日短篇閱讀',
-    icon: '📖',
-    cornerSticker: '🦋',
+    stickerSrc: '/stickers/peach.png',
+    cornerStickerSrc: '/stickers/duo-sticker.png',
     trailGlyph: '✦',
     tint: 'lilac',
   },
@@ -87,8 +87,20 @@ export function Header({
           }}
         >
           <span className="site-brand__mark" aria-hidden="true">
-            한
-            <span className="site-brand__sparkle">✨</span>
+            <img
+              src="/icon-192.png"
+              alt=""
+              className="site-brand__avatar"
+              width={46}
+              height={46}
+            />
+            <img
+              src="/stickers/bow.png"
+              alt=""
+              className="site-brand__bow"
+              width={22}
+              height={22}
+            />
           </span>
           <span className="site-brand__text">
             <span className="site-brand__kr">한글 소리</span>
@@ -114,18 +126,24 @@ export function Header({
                   onSelectSection(item.id);
                 }}
               >
-                <span className="site-nav__icon" aria-hidden="true">
-                  {item.icon}
-                </span>
+                <img
+                  src={item.stickerSrc}
+                  alt=""
+                  className="site-nav__sticker-icon"
+                  aria-hidden="true"
+                />
                 <span className="site-nav__label">{item.label}</span>
                 {isActive && (
                   <>
                     <span className="site-nav__glyph" aria-hidden="true">
                       {item.trailGlyph}
                     </span>
-                    <span className="site-nav__corner-sticker" aria-hidden="true">
-                      {item.cornerSticker}
-                    </span>
+                    <img
+                      src={item.cornerStickerSrc}
+                      alt=""
+                      className="site-nav__corner-img"
+                      aria-hidden="true"
+                    />
                   </>
                 )}
               </a>

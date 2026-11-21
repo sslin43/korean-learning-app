@@ -607,6 +607,61 @@
   gap: 14px;
 }
 
+.ai-reward-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: var(--pastel-pink-soft);
+  border: 1.5px dashed var(--pastel-pink-border);
+  box-shadow: var(--shadow-xs);
+  transform: rotate(-2deg);
+  animation: stamp-pop 380ms var(--ease-bounce);
+}
+
+.ai-reward-stamp[data-level='good'] {
+  background: var(--pastel-blue-soft);
+  border-color: var(--pastel-blue-border);
+}
+
+.ai-reward-stamp__duo {
+  width: 44px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(62, 54, 54, 0.14));
+}
+
+.ai-reward-stamp__copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.ai-reward-stamp__kr {
+  font-size: 0.9375rem;
+  color: var(--pastel-pink-ink);
+}
+
+.ai-reward-stamp[data-level='good'] .ai-reward-stamp__kr {
+  color: var(--pastel-blue-ink);
+}
+
+.ai-reward-stamp__sub {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.ai-reward-stamp__peach {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transform: rotate(10deg);
+}
+
 .ai-score-badge {
   display: inline-flex;
   align-items: center;

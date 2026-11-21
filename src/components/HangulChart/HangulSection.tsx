@@ -48,7 +48,15 @@ export function HangulSection({
     <section id="hangul-chart" className="section-block" aria-labelledby="hangul-chart-heading">
       <div className="section-header">
         <div className="section-header__titles">
-          <span className="section-badge">🌸 PART 01 · 한글 자모 40자 ✨</span>
+          <span className="section-badge">
+            <img
+              src="/stickers/rei-hamster.png"
+              alt=""
+              className="section-badge__sticker"
+              aria-hidden="true"
+            />
+            <span>PART 01 · 한글 자모 40자 ✨</span>
+          </span>
           <h2 id="hangul-chart-heading" className="section-title">
             韓文 40 音互動發音表
           </h2>

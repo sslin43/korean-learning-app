@@ -25,7 +25,7 @@ const totalPracticeTargets = PRACTICE_SENTENCES.length + phraseCount;
 const FOOTER_RECEIPT_ITEMS: Array<{
   id: AppSectionId;
   num: string;
-  icon: string;
+  stickerSrc: string;
   label: string;
   meta: string;
   tint: 'pink' | 'blue' | 'green' | 'lilac';
@@ -33,7 +33,7 @@ const FOOTER_RECEIPT_ITEMS: Array<{
   {
     id: 'hangul-chart',
     num: '01',
-    icon: '🌸',
+    stickerSrc: '/stickers/rei-hamster.png',
     label: '40 音發音表',
     meta: '40 音',
     tint: 'pink',
@@ -41,7 +41,7 @@ const FOOTER_RECEIPT_ITEMS: Array<{
   {
     id: 'practice-zone',
     num: '02',
-    icon: '🎀',
+    stickerSrc: '/stickers/headphones.png',
     label: '日常發音練習',
     meta: `${PRACTICE_SENTENCES.length} 句`,
     tint: 'blue',
@@ -49,7 +49,7 @@ const FOOTER_RECEIPT_ITEMS: Array<{
   {
     id: 'situational-conversations',
     num: '03',
-    icon: '🧸',
+    stickerSrc: '/stickers/wookdong.png',
     label: '實用情境會話',
     meta: `${phraseCount} 句`,
     tint: 'green',
@@ -57,7 +57,7 @@ const FOOTER_RECEIPT_ITEMS: Array<{
   {
     id: 'daily-reading',
     num: '04',
-    icon: '📖',
+    stickerSrc: '/stickers/peach.png',
     label: '每日短篇閱讀',
     meta: 'TOPIK',
     tint: 'lilac',
@@ -153,6 +153,13 @@ export function App() {
 
   return (
     <div id="top" className="app-shell">
+      <div className="ambient-stickers" aria-hidden="true">
+        <img src="/stickers/peach.png" alt="" className="ambient-sticker ambient-sticker--tl" />
+        <img src="/stickers/bow.png" alt="" className="ambient-sticker ambient-sticker--tr" />
+        <img src="/stickers/headphones.png" alt="" className="ambient-sticker ambient-sticker--bl" />
+        <img src="/stickers/peach.png" alt="" className="ambient-sticker ambient-sticker--br" />
+      </div>
+
       <Header
         rate={rate}
         onRateChange={setRate}
@@ -255,7 +262,25 @@ export function App() {
           <div className="app-footer__tear app-footer__tear--top" aria-hidden="true" />
           <div className="app-footer__sheet">
             <div className="app-footer__receipt-head">
-              ✦ <span className="kr-cute">한글 소리</span> · STUDY RECEIPT v1.0 ✦
+              <div className="app-footer__stamp" aria-hidden="true">
+                <img
+                  src="/icon-192.png"
+                  alt=""
+                  className="app-footer__stamp-img"
+                  width={54}
+                  height={54}
+                />
+                <img
+                  src="/stickers/peach.png"
+                  alt=""
+                  className="app-footer__stamp-peach"
+                  width={22}
+                  height={22}
+                />
+              </div>
+              <span className="app-footer__receipt-edition">
+                ✦ <span className="kr-cute">한글 소리</span> · REI × WOOKDONG EDITION v1.0 ✦
+              </span>
             </div>
 
             <div className="app-footer__top">
@@ -297,9 +322,12 @@ export function App() {
                     }}
                   >
                     <span className="app-footer__nav-num">{item.num}</span>
-                    <span className="app-footer__nav-icon" aria-hidden="true">
-                      {item.icon}
-                    </span>
+                    <img
+                      src={item.stickerSrc}
+                      alt=""
+                      className="app-footer__nav-sticker"
+                      aria-hidden="true"
+                    />
                     <span className="app-footer__nav-label">{item.label}</span>
                     <span className="app-footer__dots" aria-hidden="true" />
                     <span className="app-footer__nav-count">{item.meta}</span>
@@ -320,7 +348,21 @@ export function App() {
 
             <div className="app-footer__bottom">
               <div className="app-footer__barcode" aria-hidden="true" />
-              <span className="app-footer__creator">* MADE WITH ♡ BY SUSAN.L *</span>
+              <div className="app-footer__creator-row">
+                <img
+                  src="/stickers/bow.png"
+                  alt=""
+                  className="app-footer__charm"
+                  aria-hidden="true"
+                />
+                <span className="app-footer__creator">* MADE WITH ♡ BY SUSAN.L *</span>
+                <img
+                  src="/stickers/peach.png"
+                  alt=""
+                  className="app-footer__charm"
+                  aria-hidden="true"
+                />
+              </div>
               <span className="app-footer__meta">
                 Powered by Google Cloud TTS &amp; Google Gemini{' '}
                 <span className="app-footer__meta-copy">· © 2026 Susan.L</span>

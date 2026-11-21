@@ -66,6 +66,9 @@ export function AiFeedbackPanel({
     return null;
   }
 
+  const isPraiseworthy =
+    feedback.level === 'excellent' || feedback.level === 'good';
+
   return (
     <div
       className="ai-feedback-panel ai-feedback-panel--success"
@@ -97,6 +100,29 @@ export function AiFeedbackPanel({
             </div>
           </div>
         </div>
+
+        {isPraiseworthy && (
+          <div className="ai-reward-stamp" data-level={feedback.level}>
+            <img
+              src="/stickers/duo-sticker.png"
+              alt=""
+              className="ai-reward-stamp__duo"
+              aria-hidden="true"
+            />
+            <div className="ai-reward-stamp__copy">
+              <span className="ai-reward-stamp__kr kr-cute">
+                {feedback.level === 'excellent' ? '최고예요!' : '잘했어요!'}
+              </span>
+              <span className="ai-reward-stamp__sub">Rei × WOOKDONG 認證</span>
+            </div>
+            <img
+              src="/stickers/peach.png"
+              alt=""
+              className="ai-reward-stamp__peach"
+              aria-hidden="true"
+            />
+          </div>
+        )}
       </div>
 
       <p className="ai-feedback__summary">{feedback.summary}</p>
