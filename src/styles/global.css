@@ -270,7 +270,7 @@ section[id] {
 .app-footer {
   border-top: 1.5px dashed var(--border-dashed);
   background: var(--bg-page);
-  padding: 28px 16px 40px;
+  padding: 28px 16px calc(40px + env(safe-area-inset-bottom, 0px));
 }
 
 .app-footer__receipt {
@@ -727,7 +727,7 @@ section[id] {
   }
 
   .app-footer {
-    padding: 22px 12px 32px;
+    padding: 22px 12px calc(32px + env(safe-area-inset-bottom, 0px));
   }
 
   .app-footer__sheet {
