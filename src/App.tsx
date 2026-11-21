@@ -22,6 +22,48 @@ const phraseCount = conversationsData.topics.reduce(
 );
 const totalPracticeTargets = PRACTICE_SENTENCES.length + phraseCount;
 
+const FOOTER_RECEIPT_ITEMS: Array<{
+  id: AppSectionId;
+  num: string;
+  icon: string;
+  label: string;
+  meta: string;
+  tint: 'pink' | 'blue' | 'green' | 'lilac';
+}> = [
+  {
+    id: 'hangul-chart',
+    num: '01',
+    icon: '🌸',
+    label: '40 音發音表',
+    meta: '40 音',
+    tint: 'pink',
+  },
+  {
+    id: 'practice-zone',
+    num: '02',
+    icon: '🎀',
+    label: '日常發音練習',
+    meta: `${PRACTICE_SENTENCES.length} 句`,
+    tint: 'blue',
+  },
+  {
+    id: 'situational-conversations',
+    num: '03',
+    icon: '🧸',
+    label: '實用情境會話',
+    meta: `${phraseCount} 句`,
+    tint: 'green',
+  },
+  {
+    id: 'daily-reading',
+    num: '04',
+    icon: '📖',
+    label: '每日短篇閱讀',
+    meta: 'TOPIK',
+    tint: 'lilac',
+  },
+];
+
 export function App() {
   const {
     speakingId,
@@ -209,84 +251,83 @@ export function App() {
       </main>
 
       <footer className="app-footer">
-        <div className="app-footer__inner">
-          <div className="app-footer__top">
-            <div className="app-footer__brand">
-              <div className="app-footer__title-row">
+        <div className="app-footer__receipt">
+          <div className="app-footer__tear app-footer__tear--top" aria-hidden="true" />
+          <div className="app-footer__sheet">
+            <div className="app-footer__receipt-head">
+              ✦ <span className="kr-cute">한글 소리</span> · STUDY RECEIPT v1.0 ✦
+            </div>
+
+            <div className="app-footer__top">
+              <div className="app-footer__brand">
                 <strong className="app-footer__title">
                   <span className="kr-cute">한글 소리</span> · 韓語發音互動手帳 🎀
                 </strong>
-                <span className="app-footer__version">v1.0</span>
+                <p className="app-footer__tagline">
+                  專為韓語初學者打造的 40 音、情境會話與 TOPIK 1→2 每日閱讀練習空間
+                </p>
               </div>
-              <p className="app-footer__tagline">
-                專為韓語初學者打造的 40 音、情境會話與 TOPIK 1→2 每日閱讀練習空間
+              <a
+                href="#top"
+                className="app-footer__top-btn"
+                aria-label="回到頂部"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                TOP ↑
+              </a>
+            </div>
+
+            <nav className="app-footer__nav" aria-label="頁尾快速導覽">
+              {FOOTER_RECEIPT_ITEMS.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className={`app-footer__nav-row${isActive ? ' is-active' : ''}`}
+                    data-tint={item.tint}
+                    aria-current={isActive ? 'page' : undefined}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleSelectTab(item.id);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
+                    <span className="app-footer__nav-num">{item.num}</span>
+                    <span className="app-footer__nav-icon" aria-hidden="true">
+                      {item.icon}
+                    </span>
+                    <span className="app-footer__nav-label">{item.label}</span>
+                    <span className="app-footer__dots" aria-hidden="true" />
+                    <span className="app-footer__nav-count">{item.meta}</span>
+                    <span className="app-footer__nav-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </a>
+                );
+              })}
+            </nav>
+
+            <div className="app-footer__notice">
+              <span className="app-footer__notice-label">※ PRIVACY NOTICE</span>
+              <p>
+                🎙️ 錄音僅用於當次 AI 發音分析，不會留存於伺服器；「我的收藏」與「每日閱讀紀錄」皆保存於您的瀏覽器本機。AI 發音評分、建議與生成內容僅供學習輔助參考。
               </p>
             </div>
-            <a
-              href="#top"
-              className="app-footer__top-btn"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-            >
-              回到頂部 ↑
-            </a>
+
+            <div className="app-footer__bottom">
+              <div className="app-footer__barcode" aria-hidden="true" />
+              <span className="app-footer__creator">* MADE WITH ♡ BY SUSAN.L *</span>
+              <span className="app-footer__meta">
+                Powered by Google Cloud TTS &amp; Google Gemini{' '}
+                <span className="app-footer__meta-copy">· © 2026 Susan.L</span>
+              </span>
+            </div>
           </div>
-
-          <nav className="app-footer__nav" aria-label="頁尾快速導覽">
-            <a
-              href="#hangul-chart"
-              className="app-footer__nav-link"
-              onClick={(e) => {
-                e.preventDefault();
-                handleSelectTab('hangul-chart');
-              }}
-            >
-              40 音發音表
-            </a>
-            <a
-              href="#practice-zone"
-              className="app-footer__nav-link"
-              onClick={(e) => {
-                e.preventDefault();
-                handleSelectTab('practice-zone');
-              }}
-            >
-              日常發音練習
-            </a>
-            <a
-              href="#situational-conversations"
-              className="app-footer__nav-link"
-              onClick={(e) => {
-                e.preventDefault();
-                handleSelectTab('situational-conversations');
-              }}
-            >
-              實用情境會話
-            </a>
-            <a
-              href="#daily-reading"
-              className="app-footer__nav-link"
-              onClick={(e) => {
-                e.preventDefault();
-                handleSelectTab('daily-reading');
-              }}
-            >
-              每日短篇閱讀
-            </a>
-          </nav>
-
-          <p className="app-footer__notice">
-            🎙️ 錄音僅用於當次 AI 發音分析，不會留存於伺服器；「我的收藏」與「每日閱讀紀錄」皆保存於您的瀏覽器本機。AI 發音評分、建議與生成內容僅供學習輔助參考。
-          </p>
-
-          <div className="app-footer__bottom">
-            <span className="app-footer__creator">Made with ♡ by Susan.L</span>
-            <span className="app-footer__meta">
-              Powered by Google Cloud TTS &amp; Google Gemini · © 2026 Susan.L
-            </span>
-          </div>
+          <div className="app-footer__tear app-footer__tear--bottom" aria-hidden="true" />
         </div>
       </footer>
     </div>
