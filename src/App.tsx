@@ -6,6 +6,7 @@ import { PracticeSection } from './components/PracticeZone/PracticeSection';
 import { SituationalSection } from './components/SituationalConversations/SituationalSection';
 import { DailyReadingSection } from './components/DailyReading/DailyReadingSection';
 import { useDailyReading } from './hooks/useDailyReading';
+import { useActiveSection } from './hooks/useActiveSection';
 import { useFavorites } from './hooks/useFavorites';
 import { useKoreanSpeech } from './hooks/useKoreanSpeech';
 import { usePronunciationCoach } from './hooks/usePronunciationCoach';
@@ -34,6 +35,7 @@ export function App() {
 
   const favorites = useFavorites();
   const dailyReading = useDailyReading();
+  const { activeSection, selectSection } = useActiveSection();
   const [activeTopicId, setActiveTopicId] = useState<string>(
     conversationsData.topics[0]?.id ?? 'airport'
   );
@@ -81,6 +83,8 @@ export function App() {
         isSpeechSupported={isSpeechSupported}
         hasKoreanVoice={hasKoreanVoice}
         voiceName={voiceName}
+        activeSection={activeSection}
+        onSelectSection={selectSection}
       />
 
       <main className="app-main">
@@ -103,11 +107,21 @@ export function App() {
           </div>
 
           <div className="hero-strip__stats">
-            <a href="#hangul-chart" className="hero-stat-pill" data-tint="pink">
+            <a
+              href="#hangul-chart"
+              className="hero-stat-pill"
+              data-tint="pink"
+              onClick={() => selectSection('hangul-chart')}
+            >
               <span>🌸 韓文互動表</span>
               <strong>40 音</strong>
             </a>
-            <a href="#practice-zone" className="hero-stat-pill" data-tint="blue">
+            <a
+              href="#practice-zone"
+              className="hero-stat-pill"
+              data-tint="blue"
+              onClick={() => selectSection('practice-zone')}
+            >
               <span>🎀 錄音跟讀對比</span>
               <strong>5 句日常韓文</strong>
             </a>
@@ -115,6 +129,7 @@ export function App() {
               href="#situational-conversations"
               className="hero-stat-pill"
               data-tint="green"
+              onClick={() => selectSection('situational-conversations')}
             >
               <span>🧸 實用情境會話</span>
               <strong>
@@ -125,6 +140,7 @@ export function App() {
               href="#daily-reading"
               className="hero-stat-pill"
               data-tint="lilac"
+              onClick={() => selectSection('daily-reading')}
             >
               <span>📖 每日閱讀小課</span>
               <strong>已推 {dailyReading.lessons.length} 篇</strong>
@@ -133,7 +149,10 @@ export function App() {
               href="#situational-conversations"
               className="hero-stat-pill"
               data-tint="rose"
-              onClick={() => setActiveTopicId('favorites')}
+              onClick={() => {
+                setActiveTopicId('favorites');
+                selectSection('situational-conversations');
+              }}
             >
               <span>❤️ 我的收藏</span>
               <strong>{favorites.count} 筆</strong>
@@ -185,17 +204,55 @@ export function App() {
         <div className="app-footer__inner">
           <div className="app-footer__top">
             <div className="app-footer__brand">
-              <strong className="app-footer__title">
-                <span className="kr-cute">한글 소리</span> · 韓語發音互動手帳 🎀
-              </strong>
+              <div className="app-footer__title-row">
+                <strong className="app-footer__title">
+                  <span className="kr-cute">한글 소리</span> · 韓語發音互動手帳 🎀
+                </strong>
+                <span className="app-footer__version">v1.0</span>
+              </div>
               <p className="app-footer__tagline">
                 專為韓語初學者打造的 40 音、情境會話與 TOPIK 1→2 每日閱讀練習空間
               </p>
             </div>
-            <a href="#top" className="app-footer__top-btn">
+            <a
+              href="#top"
+              className="app-footer__top-btn"
+              onClick={() => selectSection('hangul-chart')}
+            >
               回到頂部 ↑
             </a>
           </div>
+
+          <nav className="app-footer__nav" aria-label="頁尾快速導覽">
+            <a
+              href="#hangul-chart"
+              className="app-footer__nav-link"
+              onClick={() => selectSection('hangul-chart')}
+            >
+              40 音發音表
+            </a>
+            <a
+              href="#practice-zone"
+              className="app-footer__nav-link"
+              onClick={() => selectSection('practice-zone')}
+            >
+              日常發音練習
+            </a>
+            <a
+              href="#situational-conversations"
+              className="app-footer__nav-link"
+              onClick={() => selectSection('situational-conversations')}
+            >
+              實用情境會話
+            </a>
+            <a
+              href="#daily-reading"
+              className="app-footer__nav-link"
+              onClick={() => selectSection('daily-reading')}
+            >
+              每日短篇閱讀
+            </a>
+          </nav>
 
           <p className="app-footer__notice">
             🎙️ 錄音僅用於當次 AI 發音分析，不會留存於伺服器；「我的收藏」與「每日閱讀紀錄」皆保存於您的瀏覽器本機。AI 發音評分、建議與生成內容僅供學習輔助參考。

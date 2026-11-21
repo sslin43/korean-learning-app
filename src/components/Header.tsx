@@ -1,3 +1,4 @@
+import type { AppSectionId } from '../hooks/useActiveSection';
 import './Header.css';
 
 interface HeaderProps {
@@ -6,7 +7,51 @@ interface HeaderProps {
   isSpeechSupported: boolean;
   hasKoreanVoice: boolean;
   voiceName: string | null;
+  activeSection: AppSectionId;
+  onSelectSection: (sectionId: AppSectionId) => void;
 }
+
+const NAV_ITEMS: Array<{
+  id: AppSectionId;
+  label: string;
+  icon: string;
+  cornerSticker: string;
+  trailGlyph: string;
+  tint: 'pink' | 'blue' | 'green' | 'lilac';
+}> = [
+  {
+    id: 'hangul-chart',
+    label: '40 音發音表',
+    icon: '🌸',
+    cornerSticker: '✨',
+    trailGlyph: '✿',
+    tint: 'pink',
+  },
+  {
+    id: 'practice-zone',
+    label: '日常發音練習',
+    icon: '🎀',
+    cornerSticker: '🎧',
+    trailGlyph: '♡',
+    tint: 'blue',
+  },
+  {
+    id: 'situational-conversations',
+    label: '實用情境會話',
+    icon: '🧸',
+    cornerSticker: '📸',
+    trailGlyph: '★',
+    tint: 'green',
+  },
+  {
+    id: 'daily-reading',
+    label: '每日短篇閱讀',
+    icon: '📖',
+    cornerSticker: '🦋',
+    trailGlyph: '✦',
+    tint: 'lilac',
+  },
+];
 
 export function Header({
   rate,
@@ -14,6 +59,8 @@ export function Header({
   isSpeechSupported,
   hasKoreanVoice,
   voiceName,
+  activeSection,
+  onSelectSection,
 }: HeaderProps) {
   const voiceStatusClass = !isSpeechSupported || !hasKoreanVoice
     ? 'voice-status-pill voice-status-pill--warn'
@@ -30,7 +77,12 @@ export function Header({
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <a href="#top" className="site-brand" aria-label="한글 소리 韓語發音互動學習首頁">
+        <a
+          href="#top"
+          className="site-brand"
+          aria-label="한글 소리 韓語發音互動學習首頁"
+          onClick={() => onSelectSection('hangul-chart')}
+        >
           <span className="site-brand__mark" aria-hidden="true">
             한
             <span className="site-brand__sparkle">✨</span>
@@ -42,18 +94,34 @@ export function Header({
         </a>
 
         <nav className="site-nav" aria-label="頁面區塊導覽">
-          <a href="#hangul-chart" className="site-nav__link">
-            40 音發音表
-          </a>
-          <a href="#practice-zone" className="site-nav__link">
-            日常發音練習
-          </a>
-          <a href="#situational-conversations" className="site-nav__link">
-            實用情境會話
-          </a>
-          <a href="#daily-reading" className="site-nav__link">
-            每日短篇閱讀
-          </a>
+          {NAV_ITEMS.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`site-nav__link ${isActive ? 'is-active' : ''}`}
+                data-tint={item.tint}
+                aria-current={isActive ? 'location' : undefined}
+                onClick={() => onSelectSection(item.id)}
+              >
+                <span className="site-nav__icon" aria-hidden="true">
+                  {item.icon}
+                </span>
+                <span className="site-nav__label">{item.label}</span>
+                {isActive && (
+                  <>
+                    <span className="site-nav__glyph" aria-hidden="true">
+                      {item.trailGlyph}
+                    </span>
+                    <span className="site-nav__corner-sticker" aria-hidden="true">
+                      {item.cornerSticker}
+                    </span>
+                  </>
+                )}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="site-header__controls">

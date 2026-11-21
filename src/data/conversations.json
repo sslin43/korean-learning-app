@@ -5,7 +5,7 @@
       "title": "機場通關與報到會話",
       "koreanTitle": "공항 수속 및 입국 회화",
       "icon": "✈️",
-      "subtitle": "涵蓋：托運行李、海關詢問、退稅櫃檯",
+      "subtitle": "涵蓋：報到托運、安檢與海關、行李轉盤與退稅櫃檯",
       "accentKey": "airport",
       "phrases": [
         {
@@ -16,7 +16,11 @@
           "pronunciationGuide": "[수하물 하나 부치고 시퍼요]",
           "romanization": "Suhamul hana buchigo sipeoyo.",
           "translation": "我想托運一件行李。",
-          "difficultyTags": ["連音化", "收音 ㄹ", "送氣音 ㅍ"],
+          "difficultyTags": [
+            "連音化",
+            "收音 ㄹ",
+            "送氣音 ㅍ"
+          ],
           "pronunciationAnalysis": "「싶어요」的收尾音「ㅍ」必須往後連音到「어」，讀成清晰的送氣音「시퍼요」（台灣學習者常誤讀成不連音的 sip-eo-yo）。「물」收尾音「ㄹ」舌尖需貼住上齒齦再接「하」；「치」也要送出明顯氣流。"
         },
         {
@@ -27,7 +31,11 @@
           "pronunciationGuide": "[창가 자리로 부탁뜨림니다]",
           "romanization": "Changga jariro butakdeurimnida.",
           "translation": "請幫我安排靠窗的座位。",
-          "difficultyTags": ["鼻音化", "硬音化", "收音 ㄱ"],
+          "difficultyTags": [
+            "鼻音化",
+            "硬音化",
+            "收音 ㄱ"
+          ],
           "pronunciationAnalysis": "「부탁드립니다」同時出現兩種音變：收尾音「ㄱ」遇到後面的「ㄷ」會產生硬音化讀成「부탁뜨」；字尾「ㅂ니다」因「ㅂ+ㄴ」鼻音化必須改念「ㅁ니다」（부탁뜨림니다）。另外「탁」的收音「ㄱ」只做舌根阻塞、不要多發一個母音。"
         },
         {
@@ -38,7 +46,11 @@
           "pronunciationGuide": "[여행하러 와써요]",
           "romanization": "Yeohaenghareo wasseoyo.",
           "translation": "我是來旅遊的。",
-          "difficultyTags": ["連音化", "緊音 ㅆ", "母音 ㅓ"],
+          "difficultyTags": [
+            "連音化",
+            "緊音 ㅆ",
+            "母音 ㅓ"
+          ],
           "pronunciationAnalysis": "「왔어요」的雙收音「ㅆ」會直接連音到「어」讀成緊繃短促的「와써요」，切勿念成輕輕的「와사요」。「여행」的「여」與「러」嘴唇要放鬆呈垂直橢圓，避免嘟嘴念成國語「ㄛ」；「행」的收音「ㅇ」需保持後鼻音「ng」。"
         },
         {
@@ -49,7 +61,11 @@
           "pronunciationGuide": "[오일 동안 머물 예정이에요]",
           "romanization": "Oil dongan meomul yejeongieyo.",
           "translation": "我預計會停留五天。",
-          "difficultyTags": ["收音 ㄹ", "鼻音收音 ㅇ/ㄴ", "母音區分"],
+          "difficultyTags": [
+            "收音 ㄹ",
+            "鼻音收音 ㅇ/ㄴ",
+            "母音區分"
+          ],
           "pronunciationAnalysis": "「동（dong）」與「정（jeong）」的收音「ㅇ」是後鼻音「ng」，「안（an）」的收音「ㄴ」則是舌尖抵上齒齦的前鼻音「n」，台灣人常將兩者混為一談。特別注意「정이에요」的「ㅇ」有實際音值，因此「정」不會與後面的「이」連音，要清楚收好「ng」再接「이에요」。"
         },
         {
@@ -60,7 +76,11 @@
           "pronunciationGuide": "[세금 환급 카운터가 어디에 이써요]",
           "romanization": "Segeum hwangeup kaunteoga eodie isseoyo?",
           "translation": "請問退稅櫃檯在哪裡？",
-          "difficultyTags": ["連音化", "閉唇收音 ㅁ/ㅂ", "疑問語調"],
+          "difficultyTags": [
+            "連音化",
+            "閉唇收音 ㅁ/ㅂ",
+            "疑問語調"
+          ],
           "pronunciationAnalysis": "「금」收音「ㅁ」雙唇輕閉帶鼻音（m），緊接的「환급」收音「ㅂ」也要確實閉唇止氣（不送氣的 p），台灣學習者常漏掉閉唇動作而聽起來像「환그」。「있어요」需連音讀作「이써요」，疑問句尾「요?」語調自然上揚。"
         },
         {
@@ -71,8 +91,222 @@
           "pronunciationGuide": "[여기에서 택쓰 리펀 바들 쑤 인나요]",
           "romanization": "Yeogieseo taekseu ripeon badeul su innayo?",
           "translation": "請問可以在這裡辦理退稅嗎？",
-          "difficultyTags": ["鼻音化", "連音化", "硬音化"],
+          "difficultyTags": [
+            "鼻音化",
+            "連音化",
+            "硬音化"
+          ],
           "pronunciationAnalysis": "句尾「있나요?」的收音「ㅆ」（代表音 ㄷ）遇見後面的「ㄴ」，會發生鼻音化讀成「인나요」（切勿讀成 it-na-yo）。「받을」需連音為「바들」，而「ㄹ」後面的「수」常產生硬音化讀作「바들 쑤」；「택스」口語多緊音化讀為「택쓰」。"
+        },
+        {
+          "id": "airport-7",
+          "order": 7,
+          "situationTag": "報到櫃檯・確認登機門",
+          "korean": "탑승구가 어디예요?",
+          "pronunciationGuide": "[탑씅구가 어디예요]",
+          "romanization": "Tapseungguga eodiyeyo?",
+          "translation": "請問登機門在哪裡？",
+          "difficultyTags": [
+            "硬音化 ㅂ+ㅅ→ㅂ+ㅆ",
+            "閉唇收音 ㅂ",
+            "疑問語調"
+          ],
+          "pronunciationAnalysis": "「탑승구」的「탑」以閉唇「ㅂ」收尾，使後面的「승」發生硬音化讀作「씅（탑씅구）」。注意「탑」不可漏掉閉唇止氣動作，「구」保持雙唇圓突，句尾自然上揚。"
+        },
+        {
+          "id": "airport-8",
+          "order": 8,
+          "situationTag": "報到櫃檯・詢問登機時間",
+          "korean": "탑승은 몇 시부터 시작해요?",
+          "pronunciationGuide": "[탑씅은 몇 씨부터 시자캐요]",
+          "romanization": "Tapseungeun myeot sibuteo sijakaeyo?",
+          "translation": "請問幾點開始登機？",
+          "difficultyTags": [
+            "硬音化",
+            "連音化",
+            "激音化 ㄱ+ㅎ→ㅋ"
+          ],
+          "pronunciationAnalysis": "這句同時集合三種常見音變：「탑승은」硬音化加上連音讀成「탑씅은」；「몇 시」因收音「ㅊ（代表音 ㄷ）」讓「시」硬音化為「씨（몇 씨）」；句尾「시작해요」因「ㄱ+ㅎ」激音化，必須讀作「시자캐요」。"
+        },
+        {
+          "id": "airport-9",
+          "order": 9,
+          "situationTag": "報到櫃檯・隨身手提行李",
+          "korean": "이 가방은 기내에 가지고 탈 수 있어요?",
+          "pronunciationGuide": "[이 가방은 기내에 가지고 탈 쑤 이써요]",
+          "romanization": "I gabangeun ginaee gajigo tal su isseoyo?",
+          "translation": "這個包包可以帶上飛機（手提上機）嗎？",
+          "difficultyTags": [
+            "硬音化",
+            "連音化",
+            "後鼻音收音 ㅇ"
+          ],
+          "pronunciationAnalysis": "「가방은」的後鼻音「ㅇ」有實際音值，不要滑成連音，念成「방」＋「은」。「탈 수」受冠詞形收音「ㄹ」影響硬音化為「탈 쑤」，「있어요?」連音為「이써요?」並上揚。"
+        },
+        {
+          "id": "airport-10",
+          "order": 10,
+          "situationTag": "報到櫃檯・易碎品提醒",
+          "korean": "안에 깨지기 쉬운 물건이 들어 있어요.",
+          "pronunciationGuide": "[아네 깨지기 쉬운 물거니 드러 이써요]",
+          "romanization": "Ane kkaejigi swiun mulgeoni deureo isseoyo.",
+          "translation": "裡面有容易碎掉的物品。",
+          "difficultyTags": [
+            "緊音 ㄲ",
+            "雙重連音化",
+            "複合母音 ㅟ"
+          ],
+          "pronunciationAnalysis": "「안에」與「물건이」分別發生連音讀作「아네」和「물거니」；「들어 있어요」則是「드러 이써요」。開頭「깨」是緊音「ㄲ」不要送氣，「쉬운」的「쉬（swi）」雙唇先圓再迅速滑向「이」。"
+        },
+        {
+          "id": "airport-11",
+          "order": 11,
+          "situationTag": "報到櫃檯・確認行李重量",
+          "korean": "수하물 무게가 초과됐나요?",
+          "pronunciationGuide": "[수하물 무개가 초과댄나요]",
+          "romanization": "Suhamul mugega chogwadwaennayo?",
+          "translation": "請問托運行李超重了嗎？",
+          "difficultyTags": [
+            "鼻音化 ㅆ(ㄷ)+ㄴ",
+            "收音 ㄹ",
+            "送氣音 ㅊ"
+          ],
+          "pronunciationAnalysis": "「초과됐나요?」字尾「ㅆ」（代表音 ㄷ）遇「ㄴ」產生鼻音化，務必讀成「댄나요」（勿念出 t 音），其中「됐」口語多簡讀近「대」。「물」收尾「ㄹ」舌尖輕抵上齒齦，「초」送氣且收圓唇。"
+        },
+        {
+          "id": "airport-12",
+          "order": 12,
+          "situationTag": "安檢櫃檯・行動電源規定",
+          "korean": "보조 배터리는 가방에서 꺼내야 돼요?",
+          "pronunciationGuide": "[보조 배터리는 가방에서 꺼내야 돼요]",
+          "romanization": "Bojo baeteorineun gabangeseo kkeonaeya dwaeyo?",
+          "translation": "請問行動電源要從包包拿出來嗎？",
+          "difficultyTags": [
+            "緊音 ㄲ",
+            "母音 ㅗ/ㅓ 區分",
+            "疑問語調"
+          ],
+          "pronunciationAnalysis": "「보조（bo-jo）」兩個字都要收圓嘴唇，而「꺼내야」開頭「꺼」為喉部用力的緊音「ㄲ」搭配嘴巴放鬆的「ㅓ」，切勿與「ㅗ」混讀。「리」為彈舌音，不要念得太重。"
+        },
+        {
+          "id": "airport-13",
+          "order": 13,
+          "situationTag": "入境海關・回答住宿飯店",
+          "korean": "명동에 있는 호텔에서 지낼 거예요.",
+          "pronunciationGuide": "[명동에 인는 호테레서 지낼 꺼예요]",
+          "romanization": "Myeongdonge inneun hotereseo jinael geoyeyo.",
+          "translation": "我會住在明洞的飯店。",
+          "difficultyTags": [
+            "鼻音化",
+            "連音化",
+            "硬音化 ㄹ+ㄱ→ㄹ+ㄲ"
+          ],
+          "pronunciationAnalysis": "「있는」因雙收音「ㅆ（ㄷ）+ㄴ」鼻音化讀作「인는」（不可念 it-neun）。「호텔에서」收尾「ㄹ」連音向「에」念成「호테레서」；句尾「지낼 거예요」受未來式規則影響硬音化為「지낼 꺼예요」。"
+        },
+        {
+          "id": "airport-14",
+          "order": 14,
+          "situationTag": "入境海關・出示訂房與機票",
+          "korean": "호텔 예약 확인서와 돌아가는 항공권이 있어요.",
+          "pronunciationGuide": "[호텔 예야 콰긴서와 도라가는 항공꺼니 이써요]",
+          "romanization": "Hotel yeyak hwaginseowa doraganeun hanggonggwoni isseoyo.",
+          "translation": "我有飯店訂房確認單和回程機票。",
+          "difficultyTags": [
+            "激音化 ㄱ+ㅎ→ㅋ",
+            "硬音化",
+            "連音化"
+          ],
+          "pronunciationAnalysis": "「예약 확인서」因「ㄱ」遇上「ㅎ」常產生激音化，合讀為接近「예야 콰긴서」。「돌아가는」連音成「도라가는」，「항공권이」則是先硬音化再連音讀作「항공꺼니」。"
+        },
+        {
+          "id": "airport-15",
+          "order": 15,
+          "situationTag": "提領行李・詢問行李轉盤",
+          "korean": "몇 번 수하물 찾는 곳으로 가야 해요?",
+          "pronunciationGuide": "[멷 뻔 수하물 찬는 꼬스로 가야 해요]",
+          "romanization": "Myeot beon suhamul chatneun goseuro gaya haeyo?",
+          "translation": "請問要去幾號行李轉盤領取？",
+          "difficultyTags": [
+            "鼻音化 ㅌ+ㄴ→ㄴ+ㄴ",
+            "硬音化",
+            "收音 ㅊ"
+          ],
+          "pronunciationAnalysis": "「몇 번」的收音「ㅊ」簡化為「ㄷ」並使「번」硬音化為「뻔（멷 뻔）」。「찾는」則是代表音「ㄷ」遇到「ㄴ」發生鼻音化，讀作「찬는」（切勿念 chat-neun）。"
+        },
+        {
+          "id": "airport-16",
+          "order": 16,
+          "situationTag": "行李服務台・找不到行李",
+          "korean": "제 짐이 아직 안 나왔어요.",
+          "pronunciationGuide": "[제 지미 아직 안 나와써요]",
+          "romanization": "Je jimi ajik an nawasseoyo.",
+          "translation": "我的行李還沒有出來。",
+          "difficultyTags": [
+            "連音化",
+            "緊音 ㅆ",
+            "收音 ㄱ/ㄴ"
+          ],
+          "pronunciationAnalysis": "「짐이」收音「ㅁ」需輕閉雙唇並直接連音向「이」讀作「지미」。「아직」字尾「ㄱ」舌根止氣即可，勿多發「으」；「나왔어요」將雙收音「ㅆ」連往後字讀作清脆緊促的「나와써요」。"
+        },
+        {
+          "id": "airport-17",
+          "order": 17,
+          "situationTag": "機場大廳・領取 SIM 卡",
+          "korean": "미리 예약한 유심 카드는 어디에서 수령해요?",
+          "pronunciationGuide": "[미리 예야칸 유심 카드는 어디에서 수령해요]",
+          "romanization": "Miri yeyakan yusim kadeuneun eodieseo suryeonghaeyo?",
+          "translation": "請問事先預訂的 SIM 卡在哪裡領取？",
+          "difficultyTags": [
+            "激音化 ㄱ+ㅎ→ㅋ",
+            "平唇母音 ㅡ",
+            "閉唇收音 ㅁ"
+          ],
+          "pronunciationAnalysis": "「예약한」發生關鍵激音化，「ㄱ+ㅎ」合送氣變成「ㅋ」，讀作「예야칸」。「유심」雙唇要緊閉收出「ㅁ」音，別漏成 yu-sin；「카드」的「드」保持嘴角平展。"
+        },
+        {
+          "id": "airport-18",
+          "order": 18,
+          "situationTag": "機場大廳・外幣兌換",
+          "korean": "여기서 대만 달러를 원화로 환전할 수 있어요?",
+          "pronunciationGuide": "[여기서 대만 달러를 원화로 환전할 쑤 이써요]",
+          "romanization": "Yeogiseo daeman dalleoreul wonhwaro hwanjeonhal su isseoyo?",
+          "translation": "請問這裡可以用台幣換韓元嗎？",
+          "difficultyTags": [
+            "流音 ㄹ+ㄹ",
+            "複合母音 ㅘ/ㅝ",
+            "硬音化"
+          ],
+          "pronunciationAnalysis": "「달러」為雙「ㄹ」流音化（ll），舌尖輕貼上齒齦。「원화（won-hwa）」包含連續兩個圓唇滑音，「원」以舌尖前鼻音「ㄴ」收尾，「환전할 수 있어요?」注意「수」硬音化為「쑤」。"
+        },
+        {
+          "id": "airport-19",
+          "order": 19,
+          "situationTag": "機場交通・尋找機場快線",
+          "korean": "공항철도 타는 곳은 어느 쪽이에요?",
+          "pronunciationGuide": "[공항철또 타는 고슨 어느 쪼기에요]",
+          "romanization": "Gonghangcheoldo taneun goseun eoneu jjogieyo?",
+          "translation": "請問搭機場快線要去哪一邊？",
+          "difficultyTags": [
+            "硬音化 ㄹ+ㄷ→ㄹ+ㄸ",
+            "雙重連音化",
+            "母音 ㅓ/ㅡ"
+          ],
+          "pronunciationAnalysis": "「철도」屬於漢字詞「ㄹ」後接「ㄷ」的硬音化，多讀為「철또」。「곳은」連音為「고슨」，「쪽이에요」連音為「쪼기에요」；「어느」第一字自然張口、第二字嘴唇平展。"
+        },
+        {
+          "id": "airport-20",
+          "order": 20,
+          "situationTag": "退稅櫃檯・退至信用卡",
+          "korean": "현금 말고 신용카드로 환급받고 싶어요.",
+          "pronunciationGuide": "[현금 말고 시뇽카드로 환급빠꼬 시퍼요]",
+          "romanization": "Hyeongeum malgo sinyongkadeuro hwangeupbatgo sipeoyo.",
+          "translation": "不想退現金，想退到信用卡裡。",
+          "difficultyTags": [
+            "硬音化",
+            "鼻音連音",
+            "送氣音 ㅍ"
+          ],
+          "pronunciationAnalysis": "「신용카드」先將前字收音「ㄴ」自然連向「용」讀出平滑的「시뇽（sinyong）」。「환급받고」遇「ㅂ+ㅂ」與「ㄷ+ㄱ」連續硬音化讀成「환급빠꼬」，句尾「싶어요」連音為送氣的「시퍼요」。"
         }
       ]
     },
@@ -81,7 +315,7 @@
       "title": "韓國大眾運輸會話",
       "koreanTitle": "한국 대중교통 회화",
       "icon": "🚇",
-      "subtitle": "涵蓋：購買 T-money 卡、儲值、地鐵轉乘與公車下車詢問",
+      "subtitle": "涵蓋：T-money 購卡儲值、地鐵轉乘、公車與計程車溝通",
       "accentKey": "transit",
       "phrases": [
         {
@@ -92,7 +326,11 @@
           "pronunciationGuide": "[티머니 카드 하나 주세요]",
           "romanization": "Timeoni kadeu hana juseyo.",
           "translation": "請給我一張 T-money 交通卡。",
-          "difficultyTags": ["平唇母音 ㅡ", "送氣音 ㅌ/ㅋ", "母音 ㅓ"],
+          "difficultyTags": [
+            "平唇母音 ㅡ",
+            "送氣音 ㅌ/ㅋ",
+            "母音 ㅓ"
+          ],
           "pronunciationAnalysis": "「카드」的「드（deu）」務必保持嘴角微拉平、不嘟唇，台灣人很容易受英文 card 影響念成「卡都（du）」。開頭「티」與「카」都是強送氣音，發音時要送出明顯氣流；「머（meo）」嘴唇放鬆，不要圓唇。"
         },
         {
@@ -103,7 +341,11 @@
           "pronunciationGuide": "[교통카드 만 원 충전해 주세요]",
           "romanization": "Gyotongkadeu man won chungjeonhae juseyo.",
           "translation": "請幫我把交通卡儲值一萬韓元。",
-          "difficultyTags": ["複合母音 ㅝ", "前後鼻音 ㅇ/ㄴ", "平唇母音 ㅡ"],
+          "difficultyTags": [
+            "複合母音 ㅝ",
+            "前後鼻音 ㅇ/ㄴ",
+            "平唇母音 ㅡ"
+          ],
           "pronunciationAnalysis": "「만 원」的「원（won）」是由圓唇「ㅜ」快速滑向平展「ㅓ」再接舌尖收音「ㄴ」，常被誤念成國語「萬」或英文 one。另外需精準區分「통・충（ng）」的後鼻音與「만・원・전（n）」的舌尖前鼻音。"
         },
         {
@@ -114,7 +356,11 @@
           "pronunciationGuide": "[카드가 잘 안 찌켜요]",
           "romanization": "Kadeuga jal an jjikhyeoyo.",
           "translation": "我的卡片一直刷不過。",
-          "difficultyTags": ["激音化 ㄱ+ㅎ→ㅋ", "緊音 ㅉ", "收音 ㄹ/ㄴ"],
+          "difficultyTags": [
+            "激音化 ㄱ+ㅎ→ㅋ",
+            "緊音 ㅉ",
+            "收音 ㄹ/ㄴ"
+          ],
           "pronunciationAnalysis": "「찍혀요」是非常重要的「激音化」示範：前字收音「ㄱ」遇到後字首音「ㅎ」時，兩者合併送氣變成「ㅋ」，因此必須連讀為「찌켜요」（不可讀成 jjik-hyeo-yo）。字首「찍」是緊音「ㅉ」，喉部用力短促發出，不送氣。"
         },
         {
@@ -125,7 +371,11 @@
           "pronunciationGuide": "[이호서느로 어디에서 가라타요]",
           "romanization": "Ihoseoneuro eodieseo garatayo?",
           "translation": "請問要在哪裡轉乘二號線？",
-          "difficultyTags": ["雙重連音化", "平唇母音 ㅡ", "送氣音 ㅌ"],
+          "difficultyTags": [
+            "雙重連音化",
+            "平唇母音 ㅡ",
+            "送氣音 ㅌ"
+          ],
           "pronunciationAnalysis": "這句有兩處台灣學習者常漏掉的連音：「이호선으로」的「선」收音「ㄴ」連向「으」讀成「이호서느로」（注意「느」維持平唇）；「갈아타요」的「갈」收音「ㄹ」連向「아」讀作「가라타요」，接送氣音「타」並於句尾微微上揚。"
         },
         {
@@ -136,7 +386,11 @@
           "pronunciationGuide": "[이 버스 명동에 가나요]",
           "romanization": "I beoseu myeongdonge ganayo?",
           "translation": "請問這班公車有到明洞嗎？",
-          "difficultyTags": ["後鼻音收音 ㅇ", "母音 ㅓ/ㅡ", "疑問語調"],
+          "difficultyTags": [
+            "後鼻音收音 ㅇ",
+            "母音 ㅓ/ㅡ",
+            "疑問語調"
+          ],
           "pronunciationAnalysis": "「명동에」連續兩個「ㅇ」後鼻音收尾，「동」的「ng」不可滑成連音，要確實收好鼻音再接「에」。「버스」實際口語常讀得接近「버쓰」，注意「버」不嘟唇、「스」保持平唇，不要念成「波蘇（su）」。"
         },
         {
@@ -147,8 +401,222 @@
           "pronunciationGuide": "[다음 정뉴장에서 내릴께요]",
           "romanization": "Daeum jeongnyujangeseo naerilgeyo.",
           "translation": "我會在下一站下車。",
-          "difficultyTags": ["鼻音化 ㅇ+ㄹ→ㅇ+ㄴ", "硬音化 ㄹ+ㄱ→ㄹ+ㄲ", "閉唇收音 ㅁ"],
+          "difficultyTags": [
+            "鼻音化 ㅇ+ㄹ→ㅇ+ㄴ",
+            "硬音化 ㄹ+ㄱ→ㄹ+ㄲ",
+            "閉唇收音 ㅁ"
+          ],
           "pronunciationAnalysis": "「정류장」出現關鍵鼻音化：收音「ㅇ」遇到後字「ㄹ」時，「ㄹ」必須變成鼻音「ㄴ」，讀作「정뉴장」（不可照字面念成 jeong-ryu-jang）。此外「내릴게요」受到語尾「-ㄹ게요」規則影響，必須硬音化讀為「내릴께요」，「다음」的「음」要閉唇收音。"
+        },
+        {
+          "id": "transit-7",
+          "order": 7,
+          "situationTag": "便利商店・查詢餘額",
+          "korean": "카드에 잔액이 얼마 남았는지 확인해 주세요.",
+          "pronunciationGuide": "[카드에 자내기 얼마 나만는지 화기내 주세요]",
+          "romanization": "Kadeue janaegi eolma namanneunji hwaginhae juseyo.",
+          "translation": "請幫我確認交通卡裡還剩多少餘額。",
+          "difficultyTags": [
+            "鼻音化 ㅆ(ㄷ)+ㄴ",
+            "連音化",
+            "ㅎ 弱化"
+          ],
+          "pronunciationAnalysis": "「잔액이」連音讀作「자내기」；「남았는지」先「ㅁ」連音成「나마」、接「ㅆ(ㄷ)+ㄴ」鼻音化讀作「만는지（나만는지）」。「확인해」口語中字尾「ㅎ」常弱化讀近「화기내」。"
+        },
+        {
+          "id": "transit-8",
+          "order": 8,
+          "situationTag": "便利商店・餘額退款",
+          "korean": "교통카드 남은 잔액을 환불받고 싶어요.",
+          "pronunciationGuide": "[교통카드 나믄 자내글 환불빠꼬 시퍼요]",
+          "romanization": "Gyotongkadeu nameun janaegeul hwanbulbatgo sipeoyo.",
+          "translation": "我想把交通卡剩下的餘額退掉。",
+          "difficultyTags": [
+            "雙重連音化",
+            "硬音化",
+            "送氣音 ㅍ"
+          ],
+          "pronunciationAnalysis": "「남은 잔액을」分別連音成「나믄 자내글」；「환불받고」受「ㄹ」與「ㄷ+ㄱ」影響硬音化為「환불빠꼬」；最後「싶어요」連音成送氣的「시퍼요」。"
+        },
+        {
+          "id": "transit-9",
+          "order": 9,
+          "situationTag": "地鐵月台・確認行駛方向",
+          "korean": "이 열차가 강남역 방면으로 가나요?",
+          "pronunciationGuide": "[이 열차가 강남녁 빵며느로 가나요]",
+          "romanization": "I yeolchaga gangnamnyeok bangmyeoneuro ganayo?",
+          "translation": "請問這班列車是往江南站方向的嗎？",
+          "difficultyTags": [
+            "ㄴ 添加",
+            "硬音化 ㄱ+ㅂ→ㄱ+ㅃ",
+            "連音化"
+          ],
+          "pronunciationAnalysis": "「강남역」為複合詞「ㄴ 添加」規則：「강남」收音「ㅁ」接「역」需添出「ㄴ」音讀成「강남녁」；隨後「ㄱ」使「방」硬音化為「빵」，「방면으로」連音為「빵며느로」。"
+        },
+        {
+          "id": "transit-10",
+          "order": 10,
+          "situationTag": "地鐵站內・查詢出口編號",
+          "korean": "경복궁에 가려면 몇 번 출구로 나가야 해요?",
+          "pronunciationGuide": "[경복꿍에 가려면 멷 뻔 출구로 나가야 해요]",
+          "romanization": "Gyeongbokgunge garyeomyeon myeot beon chulguro nagaya haeyo?",
+          "translation": "請問要去景福宮的話，要從幾號出口出去？",
+          "difficultyTags": [
+            "硬音化 ㄱ+ㄱ→ㄱ+ㄲ",
+            "後鼻音 ㅇ",
+            "代表收音 ㅊ→ㄷ"
+          ],
+          "pronunciationAnalysis": "「경복궁」的「복」以「ㄱ」收音，促使後面的「궁」硬音化讀作「꿍（경복꿍）」，接著後鼻音「ㅇ」要確實收清楚再接「에」。「몇 번」簡化為「멷」並硬音化為「멷 뻔」。"
+        },
+        {
+          "id": "transit-11",
+          "order": 11,
+          "situationTag": "地鐵車廂・借過下車",
+          "korean": "잠시만요, 이번 역에서 내릴게요.",
+          "pronunciationGuide": "[잠시만뇨, 이번 여게서 내릴께요]",
+          "romanization": "Jamsimannyo, ibeon yeogeseo naerilgeyo.",
+          "translation": "借過一下，我這一站要下車。",
+          "difficultyTags": [
+            "口語鼻音連讀",
+            "連音化",
+            "硬音化 ㄹ+ㄱ→ㄹ+ㄲ"
+          ],
+          "pronunciationAnalysis": "「잠시만요」口語為了順口常帶鼻音連讀作「잠시만뇨」，是搭韓鐵擠車廂必備句！後面「역에서」連音為「여게서」，「내릴게요」按語尾規則硬音化讀作「내릴께요」。"
+        },
+        {
+          "id": "transit-12",
+          "order": 12,
+          "situationTag": "地鐵站內・尋找電梯",
+          "korean": "짐이 많아서 엘리베이터가 어디에 있어요?",
+          "pronunciationGuide": "[지미 마나서 엘리베이터가 어디에 이써요]",
+          "romanization": "Jimi manaseo ellibeiteoga eodie isseoyo?",
+          "translation": "我行李很多，請問電梯在哪裡？",
+          "difficultyTags": [
+            "ㅎ 脫落連音",
+            "流音 ㄹ+ㄹ",
+            "連音化"
+          ],
+          "pronunciationAnalysis": "「많아서」發生「ㅎ 脫落＋連音」，雙收音的「ㅎ」不發音、「ㄴ」連向「아」，讀作「마나서」。「엘리베이터」雙「ㄹ」滑順發出「ll」，「짐이」與「있어요」也都要連音。"
+        },
+        {
+          "id": "transit-13",
+          "order": 13,
+          "situationTag": "地鐵站務・詢問末班車",
+          "korean": "서울역 가는 막차가 몇 시에 있어요?",
+          "pronunciationGuide": "[서울력 까는 막차가 몇 씨에 이써요]",
+          "romanization": "Seouryeok ganeun makchaga myeot sie isseoyo?",
+          "translation": "請問往首爾站的末班車幾點有？",
+          "difficultyTags": [
+            "流音 ㄹ+ㄹ",
+            "硬音化",
+            "送氣音 ㅊ"
+          ],
+          "pronunciationAnalysis": "「서울역」為常見複合詞「ㄹ」音化現象，讀成「서울력」；「몇 시」也常令「시」硬音化為「몇 씨에」。「막차」的「차」是強送氣音，需送出明顯氣流。"
+        },
+        {
+          "id": "transit-14",
+          "order": 14,
+          "situationTag": "地鐵站內・物品寄放櫃",
+          "korean": "물품 보관함이 어디에 있나요?",
+          "pronunciationGuide": "[물품 보과나미 어디에 인나요]",
+          "romanization": "Mulpum bogwanhami eodie innayo?",
+          "translation": "請問置物櫃在哪裡？",
+          "difficultyTags": [
+            "ㅎ 脫落連音",
+            "鼻音化 ㅆ(ㄷ)+ㄴ",
+            "閉唇收音 ㅁ"
+          ],
+          "pronunciationAnalysis": "「보관함이」因「ㅎ」在詞中弱化脫落，收音「ㄴ」與「ㅁ」直接往後連音讀作「보과나미」。「물품」的「품」要確實閉雙唇收「ㅁ」，「있나요?」務必鼻音化讀成「인나요?」。"
+        },
+        {
+          "id": "transit-15",
+          "order": 15,
+          "situationTag": "公車車上・詢問剩餘站數",
+          "korean": "시청까지 몇 정거장 남았어요?",
+          "pronunciationGuide": "[시청까지 멷 정거장 나마써요]",
+          "romanization": "Sicheongkkaji myeot jeonggeojang namasseoyo?",
+          "translation": "請問到市廳還剩下幾站？",
+          "difficultyTags": [
+            "緊音 ㄲ",
+            "連音化",
+            "後鼻音 ㅇ"
+          ],
+          "pronunciationAnalysis": "「까지」開頭是緊音「ㄲ」不可送氣；「정거장」注意「정（ng）」和「장（ng）」都是舌根後鼻音；「남았어요?」兩段連音讀成輕快的「나마써요?」。"
+        },
+        {
+          "id": "transit-16",
+          "order": 16,
+          "situationTag": "公車下車・確認刷卡",
+          "korean": "내릴 때도 교통카드를 찍어야 해요?",
+          "pronunciationGuide": "[내릴 때도 교통카드를 찌거야 해요]",
+          "romanization": "Naeril ttaedo gyotongkadeureul jjigeoya haeyo?",
+          "translation": "請問下車的時候也要刷交通卡嗎？",
+          "difficultyTags": [
+            "緊音 ㄸ/ㅉ",
+            "平唇母音 ㅡ",
+            "連音化"
+          ],
+          "pronunciationAnalysis": "句中有兩個緊音「때」與「찍」，喉部都要收緊不送氣；同時「찍어야」收尾「ㄱ」直接連音向「어」念作「찌거야」。「카드」的「드」保持嘴角平展。"
+        },
+        {
+          "id": "transit-17",
+          "order": 17,
+          "situationTag": "計程車・告知目的地",
+          "korean": "기사님, 이 주소로 가 주세요.",
+          "pronunciationGuide": "[기사님, 이 주소로 가 주세요]",
+          "romanization": "Gisanim, i jusoro ga juseyo.",
+          "translation": "司機先生，請載我到這個地址。",
+          "difficultyTags": [
+            "母音 ㅜ/ㅗ 區分",
+            "閉唇收音 ㅁ",
+            "平音 ㅈ"
+          ],
+          "pronunciationAnalysis": "「기사님」結尾「님」雙唇要緊閉發出閉唇「m」。「주소로」連續出現圓唇「ㅜ」與「ㅗ」的切換，注意不要念混，另外「주（ju）」的平音「ㅈ」只需輕微氣流，別用力念成「ㅊ」。"
+        },
+        {
+          "id": "transit-18",
+          "order": 18,
+          "situationTag": "計程車・詢問車程時間",
+          "korean": "여기서 목적지까지 얼마나 걸려요?",
+          "pronunciationGuide": "[여기서 목쩍찌까지 얼마나 걸려요]",
+          "romanization": "Yeogiseo mokjeokjikkaji eolmana geollyeoyo?",
+          "translation": "請問從這裡到目的地大約需要多久？",
+          "difficultyTags": [
+            "雙重硬音化",
+            "流音 ㄹ+ㄹ",
+            "母音 ㅓ"
+          ],
+          "pronunciationAnalysis": "「목적지까지」連續出現「ㄱ+ㅈ」與「ㄱ+ㅈ」硬音化，讀作「목쩍찌까지」。「걸려요?」的雙「ㄹ」須發生流音化讀出滑順的「ll（geol-lyeo-yo）」，「거」保持開口放鬆不嘟嘴。"
+        },
+        {
+          "id": "transit-19",
+          "order": 19,
+          "situationTag": "計程車・詢問交通卡付款",
+          "korean": "티머니로 결제해도 되나요?",
+          "pronunciationGuide": "[티머니로 결쩨해도 되나요]",
+          "romanization": "Timeoniro gyeoljehaedo doenayo?",
+          "translation": "請問可以用 T-money 卡付款嗎？",
+          "difficultyTags": [
+            "硬音化 ㄹ+ㅈ→ㄹ+ㅉ",
+            "複合母音 ㅚ",
+            "送氣音 ㅌ"
+          ],
+          "pronunciationAnalysis": "漢字詞「결제」的「ㄹ」後常產生硬音化讀作「결쩨」。「되나요?」的「되」在口語中也常近於「돼」或微圓後展開，疑問句尾微微上揚；開頭「티」需清晰送氣。"
+        },
+        {
+          "id": "transit-20",
+          "order": 20,
+          "situationTag": "計程車・指定停車位置",
+          "korean": "저 앞 편의점 앞에서 세워 주세요.",
+          "pronunciationGuide": "[저 압 펴늬점 아페서 세워 주세요]",
+          "romanization": "Jeo ap pyeonuijeom apeseo sewo juseyo.",
+          "translation": "請在前面那間便利商店前讓我下車（停車）。",
+          "difficultyTags": [
+            "送氣音 ㅍ 連音",
+            "閉唇收音 ㅍ→ㅂ",
+            "複合母音 ㅢ/ㅝ"
+          ],
+          "pronunciationAnalysis": "兩個「앞」發音截然不同：第一個「앞」在單字尾停頓，收音「ㅍ」只做雙唇閉合止氣（聽似 압）；第二個「앞에서」後方是母音，因此「ㅍ」送氣連音讀成「아페서」。"
         }
       ]
     },
@@ -157,7 +625,7 @@
       "title": "日常基礎社交會話",
       "koreanTitle": "일상 기초 사교 회화",
       "icon": "👋",
-      "subtitle": "涵蓋：初次見面問候、道謝與道歉、詢問電話或 KakaoTalk",
+      "subtitle": "涵蓋：自我介紹、問候致謝、請求複誦與用餐道別禮儀",
       "accentKey": "social",
       "phrases": [
         {
@@ -168,7 +636,11 @@
           "pronunciationGuide": "[처음 뵙께씀니다]",
           "romanization": "Cheoeum boepgetseumnida.",
           "translation": "初次見面，請多指教。",
-          "difficultyTags": ["鼻音化", "硬音化", "複合母音 ㅚ"],
+          "difficultyTags": [
+            "鼻音化",
+            "硬音化",
+            "複合母音 ㅚ"
+          ],
           "pronunciationAnalysis": "「뵙겠습니다」連續發生三次音變：前字閉唇收音「ㅂ」讓後字「겠」硬音化為「껬」；「겠」代表收音「ㄷ」讓「습」硬音化為「씁」；字尾「습+니」因鼻音化讀作「씀니다」（整體讀成 뵙께씀니다）。「처음」尾音「ㅁ」需閉唇收音，「뵙」的「ㅚ」嘴唇先圓再微展。"
         },
         {
@@ -179,7 +651,11 @@
           "pronunciationGuide": "[만나서 반갑씀니다]",
           "romanization": "Mannaseo bangapseumnida.",
           "translation": "很高興認識你。",
-          "difficultyTags": ["鼻音化", "硬音化", "前鼻音 ㄴ"],
+          "difficultyTags": [
+            "鼻音化",
+            "硬音化",
+            "前鼻音 ㄴ"
+          ],
           "pronunciationAnalysis": "「반갑습니다」注意收音「ㅂ」閉唇不送氣，使後字「습」硬音化讀為「씁」，接著「ㅂ+ㄴ」發生鼻音化轉成「ㅁ+ㄴ」，整詞讀成「반갑씀니다」。「만」與「반」的收音「ㄴ」舌尖要確實抵住上齒齦，別混成後鼻音「ng」。"
         },
         {
@@ -190,7 +666,11 @@
           "pronunciationGuide": "[도와주셔서 정말 감사함니다]",
           "romanization": "Dowajusyeoseo jeongmal gamsahamnida.",
           "translation": "非常感謝您的幫忙。",
-          "difficultyTags": ["鼻音化", "收音 ㅇ/ㄹ", "母音 ㅕ/ㅓ"],
+          "difficultyTags": [
+            "鼻音化",
+            "收音 ㅇ/ㄹ",
+            "母音 ㅕ/ㅓ"
+          ],
           "pronunciationAnalysis": "「감사합니다」因「ㅂ+ㄴ」鼻音化讀成「감사함니다」（切忌照字面念出 b）。「정말」需清楚區分「정（ng）」的後鼻音與「말（l）」舌尖貼上齒齦的收尾音；「주셔서」的「셔/서」保持自然橢圓開口，嘴唇不要往前嘟。"
         },
         {
@@ -201,7 +681,11 @@
           "pronunciationGuide": "[느저서 정말 죄송함니다]",
           "romanization": "Neujeoseo jeongmal joesonghamnida.",
           "translation": "真的很抱歉我遲到了。",
-          "difficultyTags": ["連音化", "鼻音化", "平唇母音 ㅡ"],
+          "difficultyTags": [
+            "連音化",
+            "鼻音化",
+            "平唇母音 ㅡ"
+          ],
           "pronunciationAnalysis": "「늦어서」的收音「ㅈ」往後連音至「어」，必須念成清晰的「느저서」，其中開頭「느」嘴角要微拉平（不可嘟唇讀成 nu）。結尾「죄송합니다」開頭「죄」由「ㅗ」滑向扁展、「송」帶後鼻音、「합니」鼻音化為「함니」。"
         },
         {
@@ -212,7 +696,11 @@
           "pronunciationGuide": "[전화번호가 어떠케 되세요]",
           "romanization": "Jeonhwabeonhoga eotteoke doeseyo?",
           "translation": "請問您的電話號碼是多少？",
-          "difficultyTags": ["激音化 ㅎ+ㄱ→ㅋ", "母音 ㅓ/ㅗ 區分", "疑問語調"],
+          "difficultyTags": [
+            "激音化 ㅎ+ㄱ→ㅋ",
+            "母音 ㅓ/ㅗ 區分",
+            "疑問語調"
+          ],
           "pronunciationAnalysis": "「어떻게」發生激音化：收音「ㅎ」與後字「ㄱ」合併送氣，讀成「어떠케」（不可念成 eot-teoh-ge）。「번호」要明顯區分「번（嘴唇放鬆）」與「호（雙唇收圓）」，台灣人常將兩者都念得偏「ㄛ」；句尾「요?」微微上揚。"
         },
         {
@@ -223,8 +711,222 @@
           "pronunciationGuide": "[카카오톡 아이디 알려 주실 쑤 이써요]",
           "romanization": "Kakaotok aidi allyeo jusil su isseoyo?",
           "translation": "可以告訴我你的 KakaoTalk ID 嗎？",
-          "difficultyTags": ["流音 ㄹ+ㄹ", "硬音化", "連音化"],
+          "difficultyTags": [
+            "流音 ㄹ+ㄹ",
+            "硬音化",
+            "連音化"
+          ],
           "pronunciationAnalysis": "「알려」遇雙「ㄹ」組合（流音化），舌尖抵住上齒齦發出連續滑順的「ll」音（allyeo），不要拆成兩個獨立音節。「주실 수」常硬音化讀作「주실 쑤」，「있어요」連音成「이써요」；「톡」字尾「ㄱ」舌根阻塞止氣即可，勿多發母音。"
+        },
+        {
+          "id": "social-7",
+          "order": 7,
+          "situationTag": "自我介紹・說明來自台灣",
+          "korean": "저는 대만에서 왔어요.",
+          "pronunciationGuide": "[저는 대마네서 와써요]",
+          "romanization": "Jeoneun daemaneseo wasseoyo.",
+          "translation": "我是從台灣來的。",
+          "difficultyTags": [
+            "連音化",
+            "緊音 ㅆ",
+            "複合母音 ㅘ"
+          ],
+          "pronunciationAnalysis": "「대만에서」收音「ㄴ」自然連音向「에」，念成「대마네서」；「왔어요」則是「ㅘ」快速滑開後把雙收音「ㅆ」連到「어」，念成乾淨利落的「와써요」。"
+        },
+        {
+          "id": "social-8",
+          "order": 8,
+          "situationTag": "初次見面・禮貌詢問姓名",
+          "korean": "성함이 어떻게 되세요?",
+          "pronunciationGuide": "[성하미 어떠케 되세요]",
+          "romanization": "Seonghami eotteoke doeseyo?",
+          "translation": "請問您怎麼稱呼？（尊稱）",
+          "difficultyTags": [
+            "連音化",
+            "激音化 ㅎ+ㄱ→ㅋ",
+            "後鼻音 ㅇ"
+          ],
+          "pronunciationAnalysis": "「성함」是詢問姓名時非常有禮貌的敬語（比 이름 更客氣），接「이」時口語常輕順連作「성하미」。「어떻게」必發生激音化讀成「어떠케」，注意「성」要發好後鼻音「ng」。"
+        },
+        {
+          "id": "social-9",
+          "order": 9,
+          "situationTag": "久違見面・親切寒暄",
+          "korean": "오랜만이에요! 요즘 잘 지내세요?",
+          "pronunciationGuide": "[오랜마니에요! 요즘 잘 지내세요]",
+          "romanization": "Oraenmanieyo! Yojeum jal jinaeseyo?",
+          "translation": "好久不見！最近過得好嗎？",
+          "difficultyTags": [
+            "連音化",
+            "前鼻音 ㄴ",
+            "收音 ㄹ/ㅁ"
+          ],
+          "pronunciationAnalysis": "「오랜만이에요」連音為「오랜마니에요」，切勿在「만」後面停頓斷開。「요즘」結尾「ㅁ」雙唇輕閉、「잘」的收音「ㄹ」舌尖輕頂上齒齦即可，不要硬念出卷舌「r」。"
+        },
+        {
+          "id": "social-10",
+          "order": 10,
+          "situationTag": "語言交流・請求說慢一點",
+          "korean": "조금만 천천히 말해 주실 수 있어요?",
+          "pronunciationGuide": "[조금만 천처니 마래 주실 쑤 이써요]",
+          "romanization": "Jogeumman cheoncheoni marae jusil su isseoyo?",
+          "translation": "不好意思，可以說慢一點嗎？",
+          "difficultyTags": [
+            "ㅎ 脫落連音",
+            "硬音化",
+            "連音化"
+          ],
+          "pronunciationAnalysis": "對話救急神句！「천천히」在「천」的「ㄴ」遇「ㅎ」時口語常弱化連讀近「천처니」，「말해」也常讀為「마래」。後面「주실 수 있어요?」連帶硬音與連音念作「주실 쑤 이써요?」。"
+        },
+        {
+          "id": "social-11",
+          "order": 11,
+          "situationTag": "語言交流・請求再說一次",
+          "korean": "죄송하지만 다시 한 번 말씀해 주시겠어요?",
+          "pronunciationGuide": "[죄송하지만 다시 한 번 말씀해 주시게써요]",
+          "romanization": "Joesonghajiman dasi han beon malsseumhae jusigesseoyo?",
+          "translation": "不好意思，可以麻煩您再說一次嗎？",
+          "difficultyTags": [
+            "緊音 ㅆ",
+            "收音 ㄹ/ㅁ",
+            "疑問語調"
+          ],
+          "pronunciationAnalysis": "「말씀」是帶有敬意的「說話」，注意開頭收音「ㄹ」接著緊音「씀（ㅆ）」，不要送氣。「주시겠어요?」將「ㅆ」連音至「어」讀成「주시게써요?」，句尾上揚顯得誠懇禮貌。"
+        },
+        {
+          "id": "social-12",
+          "order": 12,
+          "situationTag": "禮貌開口・請教事情",
+          "korean": "실례지만 한 가지 여쭤봐도 될까요?",
+          "pronunciationGuide": "[실례지만 한 가지 여쭤봐도 될까요]",
+          "romanization": "Sillyejiman han gaji yeojjwobwado doelkkayo?",
+          "translation": "不好意思打擾一下，請問可以問您一件事嗎？",
+          "difficultyTags": [
+            "流音 ㄹ+ㄹ",
+            "硬音化 ㄹ+ㄱ→ㄹ+ㄲ",
+            "緊音 ㅉ"
+          ],
+          "pronunciationAnalysis": "「실례」必須將「ㄹ+ㄹ」流音化念作「실례（sil-lye）」（台灣學習者常錯念成 si-rye）。「여쭤봐도」的「쭤」為緊音「ㅉ」接圓唇滑音，「될까요?」的「까요」也要讀成緊音「ㄲ」。"
+        },
+        {
+          "id": "social-13",
+          "order": 13,
+          "situationTag": "真誠感謝・謝謝費心",
+          "korean": "정말 신경 써 주셔서 감사해요.",
+          "pronunciationGuide": "[정말 신경 써 주셔서 감사해요]",
+          "romanization": "Jeongmal singyeong sseo jusyeoseo gamsahaeyo.",
+          "translation": "真的很感謝您這麼費心照顧。",
+          "difficultyTags": [
+            "緊音 ㅆ",
+            "前後鼻音 ㄴ/ㅇ",
+            "母音 ㅓ"
+          ],
+          "pronunciationAnalysis": "「신경」要注意前字「신（n）」舌尖貼齒齦與後字「경（ng）」舌根抬起的切換。「써」為緊音「ㅆ」配合放鬆開口的「ㅓ」，千萬不要嘟嘴念成「쏘（sso）」。"
+        },
+        {
+          "id": "social-14",
+          "order": 14,
+          "situationTag": "謙虛回應・不客氣",
+          "korean": "천만에요, 별말씀을요.",
+          "pronunciationGuide": "[천마네요, 별말쓰믈요]",
+          "romanization": "Cheonmaneyo, byeolmalsseumeullyo.",
+          "translation": "不客氣，哪裡的話。",
+          "difficultyTags": [
+            "雙重連音化",
+            "緊音 ㅆ",
+            "母音 ㅖ"
+          ],
+          "pronunciationAnalysis": "「천만에요」連音成流暢的「천마네요」；「별말씀을요」則將「씀」的「ㅁ」連往「을」讀作「별말쓰믈요」，語尾順接自然微降即可。"
+        },
+        {
+          "id": "social-15",
+          "order": 15,
+          "situationTag": "表達歉意・怕打擾對方",
+          "korean": "바쁘실 텐데 정말 미안해요.",
+          "pronunciationGuide": "[바쁘실 텐데 정말 미아내요]",
+          "romanization": "Bappeusil tende jeongmal mianhaeyo.",
+          "translation": "您應該很忙吧，真是不好意思。",
+          "difficultyTags": [
+            "緊音 ㅃ",
+            "平唇母音 ㅡ",
+            "ㅎ 弱化連音"
+          ],
+          "pronunciationAnalysis": "「바쁘실」的「쁘」結合緊音「ㅃ」與平唇「ㅡ」，保持嘴角微微拉平、絕不嘟嘴。「미안해요」在自然口語中字中「ㅎ」常弱化，與收音「ㄴ」連讀為順口的「미아내요」。"
+        },
+        {
+          "id": "social-16",
+          "order": 16,
+          "situationTag": "貼心安慰・別放在心上",
+          "korean": "괜찮아요, 신경 쓰지 마세요.",
+          "pronunciationGuide": "[괜차나요, 신경 쓰지 마세요]",
+          "romanization": "Gwaenchanayo, singyeong sseuji maseyo.",
+          "translation": "沒關係的，請別放在心上。",
+          "difficultyTags": [
+            "ㅎ 脫落連音",
+            "緊音 ㅆ",
+            "平唇母音 ㅡ"
+          ],
+          "pronunciationAnalysis": "「괜찮아요」是超常用的「ㅎ 脫落＋連音」代表：雙收音「ㄶ」的「ㅎ」省略不讀，「ㄴ」直接連到「아」，讀作「괜차나요」。後面「쓰지」也務必保持緊音與平唇「ㅡ」。"
+        },
+        {
+          "id": "social-17",
+          "order": 17,
+          "situationTag": "交換社群・詢問 IG 帳號",
+          "korean": "인스타그램 하세요? 맞팔해요!",
+          "pronunciationGuide": "[인스타그램 하세요? 마팔해요]",
+          "romanization": "Inseutageuraem haseyo? Matpalhaeyo!",
+          "translation": "請問你有玩 Instagram 嗎？我們互追吧！",
+          "difficultyTags": [
+            "代表收音 ㅈ→ㄷ",
+            "送氣音 ㅍ",
+            "平唇母音 ㅡ"
+          ],
+          "pronunciationAnalysis": "「맞팔（互粉／互追）」開頭「맞」的收音「ㅈ」簡化為止氣「ㄷ」，後面遇到強送氣音「팔（ㅍ）」時口語聽似「마팔」；「스・그」都要維持平唇「ㅡ」別加出「u」音。"
+        },
+        {
+          "id": "social-18",
+          "order": 18,
+          "situationTag": "邀約相聚・確認週末有空",
+          "korean": "이번 주말에 혹시 시간 있어요?",
+          "pronunciationGuide": "[이번 주마레 혹씨 시간 이써요]",
+          "romanization": "Ibeon jumare hoksi sigan isseoyo?",
+          "translation": "請問這週末你有空嗎？",
+          "difficultyTags": [
+            "連音化",
+            "硬音化 ㄱ+ㅅ→ㄱ+ㅆ",
+            "疑問語調"
+          ],
+          "pronunciationAnalysis": "「주말에」收音「ㄹ」往後連成「주마레」；「혹시」因收音「ㄱ」使後字「시」產生硬音化讀為「혹씨」。句尾「있어요?」連音為「이써요?」並帶友善疑問語調。"
+        },
+        {
+          "id": "social-19",
+          "order": 19,
+          "situationTag": "用餐禮儀・感謝美味招待",
+          "korean": "맛있게 잘 먹었습니다!",
+          "pronunciationGuide": "[마시께 잘 머거씀니다]",
+          "romanization": "Masitge jal meogeotseumnida!",
+          "translation": "謝謝招待，我吃得很飽很滿足！",
+          "difficultyTags": [
+            "連音化",
+            "硬音化",
+            "鼻音化 ㅂ+ㄴ→ㅁ+ㄴ"
+          ],
+          "pronunciationAnalysis": "韓國餐桌最常見卻常念錯的一句：「맛있게」需將「ㅅ」連往「있」且令「게」硬音化，自然口語讀為「마시께」；「먹었습니다」則經過連音、硬音與鼻音化讀成「머거씀니다」。"
+        },
+        {
+          "id": "social-20",
+          "order": 20,
+          "situationTag": "道別問候・路上小心",
+          "korean": "오늘 정말 즐거웠어요. 조심히 들어가세요!",
+          "pronunciationGuide": "[오늘 정말 즐거워써요. 조심히 드러가세요]",
+          "romanization": "Oneul jeongmal jeulgeowosseoyo. Josimhi deureogaseyo!",
+          "translation": "今天真的很開心，回去路上小心喔！",
+          "difficultyTags": [
+            "雙重連音化",
+            "複合母音 ㅝ",
+            "緊音 ㅆ"
+          ],
+          "pronunciationAnalysis": "「즐거웠어요」前半注意平唇「즐」、圓唇滑開的「워」，後半雙收音「ㅆ」連音為緊促的「워써요」。「들어가세요」的「들」往後連音讀作「드러가세요」，是韓國人送別必說的貼心話。"
         }
       ]
     },
@@ -233,7 +935,7 @@
       "title": "追星與演唱會常用語",
       "koreanTitle": "덕질 및 콘서트 필수 회화",
       "icon": "🎤",
-      "subtitle": "涵蓋：領取應援物／票券、見面會對偶像告白、請工作人員幫忙拍照",
+      "subtitle": "涵蓋：領票買周邊換小卡、簽售見面會告白、請人拍美照",
       "accentKey": "fandom",
       "phrases": [
         {
@@ -244,7 +946,11 @@
           "pronunciationGuide": "[예매한 티켇 어디에서 바다요]",
           "romanization": "Yemaehan tiket eodieseo badayo?",
           "translation": "請問預購的門票要在哪裡領取？",
-          "difficultyTags": ["連音化", "代表收音 ㅅ→ㄷ", "疑問語調"],
+          "difficultyTags": [
+            "連音化",
+            "代表收音 ㅅ→ㄷ",
+            "疑問語調"
+          ],
           "pronunciationAnalysis": "「받아요」的收音「ㄷ」必須連音到「아」讀成柔順的「바다요」（勿斷開念成 bat-a-yo）。「티켓」的收尾音「ㅅ」在單字結尾會簡化為舌尖止氣的「ㄷ（티켇）」，台灣學習者常多加「스」念成 ticket-seu；「티」與「케」都要送出氣流。"
         },
         {
@@ -255,7 +961,11 @@
           "pronunciationGuide": "[응원 굳쯔 여기서 바들 쑤 이써요]",
           "romanization": "Eungwon gutjeu yeogiseo badeul su isseoyo?",
           "translation": "請問應援周邊是在這裡領取嗎？",
-          "difficultyTags": ["硬音化", "連音化", "平唇母音 ㅡ"],
+          "difficultyTags": [
+            "硬音化",
+            "連音化",
+            "平唇母音 ㅡ"
+          ],
           "pronunciationAnalysis": "「굿즈」因前字代表收音「ㄷ」促使「즈」硬音化讀作「굳쯔」，且「즈（jeu）」務必維持平唇，不要嘟唇念成「豬（ju）」。「받을 수 있어요」連續發生「받을 → 바들」與「있어요 → 이써요」連音，以及「수 → 쑤」硬音化；開頭「응」是平唇「ㅡ」接後鼻音「ng」。"
         },
         {
@@ -266,7 +976,11 @@
           "pronunciationGuide": "[항상 응원하고 이써요. 정말 사랑해요]",
           "romanization": "Hangsang eungwonhago isseoyo. Jeongmal saranghaeyo!",
           "translation": "我一直都在為你應援，真的很愛你！",
-          "difficultyTags": ["連音化", "前後鼻音 ㅇ/ㄴ", "緊音 ㅆ"],
+          "difficultyTags": [
+            "連音化",
+            "前後鼻音 ㅇ/ㄴ",
+            "緊音 ㅆ"
+          ],
           "pronunciationAnalysis": "「있어요」務必連音成緊促有力的「이써요」。這句密集出現前後鼻音切換：「항상・응・정・랑」皆為舌根後鼻音「ng」，「원」則是舌尖前鼻音「n」，「말」則是舌尖抵上齒齦的「l」，念準收尾音會讓韓語聽起來特別道地溫柔。"
         },
         {
@@ -277,7 +991,11 @@
           "pronunciationGuide": "[오늘 무대 너무 머시써써요]",
           "romanization": "Oneul mudae neomu meosisseosseoyo!",
           "translation": "今天的舞台真的太帥了！",
-          "difficultyTags": ["雙重連音化", "緊音 ㅆ", "母音 ㅓ/ㅜ 區分"],
+          "difficultyTags": [
+            "雙重連音化",
+            "緊音 ㅆ",
+            "母音 ㅓ/ㅜ 區分"
+          ],
           "pronunciationAnalysis": "「멋있었어요」連續三字連音：「멋」的「ㅅ」連向「있」成「시」，「있」的「ㅆ」連向「었」成「써」，「었」再連向「어」成「써」，整詞一口氣念作「머시써써요」。注意「오늘」先圓唇「오」再平唇「늘」，「너무」先放鬆「너」再嘟圓「무」。"
         },
         {
@@ -288,7 +1006,11 @@
           "pronunciationGuide": "[죄송한데 사진 좀 찌거 주실 쑤 이써요]",
           "romanization": "Joesonghande sajin jom jjigeo jusil su isseoyo?",
           "translation": "不好意思，可以幫我拍張照嗎？",
-          "difficultyTags": ["連音化", "硬音化", "緊音 ㅉ"],
+          "difficultyTags": [
+            "連音化",
+            "硬音化",
+            "緊音 ㅉ"
+          ],
           "pronunciationAnalysis": "「찍어」開頭「ㅉ」喉部緊繃不送氣，收音「ㄱ」直接連向「어」濁化成「찌거」（注意別念成送氣的 chi-geo）。「좀」結尾雙唇需輕閉帶出「m」鼻音，「주실 수」硬音化為「주실 쑤」，句尾「있어요?」連音為「이써요?」並上揚。"
         },
         {
@@ -299,8 +1021,222 @@
           "pronunciationGuide": "[한 장만 더 찌거 주실래요]",
           "romanization": "Han jangman deo jjigeo jusillaeyo?",
           "translation": "可以再幫我多拍一張嗎？",
-          "difficultyTags": ["流音 ㄹ+ㄹ", "連音化", "前後鼻音 ㄴ/ㅇ"],
+          "difficultyTags": [
+            "流音 ㄹ+ㄹ",
+            "連音化",
+            "前後鼻音 ㄴ/ㅇ"
+          ],
           "pronunciationAnalysis": "「한（han）장（jang）만（man）」接連切換前鼻音「ㄴ」與後鼻音「ㅇ」，台灣學習者常全部混成同一個鼻音，念慢一點區分舌尖頂齒齦與舌根抬起即可改善。「주실래요?」的雙「ㄹ」讀作滑順的「ll」，「더」雙唇放鬆、不要嘟唇念成「都」。"
+        },
+        {
+          "id": "fandom-7",
+          "order": 7,
+          "situationTag": "驗票入場・確認座位區域",
+          "korean": "제 좌석이 어느 구역인지 알 수 있을까요?",
+          "pronunciationGuide": "[제 좌서기 어느 구여긴지 알 쑤 이쓸까요]",
+          "romanization": "Je jwaseogi eoneu guyeoginji al ssu isseulkkayo?",
+          "translation": "請問可以知道我的座位在哪一區嗎？",
+          "difficultyTags": [
+            "雙重連音化",
+            "硬音化",
+            "複合母音 ㅘ"
+          ],
+          "pronunciationAnalysis": "這句有多處連音與硬音同時出現：「좌석이」連作「좌서기」、「구역인지」連作「구여긴지」；後面「알 수」與「있을까요」皆因收音「ㄹ」造成硬音化，讀作「알 쑤 이쓸까요?」。"
+        },
+        {
+          "id": "fandom-8",
+          "order": 8,
+          "situationTag": "領票驗證・出示護照與明細",
+          "korean": "여권하고 예매 내역서 여기 있어요.",
+          "pronunciationGuide": "[여꿘하고 예매 내역써 여기 이써요]",
+          "romanization": "Yeogwonhago yemae naeyeokseo yeogi isseoyo.",
+          "translation": "護照和購票明細在這裡。",
+          "difficultyTags": [
+            "雙重硬音化",
+            "連音化",
+            "複合母音 ㅝ"
+          ],
+          "pronunciationAnalysis": "「여권」口語常將第二字緊音化讀為「여꿘」，「내역서」也因收音「ㄱ」令「서」硬音化為「써（내역써）」。結尾「있어요」連音為「이써요」。"
+        },
+        {
+          "id": "fandom-9",
+          "order": 9,
+          "situationTag": "周邊販賣部・買手燈與電池",
+          "korean": "응원봉이랑 건전지도 같이 팔아요?",
+          "pronunciationGuide": "[응원봉이랑 건전지도 가치 파라요]",
+          "romanization": "Eungwonbongirang geonjeonjido gachi parayo?",
+          "translation": "請問手燈和電池也有一起販售嗎？",
+          "difficultyTags": [
+            "口蓋音化 ㅌ+이→치",
+            "送氣音 ㅍ 連音",
+            "前後鼻音 ㅇ/ㄴ"
+          ],
+          "pronunciationAnalysis": "「같이」發生必學「口蓋音化」：收音「ㅌ」遇後字「이」必須讀成「치（가치）」，切忌照字面念 gat-i。「팔아요?」將「ㄹ」連向「아」念成「파라요?」，開頭「응원봉」注意「응・봉（ng）」與「원（n）」。"
+        },
+        {
+          "id": "fandom-10",
+          "order": 10,
+          "situationTag": "周邊攤位・詢問隨機小卡",
+          "korean": "랜덤 포토카드 아직 안 품절됐나요?",
+          "pronunciationGuide": "[랜덤 포토카드 아직 안 품절댄나요]",
+          "romanization": "Raendeom potokadeu ajik an pumjeoldwaennayo?",
+          "translation": "請問隨機小卡還沒賣完（售罄）嗎？",
+          "difficultyTags": [
+            "鼻音化 ㅆ(ㄷ)+ㄴ",
+            "平唇母音 ㅡ",
+            "送氣音 ㅍ/ㅌ/ㅋ"
+          ],
+          "pronunciationAnalysis": "「포토카드」密集練習送氣音「ㅍ/ㅌ/ㅋ」搭配不同母音，特別是結尾「드」保持嘴角平展不嘟唇。「품절됐나요?」尾音「ㅆ(ㄷ)」遇「ㄴ」必發生鼻音化讀成「댄나요?」。"
+        },
+        {
+          "id": "fandom-11",
+          "order": 11,
+          "situationTag": "場外交流・交換偶像小卡",
+          "korean": "혹시 이 멤버 포카랑 교환하실래요?",
+          "pronunciationGuide": "[혹씨 이 멤버 포카랑 교화나실래요]",
+          "romanization": "Hoksi i membeo pokarang gyohwanhasillaeyo?",
+          "translation": "請問你願意跟我換這位成員的小卡嗎？",
+          "difficultyTags": [
+            "硬音化 ㄱ+ㅅ→ㄱ+ㅆ",
+            "ㅎ 弱化連音",
+            "流音 ㄹ+ㄹ"
+          ],
+          "pronunciationAnalysis": "粉絲界簡稱小卡為「포카（포토카드 縮寫）」。「혹시」硬音化讀「혹씨」，「교환하실래요?」的字中「ㅎ」弱化連音加上雙「ㄹ」流音化，口語直接流暢念作「교화나실래요?」。"
+        },
+        {
+          "id": "fandom-12",
+          "order": 12,
+          "situationTag": "場外應援・分享自製應援物",
+          "korean": "제가 만든 작은 선물이에요. 예쁘게 받아 주세요!",
+          "pronunciationGuide": "[제가 만든 자근 선무리에요. 예쁘게 바다 주세요]",
+          "romanization": "Jega mandeun jageun seonmurieyo. Yeppeuge bada juseyo!",
+          "translation": "這是我自己做的小禮物，請收下！",
+          "difficultyTags": [
+            "連音化",
+            "緊音 ㅃ",
+            "平唇母音 ㅡ"
+          ],
+          "pronunciationAnalysis": "「작은 선물이에요」連續兩組連音，念成「자근 선무리에요」。「예쁘게」中的「쁘」要用力緊閉後平唇發出「p」音不送氣，「받아」連音成「바다」。"
+        },
+        {
+          "id": "fandom-13",
+          "order": 13,
+          "situationTag": "見面會・跨海應援自我介紹",
+          "korean": "멀리 대만에서 보러 왔어요!",
+          "pronunciationGuide": "[멀리 대마네서 보러 와써요]",
+          "romanization": "Meolli daemaneseo boreo wasseoyo!",
+          "translation": "我從遙遠的台灣來看你了！",
+          "difficultyTags": [
+            "流音 ㄹ+ㄹ",
+            "連音化",
+            "緊音 ㅆ"
+          ],
+          "pronunciationAnalysis": "簽售或擊掌會超能吸引偶像注意的一句！「멀리」要清楚做出「ㄹ+ㄹ」流音化「ll」，「대만에서」連音為「대마네서」，「왔어요」緊音連讀成「와써요」。"
+        },
+        {
+          "id": "fandom-14",
+          "order": 14,
+          "situationTag": "見面會・請求比臉頰愛心",
+          "korean": "혹시 볼하트 포즈 한 번만 해 주실 수 있어요?",
+          "pronunciationGuide": "[혹씨 볼하트 포즈 한 번만 해 주실 쑤 이써요]",
+          "romanization": "Hoksi bolhateu pojeu han beonman hae jusil su isseoyo?",
+          "translation": "請問可以對我比一次臉頰愛心嗎？",
+          "difficultyTags": [
+            "硬音化",
+            "平唇母音 ㅡ",
+            "疑問語調"
+          ],
+          "pronunciationAnalysis": "追星最實用韓式外來語：「볼하트（臉頰愛心）」的「트」與「포즈」的「즈」皆須保持平唇「ㅡ」，不要念成「兔（tu）」或「豬（ju）」。「혹시」與「주실 수」皆須硬音化。"
+        },
+        {
+          "id": "fandom-15",
+          "order": 15,
+          "situationTag": "簽售會・請求寫上名字",
+          "korean": "여기에 제 이름도 같이 적어 주실 수 있나요?",
+          "pronunciationGuide": "[여기에 제 이름도 가치 저거 주실 쑤 인나요]",
+          "romanization": "Yeogie je ireumdo gachi jeogeo jusil su innayo?",
+          "translation": "請問可以在這裡也幫我寫上我的名字嗎？",
+          "difficultyTags": [
+            "口蓋音化",
+            "連音化",
+            "鼻音化 ㅆ(ㄷ)+ㄴ"
+          ],
+          "pronunciationAnalysis": "同時包含三個核心發音規則：「같이」口蓋音化為「가치」、「적어」收音「ㄱ」連音為濁音「저거」、「있나요?」鼻音化為「인나요?」。另外「이름」先平唇「으」再閉雙唇「ㅁ」。"
+        },
+        {
+          "id": "fandom-16",
+          "order": 16,
+          "situationTag": "見面會・告白能量來源",
+          "korean": "언제나 큰 힘이 되어 줘서 정말 고마워요.",
+          "pronunciationGuide": "[언제나 큰 히미 되어 줘서 정말 고마워요]",
+          "romanization": "Eonjena keun himi doeeo jwoseo jeongmal gomawoyo.",
+          "translation": "謝謝你總是成為我很大的力量，真的很感謝你。",
+          "difficultyTags": [
+            "連音化",
+            "複合母音 ㅝ/ㅚ",
+            "平唇母音 ㅡ"
+          ],
+          "pronunciationAnalysis": "「힘이」將閉唇「ㅁ」連向「이」讀作「히미」，「고마워요」的「워」需雙唇先圓再打開滑向「ㅓ」。「큰」以強送氣音「ㅋ」搭配平唇「ㅡ」收「ㄴ」音，切勿嘟嘴。"
+        },
+        {
+          "id": "fandom-17",
+          "order": 17,
+          "situationTag": "見面會・叮嚀保重身體",
+          "korean": "바빠도 밥 꼭 챙겨 먹고 건강하세요!",
+          "pronunciationGuide": "[바빠도 밥 꼭 챙겨 먹꼬 건강하세요]",
+          "romanization": "Bappado bap kkok chaenggyeo meokgo geonganghaseyo!",
+          "translation": "就算再忙也一定要好好吃飯、保重身體喔！",
+          "difficultyTags": [
+            "硬音化 ㄱ+ㄱ→ㄱ+ㄲ",
+            "緊音 ㅃ/ㄲ",
+            "閉唇收音 ㅂ"
+          ],
+          "pronunciationAnalysis": "「밥」開頭與收尾都是雙唇音「ㅂ」，尾音閉唇停住即可；「꼭」與「바빠도」皆出現緊音且收音乾淨不拖泥帶水；「먹고」受收音「ㄱ」影響硬音化讀為「먹꼬」。"
+        },
+        {
+          "id": "fandom-18",
+          "order": 18,
+          "situationTag": "場館設施・詢問場內洗手間",
+          "korean": "공연장 안에도 화장실이 있나요?",
+          "pronunciationGuide": "[공연장 아네도 화장시리 인나요]",
+          "romanization": "Gongyeonjang anedo hwajangsiri innayo?",
+          "translation": "請問演唱會場館裡面也有洗手間嗎？",
+          "difficultyTags": [
+            "雙重連音化",
+            "鼻音化 ㅆ(ㄷ)+ㄴ",
+            "後鼻音 ㅇ"
+          ],
+          "pronunciationAnalysis": "「안에도」連音成「아네도」，「화장실이」將「실」的收尾「ㄹ」連至「이」念成彈舌「화장시리」（勿頓斷）；「공연장」的前後「ㅇ」收音都要保持清晰後鼻音。"
+        },
+        {
+          "id": "fandom-19",
+          "order": 19,
+          "situationTag": "場內打卡・請拍直式全身照",
+          "korean": "세로로 전신 나오게 찍어 주실 수 있어요?",
+          "pronunciationGuide": "[세로로 전신 나오게 찌거 주실 쑤 이써요]",
+          "romanization": "Seroro jeonsin naoge jjigeo jusil su isseoyo?",
+          "translation": "請問可以幫我直拍並拍到全身嗎？",
+          "difficultyTags": [
+            "緊音 ㅉ",
+            "連音化",
+            "硬音化"
+          ],
+          "pronunciationAnalysis": "「세로」為直式構圖（橫式是 가로），注意母音「세（e）」與圓唇「로（o）」的反覆。「찍어」與「있어요」連音，「주실 수」硬音化為「주실 쑤」。"
+        },
+        {
+          "id": "fandom-20",
+          "order": 20,
+          "situationTag": "散場離別・感謝難忘回憶",
+          "korean": "잊지 못할 행복한 추억을 만들어 줘서 고마워요.",
+          "pronunciationGuide": "[읻찌 모탈 행보칸 추어글 만드러 줘서 고마워요]",
+          "romanization": "Itji motal haengbokan chueogeul mandeureo jwoseo gomawoyo.",
+          "translation": "謝謝你幫我創造了難忘又幸福的回憶。",
+          "difficultyTags": [
+            "激音化 ㅌ+ㅎ→ㅌ / ㄱ+ㅎ→ㅋ",
+            "硬音化",
+            "連音化"
+          ],
+          "pronunciationAnalysis": "這句練好發音立刻像母語者：「잊지」硬音化為「읻찌」、「못할」因「ㄷ+ㅎ」送氣讀為「모탈」、「행복한」因「ㄱ+ㅎ」讀成「행보칸」，加上「추억을 → 추어글」與「만들어 → 만드러」連音，情感滿滿！"
         }
       ]
     },
@@ -309,7 +1245,7 @@
       "title": "韓國旅遊購物與餐廳會話",
       "koreanTitle": "한국 쇼핑 및 식당 회화",
       "icon": "🛍️",
-      "subtitle": "涵蓋：餐廳點餐與確認是否辣、服飾店試穿詢價、結帳刷卡與退稅",
+      "subtitle": "涵蓋：餐廳點餐客製與打包、服飾美妝試用詢價、分開結帳與退稅",
       "accentKey": "shopping",
       "phrases": [
         {
@@ -320,7 +1256,11 @@
           "pronunciationGuide": "[여기 추천 메뉴가 뭐예요]",
           "romanization": "Yeogi chucheon menyuga mwoyeyo?",
           "translation": "請問這裡的推薦餐點是什麼？",
-          "difficultyTags": ["送氣音 ㅊ", "複合母音 ㅝ", "疑問語調"],
+          "difficultyTags": [
+            "送氣音 ㅊ",
+            "複合母音 ㅝ",
+            "疑問語調"
+          ],
           "pronunciationAnalysis": "「추천」兩個字都是強送氣音「ㅊ」，需送出明顯氣流；第一字「추」圓唇、第二字「천」放鬆不圓唇並以「ㄴ」收尾。「뭐예요」的「뭐（mwo）」雙唇先閉出「m」並嘟圓準備「ㅜ」，隨即張開滑向「ㅓ」，避免念成「摸（mo）」。"
         },
         {
@@ -331,7 +1271,11 @@
           "pronunciationGuide": "[이거 마니 매워요? 안 맵께 해 주세요]",
           "romanization": "Igeo mani maewoyo? An maepge hae juseyo.",
           "translation": "這個會很辣嗎？請幫我做不辣的。",
-          "difficultyTags": ["ㅎ 脫落連音", "硬音化 ㅂ+ㄱ→ㅂ+ㄲ", "複合母音 ㅝ"],
+          "difficultyTags": [
+            "ㅎ 脫落連音",
+            "硬音化 ㅂ+ㄱ→ㅂ+ㄲ",
+            "複合母音 ㅝ"
+          ],
           "pronunciationAnalysis": "「많이」是非常高頻的「ㅎ 脫落＋連音」：雙收音中的「ㅎ」不發音，「ㄴ」直接連到「이」讀成「마니」（不可念成 man-hi）。「맵게」的「ㅂ」先閉唇止氣，同時使「게」硬音化為「께」，讀作「맵께」；「매워요」注意「매（開口較寬）」與「워（圓唇滑開）」的嘴型轉換。"
         },
         {
@@ -342,7 +1286,11 @@
           "pronunciationGuide": "[이거 이버 봐도 돼요]",
           "romanization": "Igeo ibeo bwado dwaeyo?",
           "translation": "請問這件可以試穿嗎？",
-          "difficultyTags": ["連音化", "複合母音 ㅘ/ㅙ", "疑問語調"],
+          "difficultyTags": [
+            "連音化",
+            "複合母音 ㅘ/ㅙ",
+            "疑問語調"
+          ],
           "pronunciationAnalysis": "「입어」必須將收音「ㅂ」連音到「어」讀成柔和的「이버」（詞中濁化為 b 音，而非斷開念 ip-eo）。「봐도（bwa-do）」與「돼요（dwae-yo）」皆包含圓唇滑音，發「봐」和「돼」時雙唇先收小圓再往外打開，語尾自然上揚呈詢問語氣。"
         },
         {
@@ -353,7 +1301,11 @@
           "pronunciationGuide": "[더 큰 사이즈 이써요? 얼마예요]",
           "romanization": "Deo keun saijeu isseoyo? Eolmayeyo?",
           "translation": "請問有更大一號的尺碼嗎？多少錢呢？",
-          "difficultyTags": ["連音化", "平唇母音 ㅡ", "收音 ㄹ"],
+          "difficultyTags": [
+            "連音化",
+            "平唇母音 ㅡ",
+            "收音 ㄹ"
+          ],
           "pronunciationAnalysis": "「큰（keun）」送氣音「ㅋ」搭配平唇「ㅡ」與前鼻音「ㄴ」，台灣人常容易嘟嘴念成「kun」；「사이즈」字尾「즈（jeu）」同樣保持平唇，不可念成「豬」。「있어요」連音為「이써요」，「얼마예요」的「얼」舌尖要貼上齒齦收「ㄹ」音。"
         },
         {
@@ -364,7 +1316,11 @@
           "pronunciationGuide": "[카드로 결쩨할께요]",
           "romanization": "Kadeuro gyeoljehalgeyo.",
           "translation": "我要用信用卡結帳。",
-          "difficultyTags": ["雙重硬音化", "平唇母音 ㅡ", "收音 ㄹ"],
+          "difficultyTags": [
+            "雙重硬音化",
+            "平唇母音 ㅡ",
+            "收音 ㄹ"
+          ],
           "pronunciationAnalysis": "「결제할게요」出現兩處硬音化：漢字詞收音「ㄹ」後接「ㅈ」常硬音化使「결제」讀成「결쩨」，語尾「-ㄹ게요」也規定將「게」讀為緊音「께（할께요）」。「카드」的「드」保持嘴角平展不嘟唇，別念成「卡都」。"
         },
         {
@@ -375,8 +1331,222 @@
           "pronunciationGuide": "[즉씨 환급 바들 쑤 인나요]",
           "romanization": "Jeuksi hwangeup badeul su innayo?",
           "translation": "請問這裡可以辦理現場即時退稅嗎？",
-          "difficultyTags": ["鼻音化", "硬音化", "連音化"],
+          "difficultyTags": [
+            "鼻音化",
+            "硬音化",
+            "連音化"
+          ],
           "pronunciationAnalysis": "「즉시」的「ㄱ」使「시」硬音化為「씨（즉씨）」，其中「즉」以平唇「ㅡ」配舌根止氣「ㄱ」。「환급」字尾「ㅂ」需閉唇不送氣；「받을 수」連音兼硬音化為「바들 쑤」；「있나요?」因「ㅆ(ㄷ)+ㄴ」鼻音化讀成「인나요?」。"
+        },
+        {
+          "id": "shopping-7",
+          "order": 7,
+          "situationTag": "餐廳候位・告知人數與座位",
+          "korean": "두 명이에요. 창가 자리 있어요?",
+          "pronunciationGuide": "[두 명이에요. 창가 자리 이써요]",
+          "romanization": "Du myeongieyo. Changga jari isseoyo?",
+          "translation": "我們兩位，請問有靠窗的位子嗎？",
+          "difficultyTags": [
+            "後鼻音收音 ㅇ",
+            "連音化",
+            "疑問語調"
+          ],
+          "pronunciationAnalysis": "「두 명이에요」注意「명（myeong）」字尾的「ㅇ」有實際後鼻音音值，不會直接連音成「며니」，要先確實發出鼻音「ng」再接「이에요」。「있어요?」連音為「이써요?」並語尾上揚。"
+        },
+        {
+          "id": "shopping-8",
+          "order": 8,
+          "situationTag": "獨旅用餐・確認一人點餐",
+          "korean": "혼자 왔는데 일인분도 주문 가능해요?",
+          "pronunciationGuide": "[혼자 완는데 이린분도 주문 가능해요]",
+          "romanization": "Honja wanneunde irinbundo jumun ganeunghaeyo?",
+          "translation": "我是一個人來的，請問也可以只點一人份嗎？",
+          "difficultyTags": [
+            "鼻音化 ㅆ(ㄷ)+ㄴ",
+            "連音化",
+            "平唇母音 ㅡ"
+          ],
+          "pronunciationAnalysis": "韓國獨旅必問神句！「왔는데」因「ㅆ(ㄷ)+ㄴ」鼻音化讀成「완는데」；「일인분도」將前字「ㄹ」連向「인」念為順暢的「이린분도」（切勿斷成 il-in-bun）。「능」維持平唇「ㅡ」配後鼻音。"
+        },
+        {
+          "id": "shopping-9",
+          "order": 9,
+          "situationTag": "客製點餐・不加香菜與蔥",
+          "korean": "고수랑 파는 빼고 만들어 주세요.",
+          "pronunciationGuide": "[고수랑 파는 빼고 만드러 주세요]",
+          "romanization": "Gosurang paneun ppaego mandeureo juseyo.",
+          "translation": "香菜和蔥請不要加（幫我拿掉再做）。",
+          "difficultyTags": [
+            "緊音 ㅃ",
+            "送氣音 ㅍ",
+            "連音化"
+          ],
+          "pronunciationAnalysis": "「파（蔥）」需要強送氣、「빼고（拿掉／不加）」則是緊音「ㅃ」完全不送氣，對比念準超實用！「만들어」收尾音「ㄹ」連向「어」讀成柔和的「만드러」。"
+        },
+        {
+          "id": "shopping-10",
+          "order": 10,
+          "situationTag": "餐廳服務・請求續水與小菜",
+          "korean": "물하고 반찬 좀 더 주실 수 있어요?",
+          "pronunciationGuide": "[무라고 반찬 좀 더 주실 쑤 이써요]",
+          "romanization": "Murago banchan jom deo jusil su isseoyo?",
+          "translation": "請問可以再給我們一點水和免費小菜嗎？",
+          "difficultyTags": [
+            "ㅎ 弱化連音",
+            "硬音化",
+            "閉唇收音 ㅁ"
+          ],
+          "pronunciationAnalysis": "「물하고」口語中「ㅎ」弱化，直接將「물」的「ㄹ」連向「아」讀作接近「무라고」。「좀」雙唇輕閉、「더」嘴唇放鬆不嘟、「주실 수 있어요?」硬音加連音念作「주실 쑤 이써요?」。"
+        },
+        {
+          "id": "shopping-11",
+          "order": 11,
+          "situationTag": "咖啡廳・外帶冰美式",
+          "korean": "아이스 아메리카노 한 잔 테이크아웃 해 주세요.",
+          "pronunciationGuide": "[아이스 아메리카노 한 잔 테이끄아욷 해 주세요]",
+          "romanization": "Aiseu amerikano han jan teikeuaut hae juseyo.",
+          "translation": "我要外帶一杯冰美式咖啡。",
+          "difficultyTags": [
+            "平唇母音 ㅡ",
+            "代表收音 ㅌ→ㄷ",
+            "送氣音 ㅋ/ㅌ"
+          ],
+          "pronunciationAnalysis": "韓國咖啡廳國民點餐句！「아이스」尾音「스」保持平唇、「테이크아웃」結尾「웃」的收音「ㅅ」只做舌尖止氣（近似 아욷），避免念出英文 t 氣流；「테・아」送氣，「카」清脆。"
+        },
+        {
+          "id": "shopping-12",
+          "order": 12,
+          "situationTag": "餐廳用餐・剩餘餐點打包",
+          "korean": "남은 음식은 포장할 수 있나요?",
+          "pronunciationGuide": "[나믄 음시근 포장할 쑤 인나요]",
+          "romanization": "Nameun eumsigeun pojanghal su innayo?",
+          "translation": "請問沒吃完的食物可以打包外帶嗎？",
+          "difficultyTags": [
+            "雙重連音化",
+            "平唇母音 ㅡ",
+            "鼻音化 ㅆ(ㄷ)+ㄴ"
+          ],
+          "pronunciationAnalysis": "「남은」連音為「나믄」、「음식은」連續兩處音節轉折，其中「음」先平唇「ㅡ」閉唇收「ㅁ」，「식은」連音讀成「시근」。句尾「할 수 있나요?」硬音＋鼻音化讀成「할 쑤 인나요?」。"
+        },
+        {
+          "id": "shopping-13",
+          "order": 13,
+          "situationTag": "服飾店・詢問其他顏色",
+          "korean": "이 옷 다른 색깔도 있나요?",
+          "pronunciationGuide": "[이옫 다른 색깔도 인나요]",
+          "romanization": "I ot dareun saekkkaldo innayo?",
+          "translation": "請問這件衣服還有其他顏色嗎？",
+          "difficultyTags": [
+            "代表收音 ㅅ→ㄷ",
+            "緊音 ㄲ",
+            "鼻音化 ㅆ(ㄷ)+ㄴ"
+          ],
+          "pronunciationAnalysis": "「옷」單字結尾時收音「ㅅ」轉為舌尖止氣的「ㄷ（옫）」，後面遇到子音「다」所以不連音。「색깔」是「ㄱ」後接緊音「ㄲ」，「있나요?」鼻音化為「인나요?」。"
+        },
+        {
+          "id": "shopping-14",
+          "order": 14,
+          "situationTag": "服飾店・請拿全新品",
+          "korean": "전시 상품 말고 새 걸로 주실 수 있어요?",
+          "pronunciationGuide": "[전시 상품 말고 새 걸로 주실 쑤 이써요]",
+          "romanization": "Jeonsi sangpum malgo sae geollo jusil su isseoyo?",
+          "translation": "不要展示品，請問可以給我全新的一件嗎？",
+          "difficultyTags": [
+            "流音 ㄹ+ㄹ",
+            "閉唇收音 ㅁ",
+            "硬音化"
+          ],
+          "pronunciationAnalysis": "「걸로」務必發出雙「ㄹ」流音化「ll（geol-lo）」；「상품」前鼻音「ㅇ」要和結尾閉唇「ㅁ」清楚區分；「주실 수 있어요?」記得硬音加上連音讀成「주실 쑤 이써요?」。"
+        },
+        {
+          "id": "shopping-15",
+          "order": 15,
+          "situationTag": "美妝店・詢問熱賣商品",
+          "korean": "요즘 여기서 제일 잘 나가는 제품이 뭐예요?",
+          "pronunciationGuide": "[요즘 여기서 제일 잘 나가는 제푸미 뭐예요]",
+          "romanization": "Yojeum yeogiseo jeil jal naganeun jepumi mwoyeyo?",
+          "translation": "請問最近這裡賣得最好的產品是什麼？",
+          "difficultyTags": [
+            "連音化",
+            "送氣音 ㅍ",
+            "複合母音 ㅝ"
+          ],
+          "pronunciationAnalysis": "「제품이」將收音「ㅍ」送氣連音向「이」，讀作「제푸미」。「제일」的「일」輕貼齒齦收「ㄹ」，「뭐예요?」則雙唇先聚圓收「ㅁ」再滑開，語尾上揚。"
+        },
+        {
+          "id": "shopping-16",
+          "order": 16,
+          "situationTag": "美妝店・詢問試用包與贈品",
+          "korean": "혹시 샘플도 조금 챙겨 주실 수 있어요?",
+          "pronunciationGuide": "[혹씨 샘플도 조금 챙겨 주실 쑤 이써요]",
+          "romanization": "Hoksi saempeuldo jogeum chaenggyeo jusil su isseoyo?",
+          "translation": "請問可以也給我一點試用包嗎？",
+          "difficultyTags": [
+            "硬音化",
+            "閉唇收音 ㅁ",
+            "送氣音 ㅊ"
+          ],
+          "pronunciationAnalysis": "「샘플」在韓國美妝店指贈送的小試用包，注意「샘」結束要閉雙唇、「플」保持平唇「ㅡ」接「ㄹ」；「혹시」硬音讀「혹씨」，「챙겨」要送出明顯氣流「ㅊ」。"
+        },
+        {
+          "id": "shopping-17",
+          "order": 17,
+          "situationTag": "逛街店內・表示先自己逛逛",
+          "korean": "잠시만요, 먼저 좀 둘러볼게요.",
+          "pronunciationGuide": "[잠시만뇨, 먼저 좀 둘러볼께요]",
+          "romanization": "Jamsimannyo, meonjeo jom dulleobolgeyo.",
+          "translation": "不好意思，我先自己逛看看喔。",
+          "difficultyTags": [
+            "流音 ㄹ+ㄹ",
+            "硬音化 ㄹ+ㄱ→ㄹ+ㄲ",
+            "口語鼻音連讀"
+          ],
+          "pronunciationAnalysis": "店員跟在旁邊想推銷時最溫和有禮的說法！「둘러볼게요」先做好「ㄹ+ㄹ」流音化（ll），再依「-ㄹ게요」語尾規則將最後「게」硬音化為「께（둘러볼께요）」。"
+        },
+        {
+          "id": "shopping-18",
+          "order": 18,
+          "situationTag": "結帳櫃檯・購買購物袋",
+          "korean": "죄송한데 봉투 하나만 주실 수 있어요?",
+          "pronunciationGuide": "[죄송한데 봉투 하나만 주실 쑤 이써요]",
+          "romanization": "Joesonghande bongtu hanaman jusil su isseoyo?",
+          "translation": "不好意思，請問可以給我一個袋子嗎？",
+          "difficultyTags": [
+            "送氣音 ㅌ",
+            "硬音化",
+            "連音化"
+          ],
+          "pronunciationAnalysis": "「봉투」的「봉」帶有後鼻音「ng」，緊接著強送氣音圓唇的「투」；「하나만」注意兩次「ㄴ」收音都不要變成後鼻音，「주실 수 있어요?」連帶念出硬音與連音。"
+        },
+        {
+          "id": "shopping-19",
+          "order": 19,
+          "situationTag": "結帳櫃檯・索取紙本收據",
+          "korean": "영수증 좀 챙겨 주세요.",
+          "pronunciationGuide": "[영수증 좀 챙겨 주세요]",
+          "romanization": "Yeongsujeung jom chaenggyeo juseyo.",
+          "translation": "請幫我保留（附上）收據。",
+          "difficultyTags": [
+            "後鼻音 ㅇ",
+            "平唇母音 ㅡ",
+            "閉唇收音 ㅁ"
+          ],
+          "pronunciationAnalysis": "「영수증」三字同時鍛鍊不同母音與後鼻音：「영」自然開口後鼻音、「수」圓唇嘟嘴、「증」則嘴角拉平發「ㅡ」再收舌根「ng」。「좀」別忘了輕閉雙唇。"
+        },
+        {
+          "id": "shopping-20",
+          "order": 20,
+          "situationTag": "餐廳結帳・分開付帳",
+          "korean": "혹시 따로 계산해도 될까요?",
+          "pronunciationGuide": "[혹씨 따로 게사내도 될까요]",
+          "romanization": "Hoksi ttaro gyesanhaedo doelkkayo?",
+          "translation": "請問我們可以分開結帳嗎？",
+          "difficultyTags": [
+            "緊音 ㄸ/ㄲ",
+            "ㅎ 弱化連音",
+            "硬音化"
+          ],
+          "pronunciationAnalysis": "「따로」開頭為緊音「ㄸ」，完全不送氣；「계산해도」口語常讀作「게사내도」（ㅎ 弱化並以「ㄴ」連音）；結尾「될까요?」也一定要緊音化讀出「까（doel-kkayo?）」。"
         }
       ]
     }
