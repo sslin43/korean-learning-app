@@ -1,0 +1,268 @@
+/* Compact Y2K Digicam Daily Note + Personal Mini Study Dashboard (Scheme A + C) */
+
+.study-strip {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 20px;
+  padding: 18px 22px 16px;
+  margin-bottom: 26px;
+  background: var(--bg-surface);
+  border: 1.5px dashed var(--border-dashed);
+  border-radius: 20px;
+  box-shadow: var(--shadow-polaroid);
+}
+
+/* Pastel Washi Tape Accent */
+.study-strip::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 30px;
+  width: 86px;
+  height: 18px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(244, 217, 223, 0.92),
+    rgba(244, 217, 223, 0.92) 8px,
+    rgba(255, 253, 249, 0.95) 8px,
+    rgba(255, 253, 249, 0.95) 14px
+  );
+  border: 1px solid rgba(229, 188, 198, 0.75);
+  box-shadow: 0 2px 5px rgba(62, 54, 54, 0.08);
+  transform: rotate(-2.5deg);
+  pointer-events: none;
+}
+
+.study-strip__stickers {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  pointer-events: none;
+}
+
+.study-strip__stickers .deco-sticker {
+  font-size: 1.0625rem;
+}
+
+.study-strip__stickers .deco-sticker:nth-child(1) {
+  transform: rotate(-10deg);
+}
+
+.study-strip__stickers .deco-sticker:nth-child(2) {
+  transform: rotate(8deg) translateY(1px);
+}
+
+.study-strip__stickers .deco-sticker:nth-child(3) {
+  transform: rotate(-6deg);
+}
+
+.study-strip__note {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1 1 400px;
+  min-width: 0;
+  padding-right: 44px;
+}
+
+.study-strip__meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.study-strip__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--pastel-pink-soft);
+  border: 1px dashed var(--pastel-pink-border);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--pastel-pink-ink);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.study-strip__rec-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--danger);
+  animation: record-pulse 1.8s ease-in-out infinite;
+}
+
+.study-strip__quote-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.study-strip__quote-kr {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.study-strip__quote-btns {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.study-quote-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  border: 1.5px dashed var(--border-strong);
+  background: var(--bg-subtle);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.study-quote-btn.is-speak {
+  background: var(--pastel-blue-soft);
+  border-color: var(--pastel-blue-border);
+  color: var(--pastel-blue-ink);
+}
+
+.study-quote-btn.is-speak.is-playing {
+  background: var(--pastel-pink);
+  border-color: var(--pastel-pink-border);
+  color: var(--pastel-pink-ink);
+}
+
+.study-quote-btn:hover {
+  transform: translateY(-1px);
+  color: var(--text-primary);
+}
+
+.study-strip__quote-sub {
+  font-size: 0.84375rem;
+  color: var(--text-secondary);
+}
+
+.study-strip__roman {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Mini Personal Dashboard Tiles */
+.study-strip__dashboard {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dash-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border-radius: 14px;
+  border: 1.5px dashed var(--border-strong);
+  background: var(--bg-elevated);
+  text-align: left;
+  box-shadow: var(--shadow-xs);
+}
+
+.dash-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.dash-pill[data-tint='lilac'] {
+  background: var(--pastel-lilac-soft);
+  border-color: var(--pastel-lilac-border);
+  color: var(--pastel-lilac-ink);
+}
+
+.dash-pill[data-tint='green'] {
+  background: var(--pastel-green-soft);
+  border-color: var(--pastel-green-border);
+  color: var(--pastel-green-ink);
+}
+
+.dash-pill[data-tint='blue'] {
+  background: var(--pastel-blue-soft);
+  border-color: var(--pastel-blue-border);
+  color: var(--pastel-blue-ink);
+}
+
+.dash-pill[data-tint='rose'] {
+  background: var(--pastel-pink-soft);
+  border-color: var(--pastel-pink-border);
+  color: var(--pastel-pink-ink);
+}
+
+.dash-pill__icon {
+  font-size: 1.0625rem;
+  line-height: 1;
+}
+
+.dash-pill__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.25;
+}
+
+.dash-pill__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.dash-pill__value {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  .study-strip {
+    padding: 16px 14px 14px;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .study-strip__note {
+    padding-right: 0;
+  }
+
+  .study-strip__stickers {
+    top: 8px;
+    right: 10px;
+  }
+
+  .study-strip__stickers .deco-sticker {
+    font-size: 0.95rem;
+  }
+
+  .study-strip__dashboard {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .dash-pill {
+    flex: 1 1 auto;
+    padding: 6px 10px;
+  }
+}

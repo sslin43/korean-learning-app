@@ -1,7 +1,9 @@
 import { useCallback, useRef, useState } from 'react';
 import conversationsJson from './data/conversations.json';
+import { PRACTICE_SENTENCES } from './data/practiceSentences';
 import { HangulSection } from './components/HangulChart/HangulSection';
 import { Header } from './components/Header';
+import { StudyDashboardStrip } from './components/StudyDashboardStrip';
 import { PracticeSection } from './components/PracticeZone/PracticeSection';
 import { SituationalSection } from './components/SituationalConversations/SituationalSection';
 import { DailyReadingSection } from './components/DailyReading/DailyReadingSection';
@@ -13,11 +15,11 @@ import { usePronunciationCoach } from './hooks/usePronunciationCoach';
 import type { ConversationsDataset } from './types/korean';
 
 const conversationsData = conversationsJson as ConversationsDataset;
-const topicCount = conversationsData.topics.length;
 const phraseCount = conversationsData.topics.reduce(
   (sum, topic) => sum + topic.phrases.length,
   0
 );
+const totalPracticeTargets = PRACTICE_SENTENCES.length + phraseCount;
 
 export function App() {
   const {
@@ -87,6 +89,24 @@ export function App() {
     [activeSection, coach, selectSection, stopSpeech]
   );
 
+  const handleQuoteSpeak = useCallback(
+    (speechId: string, text: string) => {
+      stopLoopRef.current();
+      coach.stopAll();
+      void speak(speechId, text);
+    },
+    [coach, speak]
+  );
+
+  const recordedCount = Object.keys(coach.recordings).length;
+  const todayLesson =
+    dailyReading.lessons.find((l) => l.date === dailyReading.todayDateKey) ??
+    dailyReading.lessons[0] ??
+    null;
+  const isTodayReadingDone = todayLesson
+    ? Boolean(dailyReading.progressById[todayLesson.id]?.completed)
+    : false;
+
   return (
     <div id="top" className="app-shell">
       <Header
@@ -100,100 +120,25 @@ export function App() {
       />
 
       <main className="app-main">
-        <section className="hero-strip" aria-label="學習導覽">
-          <div className="hero-stickers" aria-hidden="true">
-            <span className="deco-sticker">🎀</span>
-            <span className="deco-sticker">✨</span>
-            <span className="deco-sticker">🧸</span>
-          </div>
-
-          <div className="hero-strip__copy">
-            <span className="hero-strip__eyebrow">
-              <span className="hero-strip__rec-dot" aria-hidden="true" />
-              <span>REC ● DIGICAM KOREAN DIARY ✨</span>
-            </span>
-            <h1 className="hero-strip__title">從韓文 40 音、情境會話到每日短篇閱讀，聽說讀同步練習</h1>
-            <p className="hero-strip__desc">
-              先點選字母表熟悉 40 音嘴型技巧，透過日常短句與情境會話由 Gemini AI 矯正發音，再到每日 TOPIK 1→2 短篇閱讀小課累積詞彙與語法！
-            </p>
-          </div>
-
-          <div className="hero-strip__stats">
-            <a
-              href="#hangul-chart"
-              className={`hero-stat-pill ${activeSection === 'hangul-chart' ? 'is-active' : ''}`}
-              data-tint="pink"
-              onClick={(e) => {
-                e.preventDefault();
-                handleSelectTab('hangul-chart');
-              }}
-            >
-              <span>🌸 韓文互動表</span>
-              <strong>40 音</strong>
-            </a>
-            <a
-              href="#practice-zone"
-              className={`hero-stat-pill ${activeSection === 'practice-zone' ? 'is-active' : ''}`}
-              data-tint="blue"
-              onClick={(e) => {
-                e.preventDefault();
-                handleSelectTab('practice-zone');
-              }}
-            >
-              <span>🎀 錄音跟讀對比</span>
-              <strong>5 句日常韓文</strong>
-            </a>
-            <a
-              href="#situational-conversations"
-              className={`hero-stat-pill ${
-                activeSection === 'situational-conversations' &&
-                activeTopicId !== 'favorites'
-                  ? 'is-active'
-                  : ''
-              }`}
-              data-tint="green"
-              onClick={(e) => {
-                e.preventDefault();
-                handleSelectTab('situational-conversations');
-              }}
-            >
-              <span>🧸 實用情境會話</span>
-              <strong>
-                {topicCount} 主題 {phraseCount} 句
-              </strong>
-            </a>
-            <a
-              href="#daily-reading"
-              className={`hero-stat-pill ${activeSection === 'daily-reading' ? 'is-active' : ''}`}
-              data-tint="lilac"
-              onClick={(e) => {
-                e.preventDefault();
-                handleSelectTab('daily-reading');
-              }}
-            >
-              <span>📖 每日閱讀小課</span>
-              <strong>已推 {dailyReading.lessons.length} 篇</strong>
-            </a>
-            <a
-              href="#situational-conversations"
-              className={`hero-stat-pill ${
-                activeSection === 'situational-conversations' &&
-                activeTopicId === 'favorites'
-                  ? 'is-active'
-                  : ''
-              }`}
-              data-tint="rose"
-              onClick={(e) => {
-                e.preventDefault();
-                setActiveTopicId('favorites');
-                handleSelectTab('situational-conversations');
-              }}
-            >
-              <span>❤️ 我的收藏</span>
-              <strong>{favorites.count} 筆</strong>
-            </a>
-          </div>
-        </section>
+        <StudyDashboardStrip
+          todayDateKey={dailyReading.todayDateKey}
+          todayLessonDay={todayLesson?.dayNumber ?? null}
+          isTodayReadingDone={isTodayReadingDone}
+          readingCompletedCount={dailyReading.completedCount}
+          readingTotalCount={dailyReading.lessons.length}
+          recordedCount={recordedCount}
+          totalPracticeTargets={totalPracticeTargets}
+          favoritesCount={favorites.count}
+          speakingId={speakingId}
+          onSpeakQuote={handleQuoteSpeak}
+          onStopSpeech={stopSpeech}
+          onOpenDailyReading={() => handleSelectTab('daily-reading')}
+          onOpenPractice={() => handleSelectTab('practice-zone')}
+          onOpenFavorites={() => {
+            setActiveTopicId('favorites');
+            handleSelectTab('situational-conversations');
+          }}
+        />
 
         {speechError && (
           <div className="notice-banner notice-banner--danger" role="alert">
