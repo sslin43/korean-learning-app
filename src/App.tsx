@@ -183,10 +183,30 @@ export function App() {
 
       <footer className="app-footer">
         <div className="app-footer__inner">
-          <span>한글 소리 · 韓語發音互動學習</span>
-          <span>
-            標準韓語發音透過後端 API 代理呼叫 Google Cloud Text-to-Speech（ko-KR-Neural2-A）並啟用前端音訊快取；錄音與 AI 發音矯正亦經由後端代理呼叫 Google Gemini API（GOOGLE_TTS_API_KEY 與 GEMINI_API_KEY 皆安全保存於伺服器端，不會暴露於前端瀏覽器）。
-          </span>
+          <div className="app-footer__top">
+            <div className="app-footer__brand">
+              <strong className="app-footer__title">
+                <span className="kr-cute">한글 소리</span> · 韓語發音互動手帳 🎀
+              </strong>
+              <p className="app-footer__tagline">
+                專為韓語初學者打造的 40 音、情境會話與 TOPIK 1→2 每日閱讀練習空間
+              </p>
+            </div>
+            <a href="#top" className="app-footer__top-btn">
+              回到頂部 ↑
+            </a>
+          </div>
+
+          <p className="app-footer__notice">
+            🎙️ 錄音僅用於當次 AI 發音分析，不會留存於伺服器；「我的收藏」與「每日閱讀紀錄」皆保存於您的瀏覽器本機。AI 發音評分、建議與生成內容僅供學習輔助參考。
+          </p>
+
+          <div className="app-footer__bottom">
+            <span className="app-footer__creator">Made with ♡ by Susan.L</span>
+            <span className="app-footer__meta">
+              Powered by Google Cloud TTS &amp; Google Gemini · © 2026 Susan.L
+            </span>
+          </div>
         </div>
       </footer>
     </div>

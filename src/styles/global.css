@@ -399,19 +399,99 @@ section[id] {
 /* Footer */
 .app-footer {
   border-top: 1.5px dashed var(--border-dashed);
-  background: rgba(255, 253, 249, 0.76);
-  padding: 22px 20px;
+  background: var(--bg-surface);
+  padding: 28px 20px 32px;
 }
 
 .app-footer__inner {
   max-width: var(--container-max);
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.app-footer__top {
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 12px 20px;
+}
+
+.app-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.app-footer__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.app-footer__tagline {
+  font-size: 0.84375rem;
+  color: var(--text-secondary);
+}
+
+.app-footer__top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--pastel-pink-soft);
+  border: 1.5px dashed var(--pastel-pink-border);
+  color: var(--pastel-pink-ink);
   font-size: 0.8125rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-xs);
+  transition: transform 200ms var(--ease-bounce),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.app-footer__top-btn:hover {
+  transform: translateY(-2px);
+  background: var(--pastel-pink);
+}
+
+.app-footer__notice {
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--bg-subtle);
+  border: 1.5px dashed var(--border-strong);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.app-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding-top: 12px;
+  border-top: 1.5px dashed var(--border-subtle);
+}
+
+.app-footer__creator {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--pastel-pink-soft);
+  border: 1px dashed var(--pastel-pink-border);
+  color: var(--pastel-pink-ink);
+  font-weight: 700;
+}
+
+.app-footer__meta {
+  font-size: 0.78rem;
   color: var(--text-muted);
 }
 
@@ -586,5 +666,14 @@ section[id] {
 
   .hero-stickers .deco-sticker {
     font-size: 1rem;
+  }
+
+  .app-footer {
+    padding: 22px 14px 28px;
+  }
+
+  .app-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
