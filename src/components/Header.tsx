@@ -78,10 +78,13 @@ export function Header({
     <header className="site-header">
       <div className="site-header__inner">
         <a
-          href="#top"
+          href="#hangul-chart"
           className="site-brand"
           aria-label="한글 소리 韓語發音互動學習首頁"
-          onClick={() => onSelectSection('hangul-chart')}
+          onClick={(e) => {
+            e.preventDefault();
+            onSelectSection('hangul-chart');
+          }}
         >
           <span className="site-brand__mark" aria-hidden="true">
             한
@@ -93,17 +96,23 @@ export function Header({
           </span>
         </a>
 
-        <nav className="site-nav" aria-label="頁面區塊導覽">
+        <nav className="site-nav" role="tablist" aria-label="頁面區塊導覽">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <a
                 key={item.id}
+                id={`app-tab-${item.id}`}
                 href={`#${item.id}`}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls="app-tab-panel"
                 className={`site-nav__link ${isActive ? 'is-active' : ''}`}
                 data-tint={item.tint}
-                aria-current={isActive ? 'location' : undefined}
-                onClick={() => onSelectSection(item.id)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelectSection(item.id);
+                }}
               >
                 <span className="site-nav__icon" aria-hidden="true">
                   {item.icon}

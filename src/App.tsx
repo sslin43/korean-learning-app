@@ -6,7 +6,7 @@ import { PracticeSection } from './components/PracticeZone/PracticeSection';
 import { SituationalSection } from './components/SituationalConversations/SituationalSection';
 import { DailyReadingSection } from './components/DailyReading/DailyReadingSection';
 import { useDailyReading } from './hooks/useDailyReading';
-import { useActiveSection } from './hooks/useActiveSection';
+import { useActiveSection, type AppSectionId } from './hooks/useActiveSection';
 import { useFavorites } from './hooks/useFavorites';
 import { useKoreanSpeech } from './hooks/useKoreanSpeech';
 import { usePronunciationCoach } from './hooks/usePronunciationCoach';
@@ -75,6 +75,18 @@ export function App() {
     [coach, speak]
   );
 
+  const handleSelectTab = useCallback(
+    (sectionId: AppSectionId) => {
+      if (sectionId !== activeSection) {
+        stopLoopRef.current();
+        coach.stopAll();
+        stopSpeech();
+      }
+      selectSection(sectionId);
+    },
+    [activeSection, coach, selectSection, stopSpeech]
+  );
+
   return (
     <div id="top" className="app-shell">
       <Header
@@ -84,7 +96,7 @@ export function App() {
         hasKoreanVoice={hasKoreanVoice}
         voiceName={voiceName}
         activeSection={activeSection}
-        onSelectSection={selectSection}
+        onSelectSection={handleSelectTab}
       />
 
       <main className="app-main">
@@ -109,27 +121,41 @@ export function App() {
           <div className="hero-strip__stats">
             <a
               href="#hangul-chart"
-              className="hero-stat-pill"
+              className={`hero-stat-pill ${activeSection === 'hangul-chart' ? 'is-active' : ''}`}
               data-tint="pink"
-              onClick={() => selectSection('hangul-chart')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectTab('hangul-chart');
+              }}
             >
               <span>🌸 韓文互動表</span>
               <strong>40 音</strong>
             </a>
             <a
               href="#practice-zone"
-              className="hero-stat-pill"
+              className={`hero-stat-pill ${activeSection === 'practice-zone' ? 'is-active' : ''}`}
               data-tint="blue"
-              onClick={() => selectSection('practice-zone')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectTab('practice-zone');
+              }}
             >
               <span>🎀 錄音跟讀對比</span>
               <strong>5 句日常韓文</strong>
             </a>
             <a
               href="#situational-conversations"
-              className="hero-stat-pill"
+              className={`hero-stat-pill ${
+                activeSection === 'situational-conversations' &&
+                activeTopicId !== 'favorites'
+                  ? 'is-active'
+                  : ''
+              }`}
               data-tint="green"
-              onClick={() => selectSection('situational-conversations')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectTab('situational-conversations');
+              }}
             >
               <span>🧸 實用情境會話</span>
               <strong>
@@ -138,20 +164,29 @@ export function App() {
             </a>
             <a
               href="#daily-reading"
-              className="hero-stat-pill"
+              className={`hero-stat-pill ${activeSection === 'daily-reading' ? 'is-active' : ''}`}
               data-tint="lilac"
-              onClick={() => selectSection('daily-reading')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectTab('daily-reading');
+              }}
             >
               <span>📖 每日閱讀小課</span>
               <strong>已推 {dailyReading.lessons.length} 篇</strong>
             </a>
             <a
               href="#situational-conversations"
-              className="hero-stat-pill"
+              className={`hero-stat-pill ${
+                activeSection === 'situational-conversations' &&
+                activeTopicId === 'favorites'
+                  ? 'is-active'
+                  : ''
+              }`}
               data-tint="rose"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setActiveTopicId('favorites');
-                selectSection('situational-conversations');
+                handleSelectTab('situational-conversations');
               }}
             >
               <span>❤️ 我的收藏</span>
@@ -173,31 +208,47 @@ export function App() {
           </div>
         )}
 
-        <HangulSection
-          speakingId={speakingId}
-          favorites={favorites}
-          onSpeakText={handleHangulSpeak}
-        />
+        <div
+          key={activeSection}
+          id="app-tab-panel"
+          role="tabpanel"
+          aria-labelledby={`app-tab-${activeSection}`}
+          className="app-tab-panel"
+        >
+          {activeSection === 'hangul-chart' && (
+            <HangulSection
+              speakingId={speakingId}
+              favorites={favorites}
+              onSpeakText={handleHangulSpeak}
+            />
+          )}
 
-        <PracticeSection coach={coach} favorites={favorites} />
+          {activeSection === 'practice-zone' && (
+            <PracticeSection coach={coach} favorites={favorites} />
+          )}
 
-        <SituationalSection
-          coach={coach}
-          favorites={favorites}
-          activeTopicId={activeTopicId}
-          onSelectTopic={setActiveTopicId}
-          onSpeakLoopItem={speak}
-          onStopSpeech={stopSpeech}
-          registerStopLoop={registerStopLoop}
-        />
+          {activeSection === 'situational-conversations' && (
+            <SituationalSection
+              coach={coach}
+              favorites={favorites}
+              activeTopicId={activeTopicId}
+              onSelectTopic={setActiveTopicId}
+              onSpeakLoopItem={speak}
+              onStopSpeech={stopSpeech}
+              registerStopLoop={registerStopLoop}
+            />
+          )}
 
-        <DailyReadingSection
-          reading={dailyReading}
-          speakingId={speakingId}
-          aiConfigured={coach.aiStatus.configured}
-          onSpeakText={handleReadingSpeak}
-          onStopSpeech={stopSpeech}
-        />
+          {activeSection === 'daily-reading' && (
+            <DailyReadingSection
+              reading={dailyReading}
+              speakingId={speakingId}
+              aiConfigured={coach.aiStatus.configured}
+              onSpeakText={handleReadingSpeak}
+              onStopSpeech={stopSpeech}
+            />
+          )}
+        </div>
       </main>
 
       <footer className="app-footer">
@@ -217,7 +268,10 @@ export function App() {
             <a
               href="#top"
               className="app-footer__top-btn"
-              onClick={() => selectSection('hangul-chart')}
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             >
               回到頂部 ↑
             </a>
@@ -227,28 +281,40 @@ export function App() {
             <a
               href="#hangul-chart"
               className="app-footer__nav-link"
-              onClick={() => selectSection('hangul-chart')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectTab('hangul-chart');
+              }}
             >
               40 音發音表
             </a>
             <a
               href="#practice-zone"
               className="app-footer__nav-link"
-              onClick={() => selectSection('practice-zone')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectTab('practice-zone');
+              }}
             >
               日常發音練習
             </a>
             <a
               href="#situational-conversations"
               className="app-footer__nav-link"
-              onClick={() => selectSection('situational-conversations')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectTab('situational-conversations');
+              }}
             >
               實用情境會話
             </a>
             <a
               href="#daily-reading"
               className="app-footer__nav-link"
-              onClick={() => selectSection('daily-reading')}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectTab('daily-reading');
+              }}
             >
               每日短篇閱讀
             </a>

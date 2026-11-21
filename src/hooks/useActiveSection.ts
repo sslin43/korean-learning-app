@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export const APP_SECTION_IDS = [
   'hangul-chart',
@@ -23,11 +23,17 @@ function getInitialSection(): AppSectionId {
 
 export function useActiveSection() {
   const [activeSection, setActiveSection] = useState<AppSectionId>(getInitialSection);
-  const lockUntilRef = useRef<number>(0);
 
   const selectSection = useCallback((sectionId: AppSectionId) => {
-    lockUntilRef.current = Date.now() + 650;
     setActiveSection(sectionId);
+
+    if (typeof window !== 'undefined') {
+      const nextHash = `#${sectionId}`;
+      if (window.location.hash !== nextHash) {
+        window.history.pushState(null, '', nextHash);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, []);
 
   useEffect(() => {
@@ -35,75 +41,19 @@ export function useActiveSection() {
       return;
     }
 
-    let rafId: number | null = null;
-
-    const computeActiveSection = () => {
-      if (Date.now() < lockUntilRef.current) {
-        return;
-      }
-
-      const headerEl = document.querySelector('.site-header');
-      const headerHeight = headerEl
-        ? headerEl.getBoundingClientRect().height
-        : 86;
-      const triggerY = headerHeight + 48;
-
-      const nearBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 24;
-
-      if (nearBottom) {
-        const lastEl = document.getElementById(
-          APP_SECTION_IDS[APP_SECTION_IDS.length - 1]
-        );
-        if (lastEl) {
-          setActiveSection(APP_SECTION_IDS[APP_SECTION_IDS.length - 1]);
-          return;
-        }
-      }
-
-      let current: AppSectionId = 'hangul-chart';
-      for (const id of APP_SECTION_IDS) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        if (el.getBoundingClientRect().top <= triggerY) {
-          current = id;
-        }
-      }
-
-      setActiveSection((prev) => (prev === current ? prev : current));
-    };
-
-    const scheduleCheck = () => {
-      if (rafId !== null) return;
-      rafId = window.requestAnimationFrame(() => {
-        rafId = null;
-        computeActiveSection();
-      });
-    };
-
-    const handleHashChange = () => {
+    const syncFromHash = () => {
       const hashId = window.location.hash.replace(/^#/, '');
       if (isAppSectionId(hashId)) {
-        lockUntilRef.current = Date.now() + 650;
         setActiveSection(hashId);
-      } else {
-        scheduleCheck();
       }
     };
 
-    computeActiveSection();
-    window.addEventListener('scroll', scheduleCheck, { passive: true });
-    window.addEventListener('resize', scheduleCheck);
-    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('hashchange', syncFromHash);
+    window.addEventListener('popstate', syncFromHash);
 
     return () => {
-      window.removeEventListener('scroll', scheduleCheck);
-      window.removeEventListener('resize', scheduleCheck);
-      window.removeEventListener('hashchange', handleHashChange);
-      if (rafId !== null) {
-        window.cancelAnimationFrame(rafId);
-      }
+      window.removeEventListener('hashchange', syncFromHash);
+      window.removeEventListener('popstate', syncFromHash);
     };
   }, []);
 
